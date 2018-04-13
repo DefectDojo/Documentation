@@ -510,6 +510,28 @@ In order to identify and notify you about things like upcoming engagements, Defe
 purpose. These tasks are scheduled and run using Celery beat, so this needs to run for those notifications to work. Instructions
 on how to run Celery beat are available in the `Reports`_ section.
 
+Benchmarks
+-------------
+
+.. image:: /_static/owasp_asvs.png
+    :alt: OWASP ASVS Benchmarks
+
+DefectDojo utilizes the OWASP ASVS Benchmarks to benchmark a product to ensure the product meets your application technical security controls. Benchmarks can be defined per the organizations policy for secure development and multiple benchmarks can be applied to a product.
+
+Benchmarks are available from the Product view. To view the configured benchmarks select the dropdown menu from the right hand drop down menu. You will find the selection near the bottom of the menu entitled: 'OWASP ASVS v.3.1'.
+
+.. image:: /_static/owasp_asvs_menu.png
+    :alt: OWASP ASVS Benchmarks Menu
+
+In the Benchmarks view for each product, the default level is ASVS Level 1. On the top right hand side the drop down can be changed to the desired ASVS level (Level 1, Level 2 or Level 3). The publish checkbox will display the ASVS score on the product page and in the future this will be applied to reporting.
+
+.. image:: /_static/owasp_asvs_score.png
+    :alt: OWASP ASVS Score
+
+On the left hand side the ASVS score is displayed with the desired score, the % of benchmarks passed to achieve the score and the total enabled benchmarks for that AVSV level.
+
+Additional benchmarks can be added/updated in the Django admin site. In a future release this will be brought out to the UI.
+
 Reports
 -------
 
