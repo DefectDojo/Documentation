@@ -665,7 +665,7 @@ Adding JIRA to Dojo
  4. The 'id' for 'Todo' should be filled in as the 'open status key'
  5. The 'id' for 'Done' should be filled in as the 'closed status key'
  
- To obtain 'epic name id:
+ To obtain 'epic name id':
  If you have admin access to JIRA:
  
  1. visit: https://<**YOUR JIRA URL**>/secure/admin/ViewCustomFields.jspa
