@@ -8,8 +8,6 @@ directory named `defect-dojo` you can complete the following steps to upgrade to
     git checkout master
     git pull
     pip install .
-    ./manage.py makemigrations dojo
-    ./manage.py makemigrations
     ./manage.py migrate
 
 Because yarn assets change from time to time, it is always a good idea to re-install them and collect the static
@@ -30,7 +28,7 @@ If you are in your production system, you will need to restart gunicorn and cele
 being used by both.
 
 Upgrading to Django 1.1.5
-------------------------
+-------------------------
 If you are upgrading an existing version of DefectDojo, you will need to run the following commands manually: ::
 
 First install Yarn:
@@ -126,7 +124,7 @@ If you like you can then remove the following settings from settings.py to avoid
 * ``TEAM_NAME``
 
 Upgrading to DefectDojo Version 1.2.2
-------------------------------------
+-------------------------------------
 
 Upgrading to 1.2.2 requires:
 
@@ -135,7 +133,7 @@ Upgrading to 1.2.2 requires:
 2. If you have supervisor scripts change DJANGO_SETTINGS_MODULE=dojo.settings.settings
 
 Upgrading to DefectDojo Version 1.2.3
-------------------------------------
+-------------------------------------
 
 Upgrading to 1.2.3 requires:
 
@@ -146,7 +144,7 @@ Upgrading to 1.2.3 requires:
 2. Currently languages and technologies can be updated via the API or in the admin section of Django.
 
 Upgrading to DefectDojo Version 1.2.4
-------------------------------------
+-------------------------------------
 
 Upgrading to 1.2.4 requires:
 
@@ -156,7 +154,7 @@ Upgrading to 1.2.4 requires:
 
 
 Upgrading to DefectDojo Version 1.2.8
-------------------------------------
+-------------------------------------
 
 New feature: Product Grading (Overall Product Health)
 Upgrading to 1.2.8 requires:
@@ -172,7 +170,7 @@ Upgrading to 1.2.8 requires:
 4. Complete
 
 Upgrading to DefectDojo Version 1.2.9
-------------------------------------
+-------------------------------------
 
 New feature: Benchmarks (OWASP ASVS)
 Upgrading to 1.2.9 requires:
@@ -187,3 +185,38 @@ Upgrading to 1.2.9 requires:
 
 
 4. Complete
+
+
+Upgrading to DefectDojo Version 1.3.0
+-------------------------------------
+
+In version 1.3.0, we've done an important change: we're now keeping migration files under version control.
+For you this means the following, depending on how you've used DefectDojo until now:
+
+- **No persistent data to take over**: If you've **cloned** the repo everytime a new release came out,
+  **built a Docker container** and ran Defect Dojo this way, you don't
+  need to do anything and you can continue as is.
+  Be aware, though, that if you want to persist your data, you can do so,
+  now with a DB running outside the Docker container.
+
+- **Data needs to be migrated**: If you've **fetched and merged** the latest version and you have run
+  **makemigrations** at every new release it's going to be a bit harder.
+  In this case, you probably have a couple of migration files under ``dojo/migrations/`` already.
+
+  Follow these steps to reach a consistent state again (**Disclaimer**: no warranty for the correctness of these steps! ALWAYS back up your DB before running this kind of operations!):
+
+  #. Back up your migration files (at ``dojo/migrations/``) **before** merging the remote git branch
+  #. Move the ``0001_initial.py`` migration file that came with the merge to a safe place (you'll need it again later)
+  #. Add your own migration files back to the ``dojo/migrations/`` folder
+  #. Run ``python manage.py makemigrations dojo``, which probably creates a new migration file
+  #. Run ``python manage.py migrate`` to apply all migrations
+  #. Remove all your migration files from the folder ``dojo/migrations/`` and restore the ``0001_initial.py`` migration that you've backed up in the second step
+  #. Remove migration information from the DB by running the raw SQL statement ``DELETE FROM django_migrations WHERE app = 'dojo'``
+  #. Run ``python manage.py migrate --fake-initial``
+  #. You're done! Your data now follows the DefectDojo migrations under version control.
+
+For future releases of DefectDojo, a simple ``python manage.py migrate`` will be sufficient to keep the DB schema up to date.
+
+For more information on Django's migration mechanism refer to `the Django documentation <https://docs.djangoproject.com/en/dev/topics/migrations/>`_.
+
+
