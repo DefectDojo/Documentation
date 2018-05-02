@@ -10,12 +10,11 @@ header.
 The documentation is generated using `Django Rest Framework Swagger`_, and is interactive.
 
 To interact with the documentation, a valid Authorization header value is needed.  Visit the `/api/v2/key/` view to generate
-your API Key and copy the header value provided.
+your API Key (Token <api_key>) and copy the header value provided.
 
 .. image:: /_static/api_v2_2.png
 
-Return to the `/api/v2/doc/` view to paste your key in the form field and click `Explore`.  Your authorization header
-value will be captured and used for all requests.
+Return to the `/api/v2/doc/` and click on `Authorize` to open Authorization form. Paste your key in the form field provided  and clic on `Authorize` button.  Your authorization header value will be captured and used for all requests.
 
 Each section allows you to make calls to the API and view the Request URL, Response Body, Response Code and Response
 Headers.
@@ -83,15 +82,7 @@ whose user name includes `jay`: ::
 
 The json object result is: ::
 
-    {
-      "meta": {
-        "limit": 20,
-        "next": null,
-        "offset": 0,
-        "previous": null,
-        "total_count": 2
-      },
-      "objects": [
+    [
         {
           "first_name": "Jay",
           "id": 22,
@@ -108,8 +99,7 @@ The json object result is: ::
           "resource_uri": "/api/v1/users/31/",
           "username": "jay.paz"
         }
-      ]
-    }
+    ]
 
 See `Django Rest Framework's documentation on interacting with an API`_ for additional examples and tips.
 
