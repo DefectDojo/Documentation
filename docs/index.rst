@@ -8,7 +8,7 @@ DefectDojo's Documentation
 *What is DefectDojo?*
 
 .. image:: /_static/bug-2x.png
-`DefectDojo` is a tool created by the Security Engineering team at Rackspace to track testing efforts. It attempts to streamline the testing process by offering features such as templating, report generation, metrics, and baseline self-service tools. Though it was designed with security folks in mind, there is nothing keeping QA/QE testers, or any other testers for that matter, from using it productively.
+`DefectDojo` is a security tool that automates application security vulnerability management. `DefectDojo` streamlines the application security testing process by offering features such as importing third party security findings, merging and de-duping, integration with Jira, templating, report generation and security metrics. 
 
 *What does DefectDojo do?*
 
@@ -79,5 +79,3 @@ API Documentation
    :glob:
 
    api-docs
-
-
