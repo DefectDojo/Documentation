@@ -34,11 +34,11 @@ Upgrading to DefectDojo Version 1.3.1
 
 **What's New:**
 
-*New importers for Contrast, Nikto and TruffleHog (finding secrets in git repos).
-*Improved merging of findings for dynamic and static importers
-*Markdown support for findings
-*HTML report improvements including support of Markdown.
-*System settings Celery status page to assist in debugging if Celery is functional.
+ * New importers for Contrast, Nikto and TruffleHog (finding secrets in git repos).
+ * Improved merging of findings for dynamic and static importers
+ * Markdown support for findings
+ * HTML report improvements including support of Markdown.
+ * System settings Celery status page to assist in debugging if Celery is functional.
 
 **Upgrading to 1.3.1 requires:**
 
