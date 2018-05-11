@@ -29,6 +29,113 @@ Next you can run: ::
 If you are in your production system, you will need to restart gunicorn and celery to make sure the latest code is
 being used by both.
 
+Upgrading to DefectDojo Version 1.3.1
+------------------------------------
+
+**What's New:**
+* New importers for Contrast, Nikto and TruffleHog (finding secrets in git repos).
+* Improved merging of findings for dynamic and static importers
+* Markdown support for findings
+* HTML report improvements including support of Markdown.
+* System settings Celery status page to assist in debugging if Celery is functional.
+
+**Upgrading to 1.3.1 requires:**
+
+1.  pip install markdown
+    pip install pandas
+
+2.  ./manage.py makemigrations
+    ./manage.py migrate
+
+3. ./manage.py collectstatic --noinput
+
+4. Complete
+
+Upgrading to DefectDojo Version 1.2.9
+------------------------------------
+
+**What's New:**
+New feature: Benchmarks (OWASP ASVS)
+
+**Upgrading to 1.2.9 requires:**
+
+1.  ./manage.py makemigrations
+    ./manage.py migrate
+    ./manage.py loaddata dojo/fixtures/benchmark_type.json
+    ./manage.py loaddata dojo/fixtures/benchmark_category.json
+    ./manage.py loaddata dojo/fixtures/benchmark_requirement.json
+
+2. ./manage.py collectstatic --noinput
+
+3. Complete
+
+Upgrading to DefectDojo Version 1.2.8
+------------------------------------
+
+New feature: Product Grading (Overall Product Health)
+Upgrading to 1.2.8 requires:
+
+1.  ./manage.py makemigrations
+    ./manage.py migrate
+    ./manage.py system_settings
+
+2. ./manage.py collectstatic --noinput
+
+3. pip install asteval
+
+4. Complete
+
+Upgrading to DefectDojo Version 1.2.4
+------------------------------------
+
+Upgrading to 1.2.4 requires:
+
+1.  ./manage.py makemigrations
+    ./manage.py migrate
+    ./manage.py loaddata dojo/fixtures/objects_review.json
+
+Upgrading to DefectDojo Version 1.2.3
+------------------------------------
+
+Upgrading to 1.2.3 requires:
+
+1.  ./manage.py makemigrations
+    ./manage.py migrate
+    ./manage.py loaddata dojo/fixtures/language_type.json
+
+2. Currently languages and technologies can be updated via the API or in the admin section of Django.
+
+July 6th 2017 - New location for system settings
+------------------------------------------------
+
+Pull request #313 moves a number of system settings previously located in the application's settings.py
+to a model that can be used and changed within the web application under "Configuration -> System Settings".
+
+If you're using a custom ``URL_PREFIX`` you will need to set this in the model after upgrading by
+editing ``dojo/fixtures/system_settings.json`` and setting your URL prefix in the ``url_prefix`` value there.
+Then issue the command ``./manage.py loaddata system_settings.json`` to load your settings into the database.
+
+If you're not using a custom ``URL_PREFIX``, after upgrading simply go to the System Settings page and review
+which values you want to set for each setting, as they're not automatically migrated from settings.py.
+
+If you like you can then remove the following settings from settings.py to avoid confusion:
+
+* ``ENABLE_DEDUPLICATION``
+* ``ENABLE_JIRA``
+* ``S_FINDING_SEVERITY_NAMING``
+* ``URL_PREFIX``
+* ``TIME_ZONE``
+* ``TEAM_NAME``
+
+Upgrading to DefectDojo Version 1.2.2
+------------------------------------
+
+Upgrading to 1.2.2 requires:
+
+1. Copying settings.py to the settings/ folder.
+
+2. If you have supervisor scripts change DJANGO_SETTINGS_MODULE=dojo.settings.settings
+
 Upgrading to Django 1.1.5
 ------------------------
 If you are upgrading an existing version of DefectDojo, you will need to run the following commands manually: ::
@@ -101,89 +208,3 @@ The following needs to be added to settings.py: ::
     ]
 
 Once all these steps are completed your installation of DefectDojo will be running under Django 1.11
-
-
-July 6th 2017 - New location for system settings
-------------------------------------------------
-
-Pull request #313 moves a number of system settings previously located in the application's settings.py
-to a model that can be used and changed within the web application under "Configuration -> System Settings".
-
-If you're using a custom ``URL_PREFIX`` you will need to set this in the model after upgrading by
-editing ``dojo/fixtures/system_settings.json`` and setting your URL prefix in the ``url_prefix`` value there.
-Then issue the command ``./manage.py loaddata system_settings.json`` to load your settings into the database.
-
-If you're not using a custom ``URL_PREFIX``, after upgrading simply go to the System Settings page and review
-which values you want to set for each setting, as they're not automatically migrated from settings.py.
-
-If you like you can then remove the following settings from settings.py to avoid confusion:
-
-* ``ENABLE_DEDUPLICATION``
-* ``ENABLE_JIRA``
-* ``S_FINDING_SEVERITY_NAMING``
-* ``URL_PREFIX``
-* ``TIME_ZONE``
-* ``TEAM_NAME``
-
-Upgrading to DefectDojo Version 1.2.2
-------------------------------------
-
-Upgrading to 1.2.2 requires:
-
-1. Copying settings.py to the settings/ folder.
-
-2. If you have supervisor scripts change DJANGO_SETTINGS_MODULE=dojo.settings.settings
-
-Upgrading to DefectDojo Version 1.2.3
-------------------------------------
-
-Upgrading to 1.2.3 requires:
-
-1.  ./manage.py makemigrations
-    ./manage.py migrate
-    ./manage.py loaddata dojo/fixtures/language_type.json
-
-2. Currently languages and technologies can be updated via the API or in the admin section of Django.
-
-Upgrading to DefectDojo Version 1.2.4
-------------------------------------
-
-Upgrading to 1.2.4 requires:
-
-1.  ./manage.py makemigrations
-    ./manage.py migrate
-    ./manage.py loaddata dojo/fixtures/objects_review.json
-
-
-Upgrading to DefectDojo Version 1.2.8
-------------------------------------
-
-New feature: Product Grading (Overall Product Health)
-Upgrading to 1.2.8 requires:
-
-1.  ./manage.py makemigrations
-    ./manage.py migrate
-    ./manage.py system_settings
-
-2. ./manage.py collectstatic --noinput
-
-3. pip install asteval
-
-4. Complete
-
-Upgrading to DefectDojo Version 1.2.9
-------------------------------------
-
-New feature: Benchmarks (OWASP ASVS)
-Upgrading to 1.2.9 requires:
-
-1.  ./manage.py makemigrations
-    ./manage.py migrate
-    ./manage.py loaddata dojo/fixtures/benchmark_type
-    ./manage.py loaddata dojo/fixtures/benchmark_category
-    ./manage.py loaddata dojo/fixtures/benchmark_requirement
-
-2. ./manage.py collectstatic --noinput
-
-
-4. Complete
