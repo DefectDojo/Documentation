@@ -7,7 +7,8 @@ directory named `defect-dojo` you can complete the following steps to upgrade to
     cd defect-dojo
     git checkout master
     git pull
-    pip install .
+    pip freeze > pip_frozen.txt
+    pip install -r pip_frozen.txt --upgrade
     ./manage.py makemigrations dojo
     ./manage.py makemigrations
     ./manage.py migrate
@@ -28,6 +29,17 @@ Next you can run: ::
 
 If you are in your production system, you will need to restart gunicorn and celery to make sure the latest code is
 being used by both.
+
+FAQ
+------------------------------------
+
+**Celery Error:**
+
+If you have an issue starting Django with the error: TypeError: config_from_object() got an unexpected keyword argument 'namespace'
+
+Upgrade Celery to the latest version:
+
+    ``pip install --upgrade celery``
 
 Upgrading to DefectDojo Version 1.3.1
 ------------------------------------
@@ -84,7 +96,9 @@ Upgrading to 1.2.8 requires:
 
 3. pip install asteval
 
-4. Complete
+4. pip install --upgrade celery
+
+5. Complete
 
 Upgrading to DefectDojo Version 1.2.4
 ------------------------------------
