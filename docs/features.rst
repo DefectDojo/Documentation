@@ -126,7 +126,7 @@ Fragment
 Product
     The Product that this endpoint should be associated with.
 
-Endpoints are listed in the ``/engagement`` page and can be filtered by their attributes as well as sorted by the
+Endpoints are listed in the ``/endpoints`` page and can be filtered by their attributes as well as sorted by the
 product or host.
 
 .. image:: /_static/end_1.png
