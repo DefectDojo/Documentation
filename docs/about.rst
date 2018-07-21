@@ -45,7 +45,7 @@ These can be any sort of distinguishing characteristic about the type of testing
 	* Nessus Scan
 	* API test
 
-Development Environments
+Environments
 ************************
 These describe the environment that was tested during a particular Engagement.
 
@@ -53,16 +53,3 @@ These describe the environment that was tested during a particular Engagement.
 	* Production
 	* Staging
 	* Stable
-
-Projects that extend DefectDojo
-*******************************
-In an effort to keep the main Defectdojo functionality as separate from our own needs as possible, the Rackspace Security Engineering team have made it possible to extend DefectDojo without the need to hack it or look under the hood. Some of the projects that extend DefectDojo as Django apps are as follows:
-
-* `DefectDojo Engagement Survey`_.
-This project extends django-DefectDojo by incorporating survey(s) associated with each engagement to help develop a test strategy. The questions within these surveys have been created by the Rackspace Security Engineering team to help identify the attack vectors and risks associated with the product being assessed.
-.. _DefectDojo Engagement Survey:  https://github.com/grendel513/defectDojo-engagement-survey 
-
-
-
-
-
