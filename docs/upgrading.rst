@@ -46,8 +46,8 @@ Upgrading to DefectDojo Version 1.5.0
 
 **What's New:**
 
- * Updated UI with new DefectDojo logo
- * Updated Product views with tabs for Product Overview, Metrics, Engagements, Endpoints, Benchmarks (ASVS), and Settings to make it easier to manage your product portfolio
+ * Updated UI with a new DefectDojo logo, default colors and CSS.
+ * Updated Product views with tabs for Product Overview, Metrics, Engagements, Endpoints, Benchmarks (ASVS), and Settings to make it easier to navigate and manage your products.
  * New Product Information fields: Regulations, Criticality, Platform, Lifecycle, Origin, User Records, Revenue, External Audience, Internet Accessible
  * Languages pie chart on product overview, only supported through the API and Django admin, integrates with cloc analyzer
  * New Engagement type of CI/CD to support continual testing
@@ -64,13 +64,14 @@ Upgrading to DefectDojo Version 1.5.0
  * Celery status check on System Settings
  * Beta rules framework release for modifying findings on the fly
  * DefectDojo 2.0 API with Swagger support
+ * Created and Modified fields on all major tables
  * Various bug fixes reported on Github
 
 **Upgrading to 1.5.0 requirements:**
 
 1. Back up your database first, ideally take the backup from production and test the upgrade on a staging server.
 
-2. Edit the settings.py file which can be found in ``django-DefectDojo/dojo/settings/settings.py``. Copy in the rest framework after CSRF_COOKIE_SECURE = True::
+2. Edit the settings.py file which can be found in ``django-DefectDojo/dojo/settings/settings.py``. Copy in the rest framework configuration after the CSRF_COOKIE_SECURE = True::
 
     REST_FRAMEWORK = {
         'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -100,11 +101,15 @@ Navigate to: INSTALLED_APPS and add the following after: 'multiselectfield',::
     'rest_framework_swagger',
     'dbbackup',
 
-Navigate to: 	CELERY_TASK_IGNORE_RESULT = True and add the following after: this line::
+Navigate to: 	CELERY_TASK_IGNORE_RESULT = True and add the following after CELERY_TASK_IGNORE_RESULT line::
 
     CELERY_RESULT_BACKEND = 'db+sqlite:///dojo.celeryresults.sqlite'
 
-3. Activate your virtual environment and then upgrade the requirements: ``pip install -r requirements.txt --upgrade``
+Save your modified settings file. For reference the modified file should look like the new 1.5.0 [settings](https://github.com/DefectDojo/django-DefectDojo/blob/master/dojo/settings/settings.dist.py) file, minus the environmental configurations. As an alternative this file can be used and the enviromental configurations from you environment can be copied into this file.
+
+3. Activate your virtual environment and then upgrade the requirements:
+
+``pip install -r requirements.txt --upgrade``
 
 4. Upgrade the database::
 
