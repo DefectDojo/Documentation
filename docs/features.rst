@@ -48,7 +48,7 @@ Visual representation of a product:
 .. image:: /_static/product_1.png
     :alt: View Product Page
 
-Product with metrics drop down displayed:
+Product with metrics:
 
 .. image:: /_static/product_2.png
     :alt: View Product Page With Metrics Displayed
@@ -274,7 +274,7 @@ Then run the following commands (make sure your virtual environment is activated
 
 New installations will already have finding images configured.
 
-Findings are listed on the ``/finding/open``, ``/finding/closed``, and ``/finding/accepted`` pages. They can be filtered
+Findings are listed on the ``/finding/open``, ``/finding/closed``, ``/finding/accepted`` and ``/finding/all`` pages. They can be filtered
 by their attributes as well as sorted by their Name, Date, Reviewed Date, Severity and Product.
 
 .. image:: /_static/find_1.png
@@ -303,11 +303,9 @@ Visual representation of a Finding:
 .. image:: /_static/find_6.png
     :alt: Finding View
 
-Automatically Removing Duplicate Findings
-    'Deduplication' is a feature that when enabled will compare findings to automatically identify duplicates.
-    To enable deduplcation change 'ENABLE_DEDUPLICATION = False' to 'ENABLE_DEDUPLICATION = True' in your
-    settings.py file. If you are upgrading from an older version of Dojo simply add 'ENABLE_DEDUPLICATION = True'.
-
+Automatically Flag Duplicate Findings
+    'De-duplication' is a feature that when enabled will compare findings to automatically identify duplicates.
+    To enable de-duplication go to System Settings and check Deduplicate findings.
     Dojo deduplicates findings by comparing endpoints, cwe fields, and titles. If a two findings share a URL
     and have the same CWE or title, Dojo marks the less recent finding as a duplicate. When deduplication is enabled, a
     list of deduplicated findings is added to the engagement view.
