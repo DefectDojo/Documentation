@@ -41,6 +41,82 @@ Upgrade Celery to the latest version:
 
     ``pip install --upgrade celery``
 
+Upgrading to DefectDojo Version 1.5.0
+------------------------------------
+
+**What's New:**
+
+ * Updated UI with new DefectDojo logo
+ * Updated Product views with tabs for Product Overview, Metrics, Engagements, Endpoints, Benchmarks (ASVS), and Settings to make it easier to manage your product portfolio
+ * New Product Information fields: Regulations, Criticality, Platform, Lifecycle, Origin, User Records, Revenue, External Audience, Internet Accessible
+ * Languages pie chart on product overview, only supported through the API and Django admin, integrates with cloc analyzer
+ * New Engagement type of CI/CD to support continual testing
+ * Engagement shortcuts and ability to import findings and auto-create an engagement
+ * Engagement labels for overdue, no tests and findings
+ * New Contextual menus throughout DefectDojo and shortcuts to new findings and critical findings
+ * Ability to merge a finding into a parent finding and either inactivate or delete the merged findings.
+ * Report improvements and styling adjustment with the default option of HTML reports
+ * SLA for remediation of severities based on finding criticality, for example critical findings remediated within 7 days. Configurable in System Settings.
+ * Engagement Auto-Close Days in System Settings. Automatically close an engagement if open past the end date.
+ * Ability to apply remediation advice based on CWE. For example XSS can be configured as a template so that it's consistent across all findings. Enabled in system settings.
+ * Finding confidence field supported from scanners. First implementation in the Burp importer.
+ * Goast importer for static analysis of Golang products
+ * Celery status check on System Settings
+ * Beta rules framework release for modifying findings on the fly
+ * DefectDojo 2.0 API with Swagger support
+ * Various bug fixes reported on Github
+
+**Upgrading to 1.5.0 requirements:**
+
+1. Back up your database first, ideally take the backup from production and test the upgrade on a staging server.
+
+2. Edit the settings.py file which can be found in ``django-DefectDojo/dojo/settings/settings.py``. Copy in the rest framework after CSRF_COOKIE_SECURE = True::
+
+    REST_FRAMEWORK = {
+        'DEFAULT_AUTHENTICATION_CLASSES': (
+            'rest_framework.authentication.TokenAuthentication',
+            'rest_framework.authentication.BasicAuthentication',
+        ),
+        'DEFAULT_PERMISSION_CLASSES': (
+            'rest_framework.permissions.DjangoModelPermissions',
+        ),
+        'DEFAULT_RENDERER_CLASSES': (
+            'rest_framework.renderers.JSONRenderer',
+        ),
+        'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+        'PAGE_SIZE': 25
+    }
+
+Navigate to: LOGIN_EXEMPT_URLS and add the following after r'^%sfinding/image/(?P<token>[^/]+)$' % URL_PREFIX::
+
+    r'^%sfinding/image/(?P<token>[^/]+)$' % URL_PREFIX,
+    r'^%sapi/v2/' % URL_PREFIX,
+
+Navigate to: INSTALLED_APPS and add the following after: 'multiselectfield',::
+
+    'multiselectfield',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'rest_framework_swagger',
+    'dbbackup',
+
+Navigate to: 	CELERY_TASK_IGNORE_RESULT = True and add the following after: this line::
+
+    CELERY_RESULT_BACKEND = 'db+sqlite:///dojo.celeryresults.sqlite'
+
+3. Activate your virtual environment and then upgrade the requirements: ``pip install -r requirements.txt --upgrade``
+
+4. Upgrade the database::
+
+    ./manage.py makemigrations
+    ./manage.py migrate
+
+5. Collect the static files (Javascript, Images, CSS)::
+
+    ./manage.py collectstatic --noinput
+
+6. Complete
+
 Upgrading to DefectDojo Version 1.3.1
 ------------------------------------
 
