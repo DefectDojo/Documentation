@@ -31,6 +31,18 @@ Manager
 Date Created
     Stores when the Product was fist added to DefectDojo.
 
+Date Update
+    Stores when the Product was updated.
+
+Business Criticality
+    Criticality of the product.
+
+Platform
+    Type of product: web, API, mobile etc.
+
+Lifecycle
+    Stage of product development
+
 Product Type
     Used to group products together.
 
