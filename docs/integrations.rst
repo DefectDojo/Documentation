@@ -56,6 +56,10 @@ Node Security Platform
 ----------
 Node Security Platform (NSP) output file can be imported in JSON format.
 
+NPM Audit
+----------
+Node Package Manager (NPM) Audit plugin output file can be imported in JSON format. Only imports the 'advisories' subtree.
+
 OpenVAS CSV
 ----------
 Import OpenVAS Scan in CSV format. Export as CSV Results on OpenVAS.
