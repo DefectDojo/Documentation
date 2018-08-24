@@ -133,6 +133,38 @@ the list, or use the search bar. Templates can be used across all Engagements.
 Define what kind of Finding this is. Is it a false positive? A duplicate? If
 you want to save this finding as a template, check the "Is template" box.
 
+.. _Accepting a Finding Risk:
+
+Accepting a Finding Risk
+-------------------------
+
+Findings cannot always be remediated or addressed for various reasons. A finding status can change to accepted
+by doing the following. Findings are accepted in the engagement view. To locate the engagement from the finding
+click the link to engagement as shown below.
+
+.. image:: /_static/select_engagement.png
+   :width: 400
+   :alt: Select an engagement
+
+Then, in the engagement view click the plus icon in the 'Risk Acceptance' box and fill in the details to
+support the risk acceptance.
+
+.. image:: /_static/risk_exception.png
+   :width: 400
+   :alt: Creating a risk acceptance
+
+The engagement view is now updated with the risk.
+
+.. image:: /_static/engagement_risk_acceptance.png
+  :width: 400
+  :alt: Risk Acceptance engagement view
+
+The finding status changes to 'Accepted' with a link to the risk acceptance.
+
+.. image:: /_static/finding_accepted.png
+  :width: 400
+  :alt: Risk acceptance on finding
+
 .. _Viewing an Engagement:
 
 Viewing an Engagement

@@ -28,7 +28,7 @@ This is the name of any project, program, or product that you are currently test
 
 
 
-Development Environments
+Environments
 ------------------------
 
 These describe the environment that was tested in a particular Test.
@@ -43,7 +43,9 @@ Engagements
 -----------
 
 Engagements are moments in time when testing is taking place. They are associated with a name for easy reference, a
-time line, a lead (the user account of the main person conducting the testing), a test strategy, and a status.
+time line, a lead (the user account of the main person conducting the testing), a test strategy, and a status. Engagement consists
+of two types: Interactive and CI/CD. An interactive engagement is typically an engagement conducted by an engineer, where findings
+are usually uploaded by the engineer. A CI/CD engagement, as it's name suggests, is for automated integration with a CI/CD pipeline.
 
 * *Examples*
     * Beta
@@ -84,4 +86,3 @@ Medium, Low, and Informational (Info).
     * OpenSSL 'ChangeCipherSpec' MiTM Potential Vulnerability
     * Web Application Potentially Vulnerable to Clickjacking
     * Web Browser XSS Protection Not Enabled
-
