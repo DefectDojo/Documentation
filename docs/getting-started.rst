@@ -2,17 +2,16 @@ Getting Started
 ===============
 
 *Demo*
-If you'd like to check out a demo of DefectDojo before installing it, you can check out on our `PythonAnywhere demo site`_.
 
-.. _PythonAnywhere demo site: https://defectdojo.pythonanywhere.com
+Try out DefectDojo in our `Heroku Demo Site`_.
 
-You can log in as an administrator like so:
+.. _Heroku Demo Site: https://defectdojo.herokuapp.com
 
-.. image:: /_static/admin-creds.png
+Logins are as follows:
 
-You can also log in as a product owner or non-staff user:
+* admin / defectdojo@demo#appsec
+* product_manager / defectdojo@demo#product
 
-.. image:: /_static/prod-owner-creds.png
 
 *Installation*
 
