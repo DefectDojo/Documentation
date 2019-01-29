@@ -2,17 +2,17 @@ Getting Started
 ===============
 
 *Demo*
-If you'd like to check out a demo of DefectDojo before installing it, you can check out on our `PythonAnywhere demo site`_.
+If you'd like to check out a demo of DefectDojo before installing it, you can check out on our `Heroku demo site`_.
 
-.. _PythonAnywhere demo site: https://defectdojo.herokuapp.com/
+.. _Heroku demo site: https://defectdojo.herokuapp.com/
 
 You can log in as an administrator like so:
 
-.. admin / defectdojo@demo#appsec
+* admin / defectdojo@demo#appsec
 
 You can also log in as a product owner or non-staff user:
 
-.. product_manager / defectdojo@demo#product
+* product_manager / defectdojo@demo#product
 
 *Installation*
 
@@ -32,7 +32,7 @@ There is a script in the main folder called ``setup.bash`` that will allow you t
 
 1. If you haven't already, run ``mysql_secure_install`` to set a password for your root MySQL user.
 
-2. Create a MySQL user with CREATE priviledges, or use root.
+2. Create a MySQL user with CREATE privileges, or use root.
 
 **Run the ``setup.bash`` script**
 This script will:
@@ -97,44 +97,45 @@ Answer `yes` and follow the prompts, this will be the user you will use to login
 Environment Variables
 ~~~~~~~~~~~~~~~
 
-All the Django settings and configurations set in settings.py can be set through the use of environment variables.
+All the DefectDojo settings and Django configurations in settings.py can be customized through the use of environment variables or a .env file.
 
-DefectDojo currently uses _django-environ: https://github.com/joke2k/django-environ which allows you to use _Twelve-factor: https://www.12factor.net/ methodology to configure your Django application with environment variables.
+DefectDojo currently uses [django-environ](https://github.com/joke2k/django-environ): which allows you to use _Twelve-factor: https://www.12factor.net/ methodology to configure your Django application with environment variables.
 
 Environment variables can be set from the os environment by setting the following variable as follows: ``export DD_DEBUG=on`` or environment settings can be specified in a file in the dojo/settings/prod.env or overridden by setting DD_ENV_PATH with the name of the env file you wish to use, dev.env for example.
 
-* DefectDojo Environment Variables *
+DefectDojo Environment Variables
+--------------------------------------
 
-* Required Variables *
+**Required Variables**
 
 The following variables, at a minimum, must be set in order to start DefectDojo.
 
 * DD_SECRET_KEY: A secret key for a particular Django installation. This is used to provide cryptographic signing, and should be set to a unique, unpredictable value.
 * DD_CREDENTIAL_AES_256_KEY: AES 256 key for encrypting sensitive data such as passwords in DefectDojo. Set to at least a 256-bit key and should be set to a unique, unpredictable value.
 * DD_DEBUG: DefectDojo by default has debug set to off. If testing locally then set DD_DEBUG=on.
-* If debug is false then assets such as images will not served. If you want assets to be viewed then set DD_WHITENOISE=on. _WhiteNoise: http://whitenoise.evans.io/en/stable/ allows your web app to serve its own static files, making it a self-contained unit that can be deployed anywhere without relying on nginx, Amazon S3 or any other external service. (Especially useful on Heroku, OpenShift and other PaaS providers.)
+* If debug is false then assets such as images will not served. If you want assets to be viewed then set DD_WHITENOISE=on. [WhiteNoise](http://whitenoise.evans.io/en/stable/): allows your web app to serve its own static files, making it a self-contained unit that can be deployed anywhere without relying on nginx, Amazon S3 or any other external service. (Especially useful on Heroku, OpenShift and other PaaS providers.)
 * DD_ALLOWED_HOSTS: Hosts/domain names that are valid for this site; If DEBUG is False, default is localhost/127.0.0.1
 * DD_DATABASE_URL: Database connections are expressed as URL's conforming to the 12factor approach
-** MySQL: mysql://user:password@host:port/database
-** MySQL example: ``export DD_DATABASE_URL=mysql://root:password@127.0.0.1:3306/dojodb``
-** PostgreSQL: postgres://, pgsql://, psql:// or postgresql://
-** SQLITE: sqlite://
+  * MySQL: mysql://user:password@host:port/database
+  * MySQL example: ``export DD_DATABASE_URL=mysql://root:password@127.0.0.1:3306/dojodb``
+  * PostgreSQL: postgres://, pgsql://, psql:// or postgresql://
+  * SQLITE: sqlite://
 
 * Sample env file *
 
 prod.env in dojo/settings/prod.env
 
-``
+```
 DEBUG=on
 DD_SECRET_KEY=your-secret-key
 DD_CREDENTIAL_AES_256_KEY=your-secret-aes-key
 DATABASE_URL=DD_DATABASE_URL=mysql://root:password@127.0.0.1:3306/dojodb
-``
+```
 
 * Complete DefectDojo Variables List *
 
 * DD_DEBUG: If not in os.environ, to enable set DD_DEBUG=on
-** Default: False
+  * Default: False
 * DD_SECRET_KEY: Raises Django's ImproperlyConfigured exception if SECRET_KEY not in os.environ
 ** Must be set by the user
 * DD_TIME_ZONE: Local time zone for this installation. Choices can be found here: http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
