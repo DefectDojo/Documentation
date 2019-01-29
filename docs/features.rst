@@ -265,10 +265,6 @@ Add `r'^media/'` to `LOGIN_EXEMPT_URLS`::
 
     LOGIN_EXEMPT_URLS = (
         r'^static/',
-        r'^metrics/all$',
-        r'^metrics$',
-        r'^metrics/product/type/(?P<mtype>\d+)$',
-        r'^metrics/simple$',
         r'^api/v1/',
         r'^ajax/v1/',
         r'^reports/cover$',
