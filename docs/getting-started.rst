@@ -4,7 +4,7 @@ Getting Started
 *Demo*
 If you'd like to check out a demo of DefectDojo before installing it, you can check out on our `Heroku demo site`_.
 
-.. _Heroku demo site: https://defectdojo.herokuapp.com/
+_Heroku demo site: https://defectdojo.herokuapp.com/
 
 You can log in as an administrator like so:
 
@@ -15,7 +15,6 @@ You can also log in as a product owner or non-staff user:
 * product_manager / defectdojo@demo#product
 
 *Installation*
-
 
 Change into the newly created ```django-DefectDojo``` directory:
 
@@ -69,6 +68,7 @@ Enter the password for the MySQL user you selected.
 Select a name for the DefectDojo database.
 
 **All the packages**
+
 It may take some time for all the `OS` and `python` packages to be installed. As of this writing the packages for this `OS` are:
 
 * gcc
@@ -99,7 +99,10 @@ Environment Variables
 
 All the DefectDojo settings and Django configurations in settings.py can be customized through the use of environment variables or a .env file.
 
-DefectDojo currently uses [django-environ](https://github.com/joke2k/django-environ): which allows you to use _Twelve-factor: https://www.12factor.net/ methodology to configure your Django application with environment variables.
+DefectDojo currently uses `django-environ`_: which allows you to use `Twelve-factor`_: methodology to configure your Django application with environment variables.
+
+_django-environ: https://github.com/joke2k/django-environ
+_Twelve-factor: https://www.12factor.net/
 
 Environment variables can be set from the os environment by setting the following variable as follows: ``export DD_DEBUG=on`` or environment settings can be specified in a file in the dojo/settings/prod.env or overridden by setting DD_ENV_PATH with the name of the env file you wish to use, dev.env for example.
 
@@ -110,100 +113,141 @@ DefectDojo Environment Variables
 
 The following variables, at a minimum, must be set in order to start DefectDojo.
 
-* DD_SECRET_KEY: A secret key for a particular Django installation. This is used to provide cryptographic signing, and should be set to a unique, unpredictable value.
-* DD_CREDENTIAL_AES_256_KEY: AES 256 key for encrypting sensitive data such as passwords in DefectDojo. Set to at least a 256-bit key and should be set to a unique, unpredictable value.
-* DD_DEBUG: DefectDojo by default has debug set to off. If testing locally then set DD_DEBUG=on.
-* If debug is false then assets such as images will not served. If you want assets to be viewed then set DD_WHITENOISE=on. [WhiteNoise](http://whitenoise.evans.io/en/stable/): allows your web app to serve its own static files, making it a self-contained unit that can be deployed anywhere without relying on nginx, Amazon S3 or any other external service. (Especially useful on Heroku, OpenShift and other PaaS providers.)
-* DD_ALLOWED_HOSTS: Hosts/domain names that are valid for this site; If DEBUG is False, default is localhost/127.0.0.1
-* DD_DATABASE_URL: Database connections are expressed as URL's conforming to the 12factor approach
-  * MySQL: mysql://user:password@host:port/database
-  * MySQL example: ``export DD_DATABASE_URL=mysql://root:password@127.0.0.1:3306/dojodb``
-  * PostgreSQL: postgres://, pgsql://, psql:// or postgresql://
-  * SQLITE: sqlite://
+DD_SECRET_KEY
+    A secret key for a particular Django installation. This is used to provide cryptographic signing, and should be set to a unique, unpredictable value.
 
-* Sample env file *
+DD_CREDENTIAL_AES_256_KEY
+    AES 256 key for encrypting sensitive data such as passwords in DefectDojo. Set to at least a 256-bit key and should be set to a unique, unpredictable value.
 
-prod.env in dojo/settings/prod.env
+DD_DEBUG
+    DefectDojo by default has debug set to off. If testing locally then set DD_DEBUG=on.
+    If debug is false then assets such as images will not served. If you want assets to be viewed then set DD_WHITENOISE=on. [WhiteNoise](http://whitenoise.evans.io/en/stable/): allows your web app to serve its own static files, making it a self-contained unit that can be deployed anywhere without relying on nginx, Amazon S3 or any other external service. (Especially useful on Heroku, OpenShift and other PaaS providers.)
 
-```
-DEBUG=on
-DD_SECRET_KEY=your-secret-key
-DD_CREDENTIAL_AES_256_KEY=your-secret-aes-key
-DATABASE_URL=DD_DATABASE_URL=mysql://root:password@127.0.0.1:3306/dojodb
-```
+DD_ALLOWED_HOSTS
+    Hosts/domain names that are valid for this site; If DEBUG is False, default is localhost/127.0.0.1
 
-* Complete DefectDojo Variables List *
+DD_DATABASE_URL
+    Database connections are expressed as URL's conforming to the 12factor approach
+    * MySQL: mysql://user:password@host:port/database
+    * MySQL example: ``export DD_DATABASE_URL=mysql://root:password@127.0.0.1:3306/dojodb``
+    * PostgreSQL: postgres://, pgsql://, psql:// or postgresql://
+    * SQLITE: sqlite://
 
-* DD_DEBUG: If not in os.environ, to enable set DD_DEBUG=on
-  * Default: False
-* DD_SECRET_KEY: Raises Django's ImproperlyConfigured exception if SECRET_KEY not in os.environ
-** Must be set by the user
-* DD_TIME_ZONE: Local time zone for this installation. Choices can be found here: http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
-** Default: UTC
-* DD_LANGUAGE_CODE: Language code for this installation. All choices can be found here: http://www.i18nguy.com/unicode/language-identifiers.html
-** Default: en-us
-* DD_SITE_ID: The ID, as an integer, of the current site in the django_site database table. This is used so that application data can hook into specific sites and a single database can manage content for multiple sites.
-** Default: 1
-* DD_USE_I18N: If you set this to False, Django will make some optimizations so as not to load the internationalization machinery.
-** Default: True
-* DD_USE_L10N: If you set this to False, Django will not format dates, numbers and calendars according to the current locale.
-** Default: True
-* DD_USE_TZ: If you set this to False, Django will not use timezone-aware datetimes.
-** Default: True
-* DD_TEST_RUNNER: The name of the class to use for starting the test suite.
-** Default: django.test.runner.DiscoverRunner
-* DD_DATABASE_URL: Database string expressed as a URL, refer to the documentation above for formatting.
-** Default: Must be set by the user
-* DD_TRACK_MIGRATIONS: Track database migrations through source control rather than managing migrations locally.
-** Default: False
-* DD_MEDIA_ROOT: Absolute filesystem path to the directory that will hold user-uploaded files.
-** Default: media
-* DD_MEDIA_URL:  URL that handles the media served from MEDIA_ROOT. Make sure to use a trailing slash.
-** Default: /media/
-* DD_STATIC_ROOT: Absolute path to the directory static files should be collected to.
-** Default: static
-* DD_STATIC_URL: URL prefix for static files.
-** Default: /static/
-* DD_URL_PREFIX: URL prefix to append, for example DefectDojo is installed in a subdirectory on the server
-** Default: None
-* DD_SECURE_SSL_REDIRECT: If True, the SecurityMiddleware redirects all non-HTTPS requests to HTTPS
-** Default: False
-* DD_SECURE_BROWSER_XSS_FILTER: If True, the SecurityMiddleware sets the X-XSS-Protection: 1;
-** Default: False
-* DD_SESSION_COOKIE_HTTPONLY: Whether to use HTTPOnly flag on the session cookie.
-** Default: False
-* DD_CSRF_COOKIE_HTTPONLY: Whether to use HttpOnly flag on the CSRF cookie.
-** Default: True
-* DD_CSRF_COOKIE_SECURE:  Whether to use a secure cookie for the CSRF cookie.
-** Default: False
-* DD_SECURE_PROXY_SSL_HEADER: Adds an HTTP_X_FORWARDED_PROTO
-** Default: False
-* DD_WKHTMLTOPDF: Path to WKHTMLTOPDF
-** Default: /usr/local/bin/wkhtmltopdf
-* DD_TEAM_NAME: Used in a few places to prefix page headings and in email salutations
-** Default: None
-* DD_FORCE_LOWERCASE_TAGS: Tags that are used in for product, findings etc. and should the ability to force as lowercase.
-** Default: True
-* DD_MAX_TAG_LENGTH: The maximum length of a tag
-** Default: 25
-* DD_ADMINS: DefectDojo admins
-** Default: DefectDojo:dojo@localhost,Admin:admin@localhost
-* DD_DJANGO_ADMIN_ENABLED: Django has a build in admin module (/admin), setting enables or disables this built in Django feature.
-** Default: False
-* DD_WHITENOISE: WhiteNoise allows your web app to serve its own static files
-** Default: False
-* DD_CELERY_BROKER_URL: Celery broker
-** Default: sqla+sqlite:///dojo.celerydb.sqlite
-* DD_CELERY_TASK_IGNORE_RESULT: Ignore celery result
-** Default: True
-* DD_CELERY_RESULT_BACKEND:
-** Default: db+sqlite:///dojo.celeryresults.sqlite
-* DD_CELERY_RESULT_EXPIRES: Seconds to expiration
-** Default:86400
-* DD_CELERY_BEAT_SCHEDULE_FILENAME: Beat filename
-** Default: /dojo.celery.beat.db
-* DD_CELERY_TASK_SERIALIZER: 'pickle', 'json', 'msgpack' or 'yaml'
-** Default: pickle
+**Sample env file**
+
+prod.env in dojo/settings/prod.env::
+
+    DEBUG=on
+    DD_SECRET_KEY=your-secret-key
+    DD_CREDENTIAL_AES_256_KEY=your-secret-aes-key
+    DATABASE_URL=DD_DATABASE_URL=mysql://root:password@127.0.0.1:3306/dojodb
+
+**Complete DefectDojo Variables List**
+
+DD_DEBUG: If not in os.environ, to enable set DD_DEBUG=on
+    Default: False
+
+DD_SECRET_KEY: Raises Django's ImproperlyConfigured exception if SECRET_KEY not in os.environ
+    Default: None, must be set by the user
+
+DD_TIME_ZONE: Local time zone for this installation. Choices can be found here: http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
+    Default: UTC
+
+DD_LANGUAGE_CODE: Language code for this installation. All choices can be found here: http://www.i18nguy.com/unicode/language-identifiers.html
+    Default: en-us
+
+DD_SITE_ID: The ID, as an integer, of the current site in the django_site database table. This is used so that application data can hook into specific sites and a single database can manage content for multiple sites.
+    Default: 1
+
+DD_USE_I18N: If you set this to False, Django will make some optimizations so as not to load the internationalization machinery.
+    Default: True
+
+DD_USE_L10N: If you set this to False, Django will not format dates, numbers and calendars according to the current locale.
+    Default: True
+
+DD_USE_TZ: If you set this to False, Django will not use timezone-aware datetimes.
+    Default: True
+
+DD_TEST_RUNNER: The name of the class to use for starting the test suite.
+    Default: django.test.runner.DiscoverRunner
+
+DD_DATABASE_URL: Database string expressed as a URL, refer to the documentation above for formatting.
+    Default: Must be set by the user
+
+DD_TRACK_MIGRATIONS: Track database migrations through source control rather than managing migrations locally.
+    Default: False
+
+DD_MEDIA_ROOT: Absolute filesystem path to the directory that will hold user-uploaded files.
+    Default: media
+
+DD_MEDIA_URL:  URL that handles the media served from MEDIA_ROOT. Make sure to use a trailing slash.
+    Default: /media/
+
+DD_STATIC_ROOT: Absolute path to the directory static files should be collected to.
+    Default: static
+
+DD_STATIC_URL: URL prefix for static files.
+    Default: /static/
+
+DD_URL_PREFIX: URL prefix to append, for example DefectDojo is installed in a subdirectory on the server
+    Default: None
+
+DD_SECURE_SSL_REDIRECT: If True, the SecurityMiddleware redirects all non-HTTPS requests to HTTPS
+    Default: False
+
+DD_SECURE_BROWSER_XSS_FILTER: If True, the SecurityMiddleware sets the X-XSS-Protection: 1;
+    Default: False
+
+DD_SESSION_COOKIE_HTTPONLY: Whether to use HTTPOnly flag on the session cookie.
+    Default: False
+
+DD_CSRF_COOKIE_HTTPONLY: Whether to use HttpOnly flag on the CSRF cookie.
+    Default: True
+
+DD_CSRF_COOKIE_SECURE:  Whether to use a secure cookie for the CSRF cookie.
+    Default: False
+
+DD_SECURE_PROXY_SSL_HEADER: Adds an HTTP_X_FORWARDED_PROTO
+    Default: False
+
+DD_WKHTMLTOPDF: Path to WKHTMLTOPDF
+    Default: /usr/local/bin/wkhtmltopdf
+
+DD_TEAM_NAME: Used in a few places to prefix page headings and in email salutations
+    Default: None
+
+DD_FORCE_LOWERCASE_TAGS: Tags that are used in for product, findings etc. and should the ability to force as lowercase.
+    Default: True
+
+DD_MAX_TAG_LENGTH: The maximum length of a tag
+    Default: 25
+
+DD_ADMINS: DefectDojo admins
+    Default: DefectDojo:dojo@localhost,Admin:admin@localhost
+
+DD_DJANGO_ADMIN_ENABLED: Django has a build in admin module (/admin), setting enables or disables this built in Django feature.
+    Default: False
+
+DD_WHITENOISE: WhiteNoise allows your web app to serve its own static files
+    Default: False
+
+DD_CELERY_BROKER_URL: Celery broker
+    Default: sqla+sqlite:///dojo.celerydb.sqlite
+
+DD_CELERY_TASK_IGNORE_RESULT: Ignore celery result
+    Default: True
+
+DD_CELERY_RESULT_BACKEND:
+    Default: db+sqlite:///dojo.celeryresults.sqlite
+
+DD_CELERY_RESULT_EXPIRES: Seconds to expiration
+    Default:86400
+
+DD_CELERY_BEAT_SCHEDULE_FILENAME: Beat filename
+    Default: /dojo.celery.beat.db
+
+DD_CELERY_TASK_SERIALIZER: 'pickle', 'json', 'msgpack' or 'yaml'
+    Default: pickle
 
 
 Docker Install
