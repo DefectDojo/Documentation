@@ -4,7 +4,7 @@ Getting Started
 *Demo*
 If you'd like to check out a demo of DefectDojo before installing it, you can check out on our `Heroku demo site`_.
 
-.._Heroku demo site: https://defectdojo.herokuapp.com/
+.. _Heroku demo site: https://defectdojo.herokuapp.com/
 
 You can log in as an administrator like so:
 
@@ -101,10 +101,10 @@ All the DefectDojo settings and Django configurations in settings.py can be cust
 
 DefectDojo currently uses `django-environ`_: which allows you to use `Twelve-factor`_: methodology to configure your Django application with environment variables.
 
-.._django-environ: https://github.com/joke2k/django-environ
-.._Twelve-factor: https://www.12factor.net/
+.. _django-environ: https://github.com/joke2k/django-environ
+.. _Twelve-factor: https://www.12factor.net/
 
-Environment variables can be set from the os environment by setting the following variable as follows: ``export DD_DEBUG=on`` or environment settings can be specified in a file in the dojo/settings/prod.env or overridden by setting DD_ENV_PATH with the name of the env file you wish to use, dev.env for example.
+Environment variables can be set from the os environment by setting the variable as follows: ``export DD_DEBUG=on`` or environment settings can be specified in a file in the dojo/settings/ folder or specify a different environment by setting DD_ENV_PATH with the name of the env file you wish to use, dev.env for example.
 
 DefectDojo Environment Variables
 --------------------------------------
@@ -121,15 +121,19 @@ DD_CREDENTIAL_AES_256_KEY
 
 DD_DEBUG
     DefectDojo by default has debug set to off. If testing locally then set DD_DEBUG=on.
-    If debug is false then assets such as images will not served. If you want assets to be viewed then set DD_WHITENOISE=on. `WhiteNoise`_: allows your web app to serve its own static files, making it a self-contained unit that can be deployed anywhere without relying on nginx, Amazon S3 or any other external service. (Especially useful on Heroku, OpenShift and other PaaS providers.)
 
-    .._WhiteNoise: http://whitenoise.evans.io/en/stable/
+    If debug is false then assets such as images will not served. If you want assets to be viewed then set DD_WHITENOISE=on.
+
+    `WhiteNoise`_: allows your web app to serve its own static files, making it a self-contained unit that can be deployed anywhere without relying on nginx, Amazon S3 or any other external service. (Especially useful on Heroku, OpenShift and other PaaS providers.)
+
+.. _WhiteNoise: http://whitenoise.evans.io/en/stable/
 
 DD_ALLOWED_HOSTS
     Hosts/domain names that are valid for this site; If DEBUG is False, default is localhost/127.0.0.1
 
 DD_DATABASE_URL
     Database connections are expressed as URL's conforming to the 12factor approach
+
     * MySQL: mysql://user:password@host:port/database
     * MySQL example: ``export DD_DATABASE_URL=mysql://root:password@127.0.0.1:3306/dojodb``
     * PostgreSQL: postgres://, pgsql://, psql:// or postgresql://
