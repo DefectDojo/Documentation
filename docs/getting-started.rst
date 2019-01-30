@@ -99,7 +99,10 @@ Environment Variables
 
 All the DefectDojo settings and Django configurations in settings.py can be customized through the use of environment variables or a .env file.
 
-DefectDojo currently uses [django-environ](https://github.com/joke2k/django-environ): which allows you to use _Twelve-factor: https://www.12factor.net/ methodology to configure your Django application with environment variables.
+DefectDojo currently uses `django-environ`_: which allows you to use `Twelve-factor`_: methodology to configure your Django application with environment variables.
+
+_django-environ: https://github.com/joke2k/django-environ
+_Twelve-factor: https://www.12factor.net/
 
 Environment variables can be set from the os environment by setting the following variable as follows: ``export DD_DEBUG=on`` or environment settings can be specified in a file in the dojo/settings/prod.env or overridden by setting DD_ENV_PATH with the name of the env file you wish to use, dev.env for example.
 
