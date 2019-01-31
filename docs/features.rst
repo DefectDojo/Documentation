@@ -582,10 +582,9 @@ Preparing Jira, Enabling the Webhook
  3. For the field labeled 'URL' enter: https://<**YOUR DOJO DOMAIN**>/webhook
  4. Under 'Comments' enable 'Created'. Under Issue enable 'Updated'.
 
-Configurations in DefectDojo for enabling bidirectional communication
- 1. In DefectDojo visit System Settings: https://<**YOUR DOJO DOMAIN**>/system_settings
- 2. Check 'Enable JIRA integration'
- 3. Check 'Enable JIRA web hook.' (Once enabled when an issue is closed or updated, there will be a call in the logs from Jira to the /webhook.)
+Configurations in Dojo
+ 1. Navigate to the System Settings from the menu on the left side or by directly visiting <your url>/system_settings.
+ 2. Enable 'Enable JIRA integration' and click submit.
 
 Adding JIRA to Dojo
  1. Click 'JIRA' from the left hand menu.
@@ -593,10 +592,23 @@ Adding JIRA to Dojo
  3. To obtain the 'open status key' and 'closed status key' visit https://<**YOUR JIRA URL**>/rest/api/latest/issue/<**ANY VALID ISSUE KEY**>/transitions?expand=transitions.fields
  4. The 'id' for 'Todo' should be filled in as the 'open status key'
  5. The 'id' for 'Done' should be filled in as the 'closed status key'
- 6. To obtain 'epic name id' visit: https://<**YOUR JIRA URL**>/secure/admin/ViewCustomFields.jspa
- 7. Click on the cog next to 'Epic Name' and select view.
- 8. The numeric value for 'epic name id' will be displayed in the URL
- 9. **Note**: dojojira uses the same celery functionality as reports. Make sure the celery runner is setup correclty as described: http://defectdojo.readthedocs.io/en/latest/features.html#reports
+ 
+ To obtain 'epic name id':
+ If you have admin access to JIRA:
+ 
+ 1. visit: https://<**YOUR JIRA URL**>/secure/admin/ViewCustomFields.jspa
+ 2. Click on the cog next to 'Epic Name' and select view.
+ 3. The numeric value for 'epic name id' will be displayed in the URL
+ 4. **Note**: dojojira uses the same celery functionality as reports. Make sure the celery runner is setup correclty as described: http://defectdojo.readthedocs.io/en/latest/features.html#reports
+ 
+ Or
+ 
+ 1. login to JIRA
+ 2. visit https://yourjiraurl/rest/api/2/field and use control+F or grep to search for 'Epic Name' it should look something like this:
+ 
+ {"id":"customfield_122","key":"customfield_122","name":"Epic Name","custom":true,"orderable":true,"navigable":true,"searchable":true,"clauseNames":["cf[122]","Epic Name"],"schema":{"type":"string","custom":"com.pyxis.greenhopper.jira:gh-epic-label","customId":122}},
+ 
+ **In the above example 122 is the number needed**
 
 Issue Consolidation
 -------
