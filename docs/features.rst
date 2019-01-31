@@ -582,8 +582,10 @@ Preparing Jira, Enabling the Webhook
  3. For the field labeled 'URL' enter: https://<**YOUR DOJO DOMAIN**>/webhook
  4. Under 'Comments' enable 'Created'. Under Issue enable 'Updated'.
 
-Configurations in Dojo
- 1. In dojo/settings/settings.py set ENABLE_JIRA = True.
+Configurations in DefectDojo for enabling bidirectional communication
+ 1. In DefectDojo visit System Settings: https://<**YOUR DOJO DOMAIN**>/system_settings
+ 2. Check 'Enable JIRA integration'
+ 3. Check 'Enable JIRA web hook.' (Once enabled when an issue is closed or updated, there will be a call in the logs from Jira to the /webhook.)
 
 Adding JIRA to Dojo
  1. Click 'JIRA' from the left hand menu.
