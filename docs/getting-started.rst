@@ -319,16 +319,19 @@ Docker Compose Install
 
 *Instructions:*
 
-#. Clone the `Docker Cloud DefectDojo`_ Repo
-        ``git clone https://github.com/aaronweaver/docker-DefectDojo``
+#. Clone the `DefectDojo Repo`_
+        ``git clone https://github.com/DefectDojo/django-DefectDojo.git``
 #. Change directories into the newly created folder.
-        ``cd docker-DefectDojo``
-#. Run the setup.bash script which will create a random password for MySQL and Dojo and other setup tasks.
-        ``bash setup.bash``
+        ``cd django-DefectDojo``
+#. Docker compose utilizes default values for quickly bringing up the DefectDojo installation. Values can be set by doing either passing through the command line with -e DEFECT_DOJO_ADMIN_PASSWORD=secret or setting the values as environment variables before executing docker-compose up.
+        * DEFECT_DOJO_ADMIN_PASSWORD: Password for the DefectDojo admin user, default is admin.
+        * DEFECT_DOJO_DEFAULT_DATABASE_PASSWORD: Database password for DefectDojo.
+        * DD_SECRET_KEY: A secret key for a particular Django installation. This is used to provide cryptographic signing, and should be set to a unique, unpredictable value.
+        * DD_CREDENTIAL_AES_256_KEY: AES 256 key for encrypting sensitive data such as passwords in DefectDojo. Set to at least a 256-bit key and should be set to a unique, unpredictable value.
 #. Run Docker Compose.
         To run docker-DefectDojo and see the Dojo logs in the terminal, use:
         ``docker-compose up``
 
         To run docker-DefectDojo and get your terminal prompt back, use:
         ``docker-compose up -d``
-#. Navigate to https://localhost and login with the username and password specified in the setup.bash script.
+#. Navigate to https://localhost:4443 and login with the username, admin and the default password.

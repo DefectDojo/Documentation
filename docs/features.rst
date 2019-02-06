@@ -596,7 +596,7 @@ Adding JIRA to Dojo
  6. To obtain 'epic name id' visit: https://<**YOUR JIRA URL**>/secure/admin/ViewCustomFields.jspa
  7. Click on the cog next to 'Epic Name' and select view.
  8. The numeric value for 'epic name id' will be displayed in the URL
- 9. **Note**: dojojira uses the same celery functionality as reports. Make sure the celery runner is setup correclty as described: http://defectdojo.readthedocs.io/en/latest/features.html#reports
+ 9. **Note**: dojojira uses the same celery functionality as reports. Make sure the celery runner is setup correctly as described: http://defectdojo.readthedocs.io/en/latest/features.html#reports
 
 Issue Consolidation
 -------
