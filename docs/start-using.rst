@@ -89,6 +89,8 @@ Click the "New Engagement" button on the right.
 
 Enter the details of your Engagement.
 
+The _Deduplication Level_ specifies weather to perform deduplication only for tests in the engagement or to perform deduplication on all tests in the product which have an engagement also on _Deduplication Level_ product. Enabled deduplication is mandatory.
+
 .. _Adding Tests to an Engagement:
 
 Adding Tests to an Engagement

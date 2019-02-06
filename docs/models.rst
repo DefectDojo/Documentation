@@ -22,9 +22,9 @@ Products
 This is the name of any project, program, or product that you are currently testing.
 
 * *Examples:*
-    * OpenStack Neutron
+    * Wordpress
     * Internal wiki
-    * Hipchat
+    * Slack
 
 
 
