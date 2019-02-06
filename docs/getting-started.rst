@@ -99,7 +99,7 @@ Environment Variables
 
 All the DefectDojo settings and Django configurations in settings.py can be customized through the use of environment variables or a .env file.
 
-DefectDojo currently uses `django-environ`_: which allows you to use `Twelve-factor`_: methodology to configure your Django application with environment variables.
+DefectDojo currently uses `django-environ`_, which allows you to use the `Twelve-factor`_ methodology, to configure your Django application with environment variables.
 
 .. _django-environ: https://github.com/joke2k/django-environ
 .. _Twelve-factor: https://www.12factor.net/
@@ -124,7 +124,7 @@ DD_DEBUG
 
     If debug is false then assets such as images will not served. If you want assets to be viewed then set DD_WHITENOISE=on.
 
-    `WhiteNoise`_: allows your web app to serve its own static files, making it a self-contained unit that can be deployed anywhere without relying on nginx, Amazon S3 or any other external service. (Especially useful on Heroku, OpenShift and other PaaS providers.)
+    `WhiteNoise`_ allows your web app to serve its own static files, making it a self-contained unit that can be deployed anywhere without relying on nginx, Amazon S3 or any other external service. (Especially useful on Heroku, OpenShift and other PaaS providers.)
 
 .. _WhiteNoise: http://whitenoise.evans.io/en/stable/
 
@@ -319,16 +319,19 @@ Docker Compose Install
 
 *Instructions:*
 
-#. Clone the `Docker Cloud DefectDojo`_ Repo
-        ``git clone https://github.com/aaronweaver/docker-DefectDojo``
+#. Clone the `DefectDojo Repo`_
+        ``git clone https://github.com/DefectDojo/django-DefectDojo.git``
 #. Change directories into the newly created folder.
-        ``cd docker-DefectDojo``
-#. Run the setup.bash script which will create a random password for MySQL and Dojo and other setup tasks.
-        ``bash setup.bash``
+        ``cd django-DefectDojo``
+#. Docker compose utilizes default values for quickly bringing up the DefectDojo installation. Values can be set by doing either passing through the command line with -e DEFECT_DOJO_ADMIN_PASSWORD=secret or setting the values as environment variables before executing docker-compose up.
+        * DEFECT_DOJO_ADMIN_PASSWORD: Password for the DefectDojo admin user, default is admin.
+        * DEFECT_DOJO_DEFAULT_DATABASE_PASSWORD: Database password for DefectDojo.
+        * DD_SECRET_KEY: A secret key for a particular Django installation. This is used to provide cryptographic signing, and should be set to a unique, unpredictable value.
+        * DD_CREDENTIAL_AES_256_KEY: AES 256 key for encrypting sensitive data such as passwords in DefectDojo. Set to at least a 256-bit key and should be set to a unique, unpredictable value.
 #. Run Docker Compose.
         To run docker-DefectDojo and see the Dojo logs in the terminal, use:
         ``docker-compose up``
 
         To run docker-DefectDojo and get your terminal prompt back, use:
         ``docker-compose up -d``
-#. Navigate to https://localhost and login with the username and password specified in the setup.bash script.
+#. Navigate to https://localhost:4443 and login with the username, admin and the default password.

@@ -31,7 +31,7 @@ Currently the following endpoints are available:
 * Tests
 * Users
 
-.. _Django Rest Framwork: http://www.django-rest-framework.org/
+.. _Django Rest Framework: http://www.django-rest-framework.org/
 .. _Django Rest Framework Swagger: https://marcgibbons.com/django-rest-swagger/
 
 Authentication
@@ -57,7 +57,7 @@ Here is a simple python example against the `/users` endpoint: ::
     headers = {'content-type': 'application/json',
                'Authorization': 'Token c8572a5adf107a693aa6c72584da31f4d1f1dcff'}
     r = requests.get(url, headers=headers, verify=True) # set verify to False if ssl cert is self-signed
-    
+
     for key, value in r.__dict__.iteritems():
       print key
       print value

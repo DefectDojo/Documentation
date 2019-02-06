@@ -51,4 +51,4 @@ associated, and ensure that the proper documentation or timeline has been
 provided for the Findings in question.
 
 If he wants to check on a particular team member's progress, he can look at the
-Engineer Metrics dashboard under "Additonal Metrics" for that user.
+Engineer Metrics dashboard under "Additional Metrics" for that user.

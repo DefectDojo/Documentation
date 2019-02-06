@@ -13,9 +13,9 @@ Products
 This is the name of any project, program, team, or company that you are currently testing.
 
 *Examples*
-	* OpenStack Neutron
+	* Wordpress
 	* Internal wiki
-	* Hipchat
+	* Slack
 
 Product types
 *************
