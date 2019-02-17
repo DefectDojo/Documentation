@@ -328,6 +328,8 @@ Docker Compose Install
         * DEFECT_DOJO_DEFAULT_DATABASE_PASSWORD: Database password for DefectDojo.
         * DD_SECRET_KEY: A secret key for a particular Django installation. This is used to provide cryptographic signing, and should be set to a unique, unpredictable value.
         * DD_CREDENTIAL_AES_256_KEY: AES 256 key for encrypting sensitive data such as passwords in DefectDojo. Set to at least a 256-bit key and should be set to a unique, unpredictable value.
+#. Create a folder for shared static files
+        ``mkdir docker/static && chown 1000:1000 docker/static``
 #. Run Docker Compose.
         To run docker-DefectDojo and see the Dojo logs in the terminal, use:
         ``docker-compose up``
