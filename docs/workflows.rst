@@ -19,7 +19,7 @@ picking out the real vulnerabilities from the false positives (Nessus scan
 Findings are imported as inactive by default).
 
 Within the Test section, Bill can add Findings for any issues that he has
-uncovered during his audit. Here can assign a severity to the Findings, describe
+uncovered during his audit. He can assign a severity to the Findings, describe
 replication steps, mitigation strategies, and impact on the system. This will
 come in handy when he wants to generate a report to send to the development
 team responsible for this Product, or his manager.
