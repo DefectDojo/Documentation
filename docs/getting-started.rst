@@ -323,6 +323,8 @@ Docker Compose Install
         ``git clone https://github.com/DefectDojo/django-DefectDojo.git``
 #. Change directories into the newly created folder.
         ``cd django-DefectDojo``
+#. Switch to `dev` branch
+        ``git checkout out dev``
 #. Docker compose utilizes default values for quickly bringing up the DefectDojo installation. Values can be set by doing either passing through the command line with -e DEFECT_DOJO_ADMIN_PASSWORD=secret or setting the values as environment variables before executing docker-compose up.
         * DEFECT_DOJO_ADMIN_PASSWORD: Password for the DefectDojo admin user, default is admin.
         * DEFECT_DOJO_DEFAULT_DATABASE_PASSWORD: Database password for DefectDojo.
