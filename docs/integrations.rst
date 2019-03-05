@@ -152,7 +152,7 @@ Verified: ::
     Indicator if the finding has been verified.  Must be empty, True, or False
 
 FalsePositive: ::
-    Indicator if the finding is a false positive.  Must be empty, True, or False
+    Indicator if the finding is a false positive.  Must be True, or False. 
 
 Duplicate: ::
-    Indicator if the finding is a duplicate.  Must be empty, True, or False
+    Indicator if the finding is a duplicate.  Must be True, or False.
