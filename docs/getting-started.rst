@@ -27,7 +27,7 @@ Docker Compose Install
 #. Clone the `DefectDojo Repo`_
         ``git clone https://github.com/DefectDojo/django-DefectDojo``
 #. Change directories into the newly created folder.
-        ``cd django-DefectDojo/docker``
+        ``cd django-DefectDojo``
 #. Run Docker Compose.
         To run docker-DefectDojo and see the Dojo logs in the terminal, use:
         ``docker-compose up``
