@@ -25,25 +25,22 @@ Docker Compose Install
 *Instructions:*
 
 #. Clone the `DefectDojo Repo`_
-        ``git clone https://github.com/DefectDojo/django-DefectDojo.git``
+        ``git clone https://github.com/DefectDojo/django-DefectDojo``
 #. Change directories into the newly created folder.
-        ``cd django-DefectDojo``
-#. Switch to `dev` branch
-        ``git checkout out dev``
-#. Docker compose utilizes default values for quickly bringing up the DefectDojo installation. Values can be set by doing either passing through the command line with -e DEFECT_DOJO_ADMIN_PASSWORD=secret or setting the values as environment variables before executing docker-compose up.
-        * DEFECT_DOJO_ADMIN_PASSWORD: Password for the DefectDojo admin user, default is admin.
-        * DEFECT_DOJO_DEFAULT_DATABASE_PASSWORD: Database password for DefectDojo.
-        * DD_SECRET_KEY: A secret key for a particular Django installation. This is used to provide cryptographic signing, and should be set to a unique, unpredictable value.
-        * DD_CREDENTIAL_AES_256_KEY: AES 256 key for encrypting sensitive data such as passwords in DefectDojo. Set to at least a 256-bit key and should be set to a unique, unpredictable value.
+        ``cd django-DefectDojo/docker``
 #. Run Docker Compose.
         To run docker-DefectDojo and see the Dojo logs in the terminal, use:
         ``docker-compose up``
-
         To run docker-DefectDojo and get your terminal prompt back, use:
         ``docker-compose up -d``
-#. Navigate to https://localhost:4443 and login with the username, admin and the default password.
+#. Get the admin password by running:
+        ``container_id=(`docker ps -a \
+--filter "name=django-defectdojo_initializer_1" \
+| awk 'FNR == 2 {print $1}'`) && \
+docker logs $container_id 2>&1 | grep "Admin password:"``
+#. Navigate to https://localhost:8080 and login with 'admin' and the password displayed.
 
-*Installation - Setup.bash is temporarily dedicated. It is recommended you use the docker-compose install*
+*Installation - Setup.bash is temporarily depricated. It is recommended you use the docker-compose install*
 
 Change into the newly created ```django-DefectDojo``` directory:
 
