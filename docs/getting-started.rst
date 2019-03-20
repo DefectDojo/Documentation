@@ -35,9 +35,9 @@ Docker Compose Install
         ``docker-compose up -d``
 #. Get the admin password by running:
         ``container_id=(`docker ps -a \
---filter "name=django-defectdojo_initializer_1" \
-| awk 'FNR == 2 {print $1}'`) && \
-docker logs $container_id 2>&1 | grep "Admin password:"``
+        --filter "name=django-defectdojo_initializer_1" \
+        | awk 'FNR == 2 {print $1}'`) && \
+        docker logs $container_id 2>&1 | grep "Admin password:"``
 #. Navigate to https://localhost:8080 and login with 'admin' and the password displayed.
 
 *Installation - Setup.bash is temporarily depricated. It is recommended you use the docker-compose install*
