@@ -14,7 +14,36 @@ You can also log in as a product owner or non-staff user:
 
 * product_manager / defectdojo@demo#product
 
-*Installation*
+Docker Compose Install
+*************
+
+*You will need:*
+
+* Latest version of Docker
+* Latest version Docker Compose
+
+*Instructions:*
+
+#. Clone the `DefectDojo Repo`_
+        ``git clone https://github.com/DefectDojo/django-DefectDojo.git``
+#. Change directories into the newly created folder.
+        ``cd django-DefectDojo``
+#. Switch to `dev` branch
+        ``git checkout out dev``
+#. Docker compose utilizes default values for quickly bringing up the DefectDojo installation. Values can be set by doing either passing through the command line with -e DEFECT_DOJO_ADMIN_PASSWORD=secret or setting the values as environment variables before executing docker-compose up.
+        * DEFECT_DOJO_ADMIN_PASSWORD: Password for the DefectDojo admin user, default is admin.
+        * DEFECT_DOJO_DEFAULT_DATABASE_PASSWORD: Database password for DefectDojo.
+        * DD_SECRET_KEY: A secret key for a particular Django installation. This is used to provide cryptographic signing, and should be set to a unique, unpredictable value.
+        * DD_CREDENTIAL_AES_256_KEY: AES 256 key for encrypting sensitive data such as passwords in DefectDojo. Set to at least a 256-bit key and should be set to a unique, unpredictable value.
+#. Run Docker Compose.
+        To run docker-DefectDojo and see the Dojo logs in the terminal, use:
+        ``docker-compose up``
+
+        To run docker-DefectDojo and get your terminal prompt back, use:
+        ``docker-compose up -d``
+#. Navigate to https://localhost:4443 and login with the username, admin and the default password.
+
+*Installation - Setup.bash is temporarily dedicated. It is recommended you use the docker-compose install*
 
 Change into the newly created ```django-DefectDojo``` directory:
 
@@ -290,50 +319,4 @@ DD_CELERY_TASK_SERIALIZER
     Default: pickle
 
 
-Docker Install
-~~~~~~~~~~~~~~~
 
-There are two options for Docker Dojo. The first version is a development / testing version and the second is a docker
-compose file with Nginx, MySQL and DefectDojo.
-
-Docker Local Install
-*************
-
-*You will need:*
-
-* Latest version of Docker
-
-*Instructions:*
-
-#. Run the docker command to pull the latest version of DefectDojo.
-        ``docker run -it -p 8000:8000 appsecpipeline/django-defectdojo bash -c "export LOAD_SAMPLE_DATA=True && bash /opt/django-DefectDojo/docker/docker-startup.bash"``
-#. Navigate to: http://localhost:8000 and login with the credentials shown in the terminal.
-
-Docker Compose Install
-*************
-
-*You will need:*
-
-* Latest version of Docker
-* Latest version Docker Compose
-
-*Instructions:*
-
-#. Clone the `DefectDojo Repo`_
-        ``git clone https://github.com/DefectDojo/django-DefectDojo.git``
-#. Change directories into the newly created folder.
-        ``cd django-DefectDojo``
-#. Switch to `dev` branch
-        ``git checkout out dev``
-#. Docker compose utilizes default values for quickly bringing up the DefectDojo installation. Values can be set by doing either passing through the command line with -e DEFECT_DOJO_ADMIN_PASSWORD=secret or setting the values as environment variables before executing docker-compose up.
-        * DEFECT_DOJO_ADMIN_PASSWORD: Password for the DefectDojo admin user, default is admin.
-        * DEFECT_DOJO_DEFAULT_DATABASE_PASSWORD: Database password for DefectDojo.
-        * DD_SECRET_KEY: A secret key for a particular Django installation. This is used to provide cryptographic signing, and should be set to a unique, unpredictable value.
-        * DD_CREDENTIAL_AES_256_KEY: AES 256 key for encrypting sensitive data such as passwords in DefectDojo. Set to at least a 256-bit key and should be set to a unique, unpredictable value.
-#. Run Docker Compose.
-        To run docker-DefectDojo and see the Dojo logs in the terminal, use:
-        ``docker-compose up``
-
-        To run docker-DefectDojo and get your terminal prompt back, use:
-        ``docker-compose up -d``
-#. Navigate to https://localhost:4443 and login with the username, admin and the default password.
