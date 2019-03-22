@@ -96,46 +96,39 @@ It is recommended that you use an Upstart job or a @restart cron job to launch u
 
 Below we configure service files for systemd.  The commands follow, the config files are below the Nginx in the next section.
 
-.. code-block:: console
+.. code-block:: shell-session
 
-  cd /etc/systemd/system/
+  $ cd /etc/systemd/system/
+  $ sudo vi dojo.service
+  [contents below]
   
-  vi dojo.service
-    [contents below]
+  $ sudo systemctl enable dojo
+  $ sudo systemctl start dojo
+  $ sudo systemctl status dojo
+  [ensure it launched OK]
   
-  systemctl enable dojo
+  $ sudo vi celery-worker.service
+  [contents below]
   
-  systemctl start dojo
+  $ sudo systemctl enable celery-worker
+  $ sudo systemctl start celery-worker
+  $ sudo systemctl status celery-worker
+  [ensure it launched OK]
   
-  systemctl status dojo
-    [ensure it launched OK]
+  $ sudo vi celery-beat.service
+  [contents below]
   
-  vi celery-worker.service
-    [contents below]
-  
-  systemctl enable celery-worker
-  
-  systemctl start celery-worker
-  
-  systemctl status celery-worker
-    [ensure it launched OK]
-  
-  vi celery-beat.service
-    [contents below]
-  
-  systemctl enable celery-beat
-  
-  systemctl start celery-beat
-  
-  systemctl status celery-beat
-    [ensure it launched OK]
+  $ sudo systemctl enable celery-beat
+  $ sudo systemctl start celery-beat
+  $ sudo systemctl status celery-beat
+  [ensure it launched OK]
   
 
 *NGINX Configuration*
 
 Everyone feels a little differently about nginx settings, so here are the barebones to add your to your nginx configuration to proxy uwsgi. Make sure to modify the filesystem paths if needed:
 
-.. code-block:: json
+.. code-block:: nginx
 
   upstream django {
     server 127.0.0.1:8001; 
@@ -177,7 +170,7 @@ Everyone feels a little differently about nginx settings, so here are the barebo
 
 dojo.service
 
-.. code-block:: console
+.. code-block:: ini
 
   [Unit]
   Description=uWSGI instance to serve DefectDojo
@@ -198,7 +191,7 @@ dojo.service
 
 celery-worker.service
 
-.. code-block:: console
+.. code-block:: ini
 
   [Unit]
   Description=celery workers for DefectDojo
@@ -218,7 +211,7 @@ celery-worker.service
 
 celery-beat.service
 
-.. code-block:: console
+.. code-block:: ini
 
   [Unit]
   Description=celery beat for DefectDojo
