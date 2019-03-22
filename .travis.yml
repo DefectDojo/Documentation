@@ -1,0 +1,12 @@
+language: python
+python:
+  - "3.7"
+
+sudo: false
+cache: pip
+
+install:
+  - pip install sphinx~=1.8.5
+  - pip install sphinx-rtd-theme~=0.4.3 
+
+script: sphinx-build -nWT -b dummy . _build/html
