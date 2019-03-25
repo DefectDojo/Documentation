@@ -193,6 +193,6 @@ pseudoxml:
 	@echo "Build finished. The pseudo-XML files are in $(BUILDDIR)/pseudoxml."
 
 validate:
-	$(SPHINXBUILD) -b dummy -nW $(ALLSPHINXOPTS) $(BUILDDIR)
+	$(SPHINXBUILD) -b dummy -nWT $(ALLSPHINXOPTS) $(BUILDDIR)
 	@echo
 	@echo "Validation finished."	

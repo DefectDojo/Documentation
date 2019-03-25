@@ -89,7 +89,7 @@ Click the "New Engagement" button on the right.
 
 Enter the details of your Engagement.
 
-The _Deduplication Level_ specifies weather to perform deduplication only for tests in the engagement or to perform deduplication on all tests in the product which have an engagement also on _Deduplication Level_ product. Enabled deduplication is mandatory.
+The `Deduplication Level` specifies weather to perform deduplication only for tests in the engagement or to perform deduplication on all tests in the product which have an engagement also on `Deduplication Level` product. Enabled deduplication is mandatory.
 
 .. _Adding Tests to an Engagement:
 
@@ -138,7 +138,7 @@ you want to save this finding as a template, check the "Is template" box.
 .. _Accepting a Finding Risk:
 
 Accepting a Finding Risk
--------------------------
+------------------------
 
 Findings cannot always be remediated or addressed for various reasons. A finding status can change to accepted
 by doing the following. Findings are accepted in the engagement view. To locate the engagement from the finding

@@ -1,7 +1,9 @@
 Getting Started
 ===============
 
-*Demo*
+Live Demo
+*********
+
 If you'd like to check out a demo of DefectDojo before installing it, you can check out on our `Heroku demo site`_.
 
 .. _Heroku demo site: https://defectdojo.herokuapp.com/
@@ -15,7 +17,7 @@ You can also log in as a product owner or non-staff user:
 * product_manager / defectdojo@demo#product
 
 Docker Compose Install
-*************
+**********************
 
 *You will need:*
 
@@ -24,27 +26,42 @@ Docker Compose Install
 
 *Instructions:*
 
-#. Clone the `DefectDojo Repo`_
-        ``git clone https://github.com/DefectDojo/django-DefectDojo``
+#. Clone the DefectDojo repository on GitHub:
+
+   .. code-block:: shell-session
+
+      $ git clone https://github.com/DefectDojo/django-DefectDojo
+
 #. Change directories into the newly created folder.
-        ``cd django-DefectDojo``
-#. Run Docker Compose.
+
+   .. code-block:: shell-session
+
+      $ cd django-DefectDojo
+
+#. Run Docker Compose:
         To run docker-DefectDojo and see the Dojo logs in the terminal, use:
         ``docker-compose up``
         To run docker-DefectDojo and get your terminal prompt back, use:
         ``docker-compose up -d``
+
 #. Get the admin password by running:
-        ``container_id=(`docker ps -a \
-        --filter "name=django-defectdojo_initializer_1" \
-        | awk 'FNR == 2 {print $1}'`) && \
-        docker logs $container_id 2>&1 | grep "Admin password:"``
+
+   .. code-block:: shell-session
+
+     $ container_id=(`docker ps -a \
+     --filter "name=django-defectdojo_initializer_1" \
+     | awk 'FNR == 2 {print $1}'`) && \
+     docker logs $container_id 2>&1 | grep "Admin password:"
+
 #. Navigate to https://localhost:8080 and login with 'admin' and the password displayed.
 
 *Installation - Setup.bash is temporarily depricated. It is recommended you use the docker-compose install*
 
-Change into the newly created ```django-DefectDojo``` directory:
+Change into the newly created ``django-DefectDojo`` directory:
 
-    ``cd django-DefectDojo/``
+.. code-block:: shell-session
+
+        $ cd django-DefectDojo/
 
 There is a script in the main folder called ``setup.bash`` that will allow you to interactively install DefectDojo on any Linux based systems. We do not recommend running DefectDojo as root, but you may do so if you choose.
 
@@ -73,7 +90,7 @@ This script will:
 5. Provide you with the commands needed to complete the installation
 
 Install Script
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
 
 Run the script:
 
@@ -106,22 +123,23 @@ It may take some time for all the `OS` and `python` packages to be installed. As
 * nodejs-legacy
 * npm
 
-The `python` packages are listed in `requirements.txt`.
+The ``python`` packages are listed in ``requirements.txt``.
 
 After all the components have been installed, the `makemigrations` process will prompt you to create a ``superuser``
 
-    ``You have installed Django's auth system, and don't have any superusers defined.
-      Would you like to create one now? (yes/no):``
+.. code-block:: shell-session
+
+   You have installed Django's auth system, and don't have any superusers defined.
+   Would you like to create one now? (yes/no):
 
 Answer `yes` and follow the prompts, this will be the user you will use to login to DefectDojo.
+
 #. *(OPTIONAL)* If you haven't already, run `mysql_secure_install` to set a password for your root MySQL user.
-#. Edit the settings.py file to modify any other settings that you want to
-   change, such as your SMTP server information, which we leave off by default.
-#. When you are ready to run DefectDojo, run the server with
-        ``./run_dojo.bash``
+#. Edit the settings.py file to modify any other settings that you want to change, such as your SMTP server information, which we leave off by default.
+#. When you are ready to run DefectDojo, run the server with ``./run_dojo.bash``
 
 Environment Variables
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
 
 All the DefectDojo settings and Django configurations in settings.py can be customized through the use of environment variables or a .env file.
 
@@ -133,7 +151,7 @@ DefectDojo currently uses `django-environ`_, which allows you to use the `Twelve
 Environment variables can be set from the os environment by setting the variable as follows: ``export DD_DEBUG=on`` or environment settings can be specified in a file in the dojo/settings/ folder or specify a different environment by setting DD_ENV_PATH with the name of the env file you wish to use, dev.env for example.
 
 DefectDojo Environment Variables
---------------------------------------
+--------------------------------
 
 **Required Variables**
 
@@ -167,7 +185,9 @@ DD_DATABASE_URL
 
 **Sample env file**
 
-prod.env in dojo/settings/prod.env::
+``prod.env`` in ``dojo/settings/prod.env``:
+
+.. code-block:: bash
 
     DEBUG=on
     DD_SECRET_KEY=your-secret-key
@@ -314,6 +334,3 @@ DD_CELERY_BEAT_SCHEDULE_FILENAME
 DD_CELERY_TASK_SERIALIZER
     Options: 'pickle', 'json', 'msgpack' or 'yaml'
     Default: pickle
-
-
-
