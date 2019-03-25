@@ -230,6 +230,7 @@ Notes
     Stores information pertinent to the flaw or the mitigation.
 
 .. _finding_pics:
+
 Images
     Finding images can now be uploaded to help with documentation and proof of vulnerability.
 
@@ -439,7 +440,7 @@ purpose. These tasks are scheduled and run using Celery beat, so this needs to r
 on how to run Celery beat are available in the `Reports`_ section.
 
 Benchmarks
--------------
+----------
 
 .. image:: /_static/owasp_asvs.png
     :alt: OWASP ASVS Benchmarks
@@ -571,7 +572,7 @@ Custom reports allow you to select specific components to be added to the report
 The custom report workflow takes advantage of the same asynchronous process described above.
 
 JIRA Integration
--------
+----------------
 
 DefectDojo's JIRA integration is bidirectional. You may push findings to JIRA and share comments. If an issue is closed in JIRA it will automatically be closed in Dojo.
 
@@ -611,7 +612,7 @@ Adding JIRA to Dojo
  **In the above example 122 is the number needed**
 
 Issue Consolidation
--------
+-------------------
 
 DefectDojo allows users to automatically consolidate issues from multiple scanners to remove duplicates.
 
@@ -622,6 +623,6 @@ When deduplication is enabled, Dojo will compare CWE, title, and endpoint detail
 If an issue is added with either the CWE or title being the same while the endpoint is also the same, Dojo marks the old issue as a duplicate.
 
 False Positive Removal
--------
+----------------------
 
 DefectDojo allows users to tune out false positives by enabling False Positive History. This will track what engineers have labeled as false positive for a specific product and for a specific scanner. While enabled, when a tool reports the same issue that has been flagged as a false positive previously, it will automatically mark the finding as a false positive, helping to tune overly verbose security tools.

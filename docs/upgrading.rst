@@ -31,7 +31,7 @@ If you are in your production system, you will need to restart gunicorn and cele
 being used by both.
 
 FAQ
-------------------------------------
+---
 
 **Celery Error:**
 
@@ -42,7 +42,7 @@ Upgrade Celery to the latest version:
     ``pip install --upgrade celery``
 
 Upgrading to DefectDojo Version 1.5.0
-------------------------------------
+-------------------------------------
 
 **What's New:**
 
@@ -123,7 +123,7 @@ Save your modified settings file. For reference the modified file should look li
 6. Complete
 
 Upgrading to DefectDojo Version 1.3.1
-------------------------------------
+-------------------------------------
 
 **What's New:**
 
@@ -146,7 +146,7 @@ Upgrading to DefectDojo Version 1.3.1
 4. Complete
 
 Upgrading to DefectDojo Version 1.2.9
-------------------------------------
+-------------------------------------
 
 **What's New:**
 New feature: Benchmarks (OWASP ASVS)
@@ -164,7 +164,7 @@ New feature: Benchmarks (OWASP ASVS)
 3. Complete
 
 Upgrading to DefectDojo Version 1.2.8
-------------------------------------
+-------------------------------------
 
 New feature: Product Grading (Overall Product Health)
 Upgrading to 1.2.8 requires:
@@ -182,7 +182,7 @@ Upgrading to 1.2.8 requires:
 5. Complete
 
 Upgrading to DefectDojo Version 1.2.4
-------------------------------------
+-------------------------------------
 
 Upgrading to 1.2.4 requires:
 
@@ -191,7 +191,7 @@ Upgrading to 1.2.4 requires:
     ./manage.py loaddata dojo/fixtures/objects_review.json
 
 Upgrading to DefectDojo Version 1.2.3
-------------------------------------
+-------------------------------------
 
 Upgrading to 1.2.3 requires:
 
@@ -224,7 +224,7 @@ If you like you can then remove the following settings from settings.py to avoid
 * ``TEAM_NAME``
 
 Upgrading to DefectDojo Version 1.2.2
-------------------------------------
+-------------------------------------
 
 Upgrading to 1.2.2 requires:
 
@@ -233,14 +233,13 @@ Upgrading to 1.2.2 requires:
 2. If you have supervisor scripts change DJANGO_SETTINGS_MODULE=dojo.settings.settings
 
 Upgrading to Django 1.1.5
-------------------------
-If you are upgrading an existing version of DefectDojo, you will need to run the following commands manually: ::
+-------------------------
+If you are upgrading an existing version of DefectDojo, you will need to run the following commands manually:
 
-First install Yarn:
+#. First install Yarn.
+   Follow the instructions based on your OS: https://yarnpkg.com/lang/en/docs/install/
 
-Follow the instructions based on your OS: https://yarnpkg.com/lang/en/docs/install/
-
-The following must be removed/commented out from settings.py: ::
+#. The following must be removed/commented out from ``settings.py``: ::
 
     'djangobower.finders.BowerFinder',
 
@@ -252,7 +251,7 @@ The following must be removed/commented out from settings.py: ::
       'justgage'
     )
 
-The following needs to be updated in settings.py: ::
+#. The following needs to be updated in ``settings.py``: ::
 
     STATICFILES_DIRS = (
         # Put strings here, like "/home/html/static" or "C:/www/django/static".
@@ -264,8 +263,7 @@ The following needs to be updated in settings.py: ::
 Upgrading to Django 1.11
 ------------------------
 
-Pull request #300 makes DefectDojo Django 1.11 ready.  A fresh install of DefectDojo can be done with the setup.bash
-script included - no special steps are required.
+Pull request #300 makes DefectDojo Django 1.11 ready. A fresh install of DefectDojo can be done with the setup.bash script included - no special steps are required.
 
 If you are upgrading an existing installation of DefectDojo, you will need to run the following commands manually: ::
 

@@ -1,0 +1,6 @@
+# Sphinx documentation
+docs/_build/
+
+# Junk files
+.DS_Store
+*~
