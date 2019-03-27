@@ -394,7 +394,7 @@ link to the Engagement view page.
 
 
 Engagement Planner
-----------
+------------------
 
 Engagements can be automatically planned using the Engagement Planner.
 This allows to automatically add and remove engagements, plan automated scans and schedule resources according to business needs.
