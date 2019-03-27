@@ -108,6 +108,9 @@ Visual representation of an engagement:
 
 .. image:: /_static/eng_1.png
     :alt: View Engagement Page
+    
+Engagements can be automatically managed. Check out the ``Engagement Planner`` below.
+
 
 Endpoints
 ---------
@@ -390,30 +393,123 @@ The calendar view provides a look at all the engagements occurring during the mo
 link to the Engagement view page.
 
 
+Engagement Planner
+----------
+
+Engagements can be automatically planned using the Engagement Planner.
+This allows to automatically add and remove engagements, plan automated scans and schedule resources according to business needs.
+
+.. image:: /_static/plan_eng_1.png
+    :alt: Engagement Planner
+
+Engagement Prefix
+    All engagements planned in this instance will be prefixed with this title.
+
+Remove Engagement Prefixes
+    In case you want to correct planning or delete a bulk of engagement, you can provide a comma-separated list of prefixes. Caution: All engagements with those prefixes in the specified period will be deleted.
+
+Products
+    Select all products you want to involve in your planning. Use the search and combine it with the selection toggles to quickly select the correct products.
+    
+Planning Order
+    You can choose how to order the order of products. Products that are ranked higher will start earlier.
+
+Run Tool Category
+    By selecting a tool category here, each product needs to have a tool with this category assigned and at least one endpoint tagged ``tool-export``. At the beginning of each engagement the central scan tool cronjob (see below for instructions) will then automatically run the scan and import the result.
+
+Period Start / Period End
+    Define the planning period. Both dates itself are included in the planning.
+
+Allowed Days
+    Engagements will only be scheduled for these working days. If your team works on the weekend, you can adjust this.
+
+Days per Engagements
+    How many working days should each engagement last for?
+
+Parallel Engagements
+    Depending on your staff resources, you can increase this number to allow multiple engagements to run in parallel.
+
+Break Days
+    Breaks are useful to accomodate for sick leave, vacations and general catch up. It is recommended that each break spans one engagement, so that one missed engagement can be caught up to.
+
+Break Interval
+    After how many working days should a break be planned? It might make sense to schedule multiple smaller breaks or a few longer ones, depending on your resources.
+
+
+Tool Scans
+----------
+
+DefectDojo allows to configure tools that can execute tasks like scans on the same or different devices.
+To use this functionality, first configure a tool type, which groups your tools in categories.
+
+.. image:: /_static/tool_scan_1.png
+    :alt: Creating a tool type
+
+Afterwards, create a tool configuration and select the correct type from the step above.
+Below you find the most important configurations explained.
+
+SSH or HTTP URL
+    Use the correct protocol for your URL: ``ssh:``,  ``http:`` or ``https:``. For ssh urls, DefectDojo will connect to the server and run the script at the specified directory. It is possible to use ``ssh://localhost/`` to run a script on the same device without different permissions. This is disabled in ``settings.py`` by default, but can be enabled. There you can also en/disable connections for each protocol.
+
+Authentication Type
+    Choose how the server will authenticate at the specified URL. If you choose Username/Password, this will result in an ssh login or a HTTP basic authentication via header. The API key only works for HTTP, where it will be provided via HTTP header ``x-api``, which can be modified in the ``settings.py``.
+
+Parse result as tool scan
+    If the script returns a scanner output, you can select it here and the findings will automatically be imported as an engagement and test. By default, it is imported as admin user, but this can be changed in the ``settings.py``.
+
+.. image:: /_static/tool_scan_2.png
+    :alt: Creating a tool configuration
+
+To be able to use a scanner configuration, you need to assign it to a product by visiting the product page and adding it as tool.
+Settings here will override the global settings. This allows you to do local modifications as needed.
+
+.. image:: /_static/tool_scan_3.png
+    :alt: Assigning a tool to a product
+
+Once configured, you can list all tools configured for this product and run them, view the status of previous runs or modify them.
+It is recommended to use this for testing the configuration.
+
+.. image:: /_static/tool_scan_4.png
+    :alt: Overview over tools assigned to a product
+
+To run or look at the status of existing runs, click on ``View / Run``.
+You will be able to see the current configuration and the result of previous runs.
+In the run, each endpoint that is marked as ``tool-export`` will be provided as parameter to the URL (you need to have at least one).
+You can run the tool or clear the previous results using the menu in the top right.
+
+.. image:: /_static/tool_scan_5.png
+    :alt: Result of previous tool runs
+
+When planning an engagement, you can automatically schedule a tool to run at the beginning of an engagement.
+To do this, you need to set up a cronjob as below: ::
+
+    0 0 * * 0 /root/.virtualenvs/dojo/bin/python /root/defect-dojo/manage.py run_tool
+
+
 Port Scans
 ----------
 
-DefectDojo has the ability to run a port scan using nmap.  Scan can be configured for TCP or UDP ports as well as for
-a Weekly, Monthly or Quarterly frequency.
+While it is usually recommended to use the more dynamic tool scans above, DefectDojo also has the ability to run a port scan using nmap without further configuration.
+Scans can be configured for TCP or UDP ports as well as for a weekly, monthly or quarterly frequency.
 
-.. image:: /_static/scan_1.png
+.. image:: /_static/portscan_1.png
     :alt: Port Scan Form
 
-In order for the scans to kick off the `dojo.management.commands.run_scan.py` must run.  It is easy to set up a cron
+In order for the scans to kick off the `run_portscan.py` must run.  It is easy to set up a cron
 job in order to kick these off at the appropriate frequency.  Below is an example cron entry: ::
 
-    0 0 * * 0 /root/.virtualenvs/dojo/bin/python /root/defect-dojo/manage.py run_scan Weekly
-    0 0 1 * * /root/.virtualenvs/dojo/bin/python /root/defect-dojo/manage.py run_scan Monthly
-    0 0 1 3,6,9,12 * /root/.virtualenvs/dojo/bin/python /root/defect-dojo/manage.py run_scan Quarterly
+    0 0 * * 0 /root/.virtualenvs/dojo/bin/python /root/defect-dojo/manage.py run_portscan Weekly
+    0 0 1 * * /root/.virtualenvs/dojo/bin/python /root/defect-dojo/manage.py run_portscan Monthly
+    0 0 1 3,6,9,12 * /root/.virtualenvs/dojo/bin/python /root/defect-dojo/manage.py run_portscan Quarterly
 
-.. image:: /_static/scan_2.png
+.. image:: /_static/portscan_2.png
     :alt: Port Scan Form
 
 The scan process will email the configured recipients with the results.
 
 These scans call also be kicked off on demand by selecting the Launch Scan Now option in the view scan screen.
 
-.. image:: /_static/scan_3.png
+.. image:: /_static/portscan_3.png
     :alt: Port Scan Form
 
 Notifications
