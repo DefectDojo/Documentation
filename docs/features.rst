@@ -497,7 +497,7 @@ Fedora/Centos: ::
 .. Warning::
     Version in debian/ubuntu repos have reduced functionality (because it compiled without the wkhtmltopdf QT
     patches), such as adding outlines, headers, footers, TOC etc. To use this options you should install static binary
-    from `wkhtmltopdf`_ site or you can use this :download:`script <../reports.sh>`.
+    from `wkhtmltopdf`_ site.
 
 Additionally, DefectDojo takes advantage of `python-PDFKit`_ to interact with the `wkhtmltopdf` commandline interface.
 It is easily installed by running: ::
