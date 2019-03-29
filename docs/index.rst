@@ -45,6 +45,7 @@ Our documentation is organized in the following sections:
 * :ref:`user-docs`
 * :ref:`feature-docs`
 * :ref:`api-docs`
+* :ref:`plugin-docs`
 
 .. _user-docs:
 
@@ -84,3 +85,14 @@ API Documentation
 
    api-docs
    api-v2-docs
+   
+.. _plugin-docs:
+
+Plugins
+--------
+
+.. toctree::
+   :maxdepth: 2
+   :glob:
+
+   burp-plugin
