@@ -139,7 +139,10 @@ Fragment
     'paragraph-2'.
 
 Product
-    The Product that this endpoint should be associated with.
+    The product that this endpoint should be associated with.
+
+Tool Runs
+    This endpoint will be provided to tools, that are configured for this product, as parameter.
 
 Endpoints are listed in the ``/endpoints`` page and can be filtered by their attributes as well as sorted by the
 product or host.
@@ -474,7 +477,8 @@ It is recommended to use this for testing the configuration.
 
 To run or look at the status of existing runs, click on ``View / Run``.
 You will be able to see the current configuration and the result of previous runs.
-In the run, each endpoint that is marked as ``tool-export`` will be provided as parameter to the URL (you need to have at least one).
+In the run, each endpoint that is marked to provide it to a tool run will be provided as parameter to the URL in an isolated thread (you need to have at least one).
+For the ``ssh:`` protocol, it is provided as a file parameter. In the root folder ``scanner-automation`` you can find an example.
 You can run the tool or clear the previous results using the menu in the top right.
 
 .. image:: /_static/tool_scan_5.png
