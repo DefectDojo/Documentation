@@ -39,12 +39,15 @@ Docker Compose Install
       $ cd django-DefectDojo
 
 #. Run Docker Compose:
-        To run docker-DefectDojo and see the Dojo logs in the terminal, use:
-        ``docker-compose up``
-        To run docker-DefectDojo and get your terminal prompt back, use:
-        ``docker-compose up -d``
+    
+    To run docker-DefectDojo and voew the logs in the terminal, use:
+        
+    .. code-block:: shell-session
+        
+        $ . docker/aliases_release.sh
+        $ docker-compose up
 
-#. Get the admin password by running:
+#. Find the admin password by running:
 
    .. code-block:: shell-session
 
@@ -53,7 +56,7 @@ Docker Compose Install
      | awk 'FNR == 2 {print $1}'`) && \
      docker logs $container_id 2>&1 | grep "Admin password:"
 
-#. Navigate to https://localhost:8080 and login with 'admin' and the password displayed.
+#. Navigate to http://localhost:8080 and login with 'admin' and the password from the prior command.
 
 *Installation - Setup.bash is temporarily depricated. It is recommended you use the docker-compose install*
 
