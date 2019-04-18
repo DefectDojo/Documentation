@@ -671,6 +671,30 @@ Custom reports allow you to select specific components to be added to the report
 
 The custom report workflow takes advantage of the same asynchronous process described above.
 
+Reports Schedule
+----------------
+
+You can set up automated email reportings that are sent before, on or after specific times or events using the Report Scheduler.
+If they are connected to events of a certain object (like engagements), you can use placeholders to send it to specific people.
+Engagements have a database model that allows to reference a product manager of an engagement via {product.prod_manager}.
+Generally, placeholders are surrounded by curly brackets and contain the field you would like to extract in between.
+This can be useful to automatically remind users of an upcoming engagement or have a monthly reporting of vulnerabilities.
+
+.. image:: /_static/scheduler-2.png
+    :alt: Creating and managing a report interval
+
+In the report scheduler overview, you can manage all existing schedules.
+Use the dropdown in the top right to create a new one.
+
+.. image:: /_static/scheduler-1.png
+    :alt: Schedule Management
+
+These reports require a configured SMTP server in the settings and a running cronjob like below.
+
+    0 0 * * 0 /root/.virtualenvs/dojo/bin/python /root/defect-dojo/manage.py send_scheduled_reports
+
+Make sure to run the cronjob always at the fastest interval you want to trigger on - if you want to run something on a specific second, make sure to run it every second.
+
 JIRA Integration
 ----------------
 
