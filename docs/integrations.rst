@@ -55,6 +55,10 @@ Nessus (Tenable)
 ----------------
 Reports can be imported in the CSV, and .nessus (XML) report formats.
 
+Netsparker
+----------
+Vulnerabilities List - JSON report
+
 Nexpose XML 2.0 (Rapid7)
 ------------------------
 Use the full XML export template from Nexpose.
