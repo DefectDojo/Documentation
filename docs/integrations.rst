@@ -79,6 +79,10 @@ OpenVAS CSV
 -----------
 Import OpenVAS Scan in CSV format. Export as CSV Results on OpenVAS.
 
+PHP Symfony Security Checker
+----------------------------
+Import results from the PHP Symfony Security Checker.
+
 Qualys
 ------
 Qualys output files can be imported in XML format.
