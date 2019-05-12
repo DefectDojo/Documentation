@@ -19,6 +19,10 @@ Bandit
 ------
 JSON report format
 
+Blackduck Hub
+-------------
+Import the security.csv file.
+
 Bundler-Audit
 -------------
 Import the text output generated with bundle-audit check
