@@ -5,21 +5,21 @@ DefectDojo's API is created using `Django Rest Framework`_.  The documentation o
 installation at `/api/v2/doc/` and can be accessed by choosing the API v2 Docs link on the user drop down menu in the
 header.
 
-.. image:: /_static/api_v2_1.png
+.. image:: _static/api_v2_1.png
 
 The documentation is generated using `Django Rest Framework Swagger`_, and is interactive.
 
 To interact with the documentation, a valid Authorization header value is needed.  Visit the `/api/v2/key/` view to generate
 your API Key (Token <api_key>) and copy the header value provided.
 
-.. image:: /_static/api_v2_2.png
+.. image:: _static/api_v2_2.png
 
 Return to the `/api/v2/doc/` and click on `Authorize` to open Authorization form. Paste your key in the form field provided  and clic on `Authorize` button.  Your authorization header value will be captured and used for all requests.
 
 Each section allows you to make calls to the API and view the Request URL, Response Body, Response Code and Response
 Headers.
 
-.. image:: /_static/api_v2_3.png
+.. image:: _static/api_v2_3.png
 
 Currently the following endpoints are available:
 
@@ -104,3 +104,37 @@ The json object result is: ::
 See `Django Rest Framework's documentation on interacting with an API`_ for additional examples and tips.
 
 .. _Django Rest Framework's documentation on interacting with an API: http://www.django-rest-framework.org/topics/api-clients/
+
+Manually calling the API
+------------------------
+
+Tools like Postman can be used for testing the API.
+
+Example for importing a scan result: 
+
+* Verb: POST
+* URI: http://localhost:8080/api/v2/import-scan/
+* Headers tab: add the authentication header
+    * Key: Authorization
+    * Value: Token c8572a5adf107a693aa6c72584da31f4d1f1dcff
+* Body tab
+    * select "form-data", click "bulk edit". Example for a ZAP scan:
+
+::
+
+ engagement:3
+ verified:true
+ active:true
+ lead:1
+ tags:test
+ scan_date:2019-04-30
+ scan_type:ZAP Scan
+ minimum_severity:Info
+ skip_duplicates:true
+ close_old_findings:false
+
+* Body tab
+    * Click "Key-value" edit
+    * Add a "file" parameter of type "file". This will trigger multi-part form data for sending the file content
+    * Browse for the file to upload
+* Click send
