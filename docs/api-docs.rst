@@ -111,6 +111,23 @@ The json object result is: ::
       ]
     }
 
+Here is a simple python POST example for creating a new product_type: ::
+
+  import requests
+
+    url = 'http://127.0.0.1:8000/api/v1/product_types/'
+    data = {
+        'name':'Spartans Dev Team',
+        "critical_product": "true",
+        "key_product": "true"
+        }
+    headers = {'content-type': 'application/json',
+              'Authorization': 'ApiKey jay7958:c8572a5adf107a693aa6c72584da31f4d1f1dcff'}
+    r = requests.get(url, json = data, headers=headers, verify=True) # set verify to False if ssl cert is self-signed
+
+    print("The response status code :%s"%r.status_code)
+    print("The response text is :%s"%r.text)
+
 See `Tastypie's documentation on interacting with an API`_ for additional examples and tips.
 
 .. _Tastypie's documentation on interacting with an API: https://django-tastypie.readthedocs.org/en/latest/interacting.html
