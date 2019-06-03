@@ -5,14 +5,14 @@ DefectDojo's API is created using `Tastypie`_.  The documentation of each endpoi
 installation at `/api/v1/doc/` and can be accessed by choosing the API Docs link on the user drop down menu in the
 header.
 
-.. image:: /_static/api_1.png
+.. image:: _static/api_1.png
 
 The documentation is generated using `Tastypie Swagger`_, and is interactive.
 
 To interact with the documentation, a valid Authorization header value is needed.  Visit the `/api/key/` view to generate
 your API Key and copy the header value provided.
 
-.. image:: /_static/api_3.png
+.. image:: _static/api_3.png
 
 Return to the `/api/v1/doc/` view to paste your key in the form field and click `Explore`.  Your authorization header
 value will be captured and used for all requests.
@@ -20,7 +20,7 @@ value will be captured and used for all requests.
 Each section allows you to make calls to the API and view the Request URL, Response Body, Response Code and Response
 Headers.
 
-.. image:: /_static/api_2.png
+.. image:: _static/api_2.png
 
 Currently the following endpoints are available:
 
@@ -154,3 +154,41 @@ The json object result of the above code is: ::
 See `Tastypie's documentation on interacting with an API`_ for additional examples and tips.
 
 .. _Tastypie's documentation on interacting with an API: https://django-tastypie.readthedocs.org/en/latest/interacting.html
+
+
+See `defectdojo_api project`_, a Python API wrapper for DefectDojo (a utility to call the API using python)
+
+.. _defectdojo_api project: https://github.com/DefectDojo/defectdojo_api
+
+
+Manually calling the API
+------------------------
+
+Tools like Postman can be used for testing the API.
+
+Example for importing a scan result: 
+
+* Verb: POST
+* URI: http://localhost:8080/api/v1/importscan/
+* Headers tab: add the authentication header
+    * Key: Authorization
+    * Value: ApiKey jay7958:c8572a5adf107a693aa6c72584da31f4d1f1dcff
+* Body tab
+    * select "form-data", click "bulk edit". Example for a ZAP scan:
+
+::
+
+ verified:true
+ active:true
+ lead:/api/v1/users/1/
+ tags:test
+ scan_date:2019-04-30
+ scan_type:ZAP Scan
+ minimum_severity:Info
+ engagement:/api/v1/engagements/1/
+
+* Body tab
+    * Click "Key-value" edit
+    * Add a "file" parameter of type "file". This will trigger multi-part form data for sending the file content
+    * Browse for the file to upload
+* Click send
