@@ -50,7 +50,7 @@ For example: ::
 Sample Code
 -----------
 
-Here is a simple python example against the `/users` endpoint: ::
+Here are some simple python examples and their results produced against the `/users` endpoint: ::
 
     import requests
 
@@ -64,10 +64,50 @@ Here is a simple python example against the `/users` endpoint: ::
       print value
       print '------------------'
 
-This code will return all users defined in DefectDojo.
+This code will display the list of all the users defined in DefectDojo.
+The json object result of the above code is: ::
 
-Here is another example against the `/users` endpoint, this time we will filter the results to include only the users
-whose user name includes `jay`: ::
+    {
+      "meta": {
+        "limit": 20,
+        "next": null,
+        "offset": 0,
+        "previous": null,
+        "total_count": 3
+      },
+      "objects": [
+        {
+          "first_name": "Greg",
+          "id": 22,
+          "last_login": "2018-10-28T08:05:51.925743",
+          "last_name": "",
+          "resource_uri": "/api/v1/users/22/",
+          "username": "greg.dev"
+        },
+	
+	{
+          "first_name": "Andy",
+          "id": 29,
+          "last_login": "2019-05-28T08:05:51.925743",
+          "last_name": "",
+          "resource_uri": "/api/v1/users/29/",
+          "username": "andy586432"
+        },
+
+        {
+          "first_name": "Dev",
+          "id": 31,
+          "last_login": "2018-10-13T11:44:32.533035",
+          "last_name": "",
+          "resource_uri": "/api/v1/users/31/",
+          "username": "dev.paz"
+        }
+      ]
+    }
+
+
+Here is another example against the `/users` endpoint,we apply the condition(username__contains=jay) which will filter and display the list of the users
+whose username includes `jay`: ::
 
     import requests
 
@@ -81,7 +121,7 @@ whose user name includes `jay`: ::
       print value
       print '------------------'
 
-The json object result is: ::
+The json object result of the above code is: ::
 
     {
       "meta": {
@@ -95,7 +135,7 @@ The json object result is: ::
         {
           "first_name": "Jay",
           "id": 22,
-          "last_login": "2015-10-28T08:05:51.925743",
+          "last_login": "2019-04-22T08:05:51.925743",
           "last_name": "Paz",
           "resource_uri": "/api/v1/users/22/",
           "username": "jay7958"
@@ -103,7 +143,7 @@ The json object result is: ::
         {
           "first_name": "",
           "id": 31,
-          "last_login": "2015-10-13T11:44:32.533035",
+          "last_login": "2019-04-04T11:44:32.533035",
           "last_name": "",
           "resource_uri": "/api/v1/users/31/",
           "username": "jay.paz"
