@@ -73,6 +73,7 @@ Feature Documentation
    :glob:
 
    features
+   social-authentication
 
 .. _api-docs:
 
