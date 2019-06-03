@@ -19,6 +19,10 @@ Bandit
 ------
 JSON report format
 
+Blackduck Hub
+-------------
+Import the security.csv file.
+
 Bundler-Audit
 -------------
 Import the text output generated with bundle-audit check
@@ -115,6 +119,14 @@ JSON Output of ssllabs-scan cli.
 Trufflehog
 ----------
 JSON Output of Trufflehog.
+
+Twistlock
+---------
+JSON output of the ``twistcli`` tool. Example:
+
+.. code-block:: bash
+
+   ./twistcli images scan <REGISTRY/REPO:TAG> --address https://<SECURE_URL_OF_TWISTLOCK_CONSOLE> --user <USER> --details --output-file=<PATH_TO_SAVE_JSON_FILE>
 
 Visual Code Grepper (VCG)
 -------------------------
