@@ -104,6 +104,10 @@ Snyk
 ----
 Snyk output file (snyk test --json > snyk.json) can be imported in JSON format.
 
+Sonatype
+--------
+JSON output.
+
 SSL Labs
 --------
 JSON Output of ssllabs-scan cli.
