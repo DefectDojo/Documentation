@@ -65,6 +65,45 @@ Here are some simple python examples and their results produced against the `/us
       print '------------------'
 
 This code will display the list of all the users defined in DefectDojo.
+The json object result of the above code is: ::
+
+    {
+      "meta": {
+        "limit": 20,
+        "next": null,
+        "offset": 0,
+        "previous": null,
+        "total_count": 3
+      },
+      "objects": [
+        {
+          "first_name": "Greg",
+          "id": 22,
+          "last_login": "2018-10-28T08:05:51.925743",
+          "last_name": "",
+          "resource_uri": "/api/v1/users/22/",
+          "username": "greg.dev"
+        },
+	
+	{
+          "first_name": "Andy",
+          "id": 29,
+          "last_login": "2019-05-28T08:05:51.925743",
+          "last_name": "",
+          "resource_uri": "/api/v1/users/29/",
+          "username": "andy586432"
+        },
+
+        {
+          "first_name": "Dev",
+          "id": 31,
+          "last_login": "2018-10-13T11:44:32.533035",
+          "last_name": "",
+          "resource_uri": "/api/v1/users/31/",
+          "username": "dev.paz"
+        }
+      ]
+    }
 
 
 Here is another example against the `/users` endpoint,we apply the condition(username__contains=jay) which will filter and display the list of the users
