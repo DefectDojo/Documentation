@@ -49,7 +49,7 @@ For example: ::
 Sample Code
 -----------
 
-Here is a simple python example against the `/users` endpoint: ::
+Here are some simple python examples and their results produced against the `/users` endpoint: ::
 
     import requests
 
@@ -63,7 +63,28 @@ Here is a simple python example against the `/users` endpoint: ::
       print value
       print '------------------'
 
-This code will return all users defined in DefectDojo.
+This code will return the list of all the users defined in DefectDojo.
+The json object result looks like : ::
+
+    [
+        {
+          "first_name": "Tyagi",
+          "id": 22,
+          "last_login": "2019-06-18T08:05:51.925743",
+          "last_name": "Paz",
+          "resource_uri": "/api/v1/users/22/",
+          "username": "dev7958"
+        },
+        {
+          "first_name": "saurabh",
+          "id": 31,
+          "last_login": "2019-06-06T11:44:32.533035",
+          "last_name": "",
+          "resource_uri": "/api/v1/users/31/",
+          "username": "saurabh.paz"
+        }
+    ]
+
 
 Here is another example against the `/users` endpoint, this time we will filter the results to include only the users
 whose user name includes `jay`: ::
