@@ -80,6 +80,10 @@ Dependency Check
 ----------------
 OWASP Dependency Check output can be imported in Xml format.
 
+Fortify
+--------
+Import Findings from XML file format.
+
 Generic Findings Import
 -----------------------
 Import Generic findings in CSV format.
