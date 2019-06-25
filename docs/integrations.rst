@@ -96,6 +96,22 @@ Immuniweb Scan
 ---------------
 XML Scan Result File from Imuniweb Scan.
 
+Kiuwan Scanner
+---------------
+Import Kiuwan Scan in CSV format. Export as CSV Results on Kiuwan.
+
+Microfocus Webinspect Scanner
+------------------------------
+Import XML report
+
+MobSF Scanner
+--------------
+Export a JSON file using the API, api/v1/report_json.</li>
+
+Mozilla Observatory Scanner
+----------------------------
+Import JSON report.
+
 Nessus (Tenable)
 ----------------
 Reports can be imported in the CSV, and .nessus (XML) report formats.
@@ -124,9 +140,17 @@ NPM Audit
 ---------
 Node Package Manager (NPM) Audit plugin output file can be imported in JSON format. Only imports the 'advisories' subtree.
 
+Openscap Vulnerability Scan
+----------------------------
+Import Openscap Vulnerability Scan in XML formats.
+
 OpenVAS CSV
 -----------
 Import OpenVAS Scan in CSV format. Export as CSV Results on OpenVAS.
+
+PHP Security Audit v2
+----------------------
+Import PHP Security Audit v2 Scan in JSON format.
 
 PHP Symfony Security Checker
 ----------------------------
@@ -135,11 +159,18 @@ Import results from the PHP Symfony Security Checker.
 Qualys
 ------
 Qualys output files can be imported in XML format.
-Qualys WebScan - Qualys WebScan output files can be imported in XML format.
+
+Qualys Webapp Scan
+-------------------
+Qualys WebScan output files can be imported in XML format.
 
 Retire.js
 ---------
 Retire.js JavaScript scan (--js) output file can be imported in JSON format.
+
+Safety Scan
+------------
+Safety scan (--json) output file can be imported in JSON format.
 
 SKF Scan
 --------
@@ -148,6 +179,14 @@ Output of SKF Sprint summary export.
 Snyk
 ----
 Snyk output file (snyk test --json > snyk.json) can be imported in JSON format.
+
+SonarQube
+----------
+SonarQube output file can be imported in HTML format.
+
+SpotBugs
+---------
+XML report of textui cli.
 
 Sonatype
 --------
@@ -161,6 +200,10 @@ Trufflehog
 ----------
 JSON Output of Trufflehog.
 
+Trustwave
+----------
+CSV output of Trustwave vulnerability scan.
+
 Twistlock
 ---------
 JSON output of the ``twistcli`` tool. Example:
@@ -169,6 +212,7 @@ JSON output of the ``twistcli`` tool. Example:
 
    ./twistcli images scan <REGISTRY/REPO:TAG> --address https://<SECURE_URL_OF_TWISTLOCK_CONSOLE> --user <USER> --details --output-file=<PATH_TO_SAVE_JSON_FILE>
 
+
 Visual Code Grepper (VCG)
 -------------------------
 VCG output can be imported in CSV or Xml formats.
@@ -176,6 +220,14 @@ VCG output can be imported in CSV or Xml formats.
 Veracode
 --------
 Detailed XML Report
+
+Wapiti Scan
+------------
+Import XML report.
+
+Whitesource Scan
+-----------------
+Import JSON report
 
 Zed Attack Proxy
 ----------------
