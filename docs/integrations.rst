@@ -159,8 +159,8 @@ PHP Symfony Security Checker
 ----------------------------
 Import results from the PHP Symfony Security Checker.
 
-Qualys
--------
+Qualys Scan
+------------
 Qualys output files can be imported in XML format.
 
 Qualys Webapp Scan
