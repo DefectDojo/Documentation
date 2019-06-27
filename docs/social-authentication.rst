@@ -80,7 +80,7 @@ Once the user signs in, it will try to match the UPN of the user to an existing 
 
 1. Navigate to the following address and follow instructions to create a new app registration: https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app
 
-2. Once you register an app, take note of the following information::
+2. Once you register an app, take note of the following information:
   - **Application (client) ID**
   - **Directory (tenant) ID** 
   - Under Certificates & Secrets, create a new **Client Secret** 
