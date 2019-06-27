@@ -47,9 +47,9 @@ Burp XML
 --------
 When the Burp report is generated, the recommended option is Base64 encoding both the request and response fields. These fields will be processed and made available in the 'Finding View' page.
 
-Clair
------
-'Vulnerabilities' section of the JSON report format.
+Clair Scan
+-----------
+Import JSON reports of Docker image vulnerabilities.
 
 Clair Klar Scan
 ----------------
@@ -62,7 +62,6 @@ CSV Report
 Crashtest Security
 ------------------
 XML Report
-
 
 Contrast Scanner
 ----------------
@@ -160,8 +159,8 @@ PHP Symfony Security Checker
 ----------------------------
 Import results from the PHP Symfony Security Checker.
 
-Qualys
-------
+Qualys Scan
+------------
 Qualys output files can be imported in XML format.
 
 Qualys Webapp Scan
