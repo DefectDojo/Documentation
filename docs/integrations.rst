@@ -47,7 +47,7 @@ Burp XML
 --------
 When the Burp report is generated, the recommended option is Base64 encoding both the request and response fields. These fields will be processed and made available in the 'Finding View' page.
 
-Clair Scan
+ClairScan
 -----------
 Import JSON reports of Docker image vulnerabilities.
 
@@ -159,7 +159,7 @@ PHP Symfony Security Checker
 ----------------------------
 Import results from the PHP Symfony Security Checker.
 
-Qualys Scan
+QualysScan
 ------------
 Qualys output files can be imported in XML format.
 
@@ -199,6 +199,10 @@ SSL Labs
 --------
 JSON Output of ssllabs-scan cli.
 
+Sslscan
+--------
+Import XML output of sslscan report.
+
 Trufflehog
 ----------
 JSON Output of Trufflehog.
@@ -231,6 +235,10 @@ Import XML report.
 Whitesource Scan
 -----------------
 Import JSON report
+
+Wpscan Scanner
+---------------
+Import JSON report.
 
 Zed Attack Proxy
 ----------------
