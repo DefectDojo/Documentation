@@ -199,6 +199,10 @@ SSL Labs
 --------
 JSON Output of ssllabs-scan cli.
 
+Sslscan
+--------
+Import XML output of sslscan report.
+
 Trufflehog
 ----------
 JSON Output of Trufflehog.
@@ -231,6 +235,10 @@ Import XML report.
 Whitesource Scan
 -----------------
 Import JSON report
+
+Wpscan Scanner
+---------------
+Import JSON report.
 
 Zed Attack Proxy
 ----------------
