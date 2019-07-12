@@ -55,6 +55,10 @@ Generic Findings Import
 -----------------------
 Import Generic findings in CSV format.
 
+JFrog XRay
+----------
+Import the JSON format for the "Security Export" file.
+
 Nessus (Tenable)
 ----------------
 Reports can be imported in the CSV, and .nessus (XML) report formats.
