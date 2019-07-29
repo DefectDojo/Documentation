@@ -18,46 +18,13 @@ You can also log in as a product owner or non-staff user:
 
 Docker Compose Install
 **********************
+* Go to https://github.com/DefectDojo/django-DefectDojo
+* Select the appropriate branch you're working on
+* Under "Installation Options" click "Docker"
+* Follow the instructions
 
-*You will need:*
-
-* Latest version of Docker
-* Latest version Docker Compose
-
-*Instructions:*
-
-#. Clone the DefectDojo repository on GitHub:
-
-   .. code-block:: shell-session
-
-      $ git clone https://github.com/DefectDojo/django-DefectDojo
-
-#. Change directories into the newly created folder.
-
-   .. code-block:: shell-session
-
-      $ cd django-DefectDojo
-
-#. Run Docker Compose:
-    
-    To run docker-DefectDojo and voew the logs in the terminal, use:
-        
-    .. code-block:: shell-session
-        
-        $ . docker/aliases_release.sh
-        $ docker-compose up
-
-#. Find the admin password by running:
-
-   .. code-block:: shell-session
-
-     $ container_id=(`docker ps -a \
-     --filter "name=django-defectdojo_initializer_1" \
-     | awk 'FNR == 2 {print $1}'`) && \
-     docker logs $container_id 2>&1 | grep "Admin password:"
-
-#. Navigate to http://localhost:8080 and login with 'admin' and the password from the prior command.
-
+Setup.bash Install
+**********************
 *Installation - Setup.bash is temporarily depricated. It is recommended you use the docker-compose install*
 
 Change into the newly created ``django-DefectDojo`` directory:

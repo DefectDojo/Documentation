@@ -5,14 +5,14 @@ DefectDojo's API is created using `Tastypie`_.  The documentation of each endpoi
 installation at `/api/v1/doc/` and can be accessed by choosing the API Docs link on the user drop down menu in the
 header.
 
-.. image:: /_static/api_1.png
+.. image:: _static/api_1.png
 
 The documentation is generated using `Tastypie Swagger`_, and is interactive.
 
 To interact with the documentation, a valid Authorization header value is needed.  Visit the `/api/key/` view to generate
 your API Key and copy the header value provided.
 
-.. image:: /_static/api_3.png
+.. image:: _static/api_3.png
 
 Return to the `/api/v1/doc/` view to paste your key in the form field and click `Explore`.  Your authorization header
 value will be captured and used for all requests.
@@ -20,7 +20,7 @@ value will be captured and used for all requests.
 Each section allows you to make calls to the API and view the Request URL, Response Body, Response Code and Response
 Headers.
 
-.. image:: /_static/api_2.png
+.. image:: _static/api_2.png
 
 Currently the following endpoints are available:
 
@@ -50,7 +50,7 @@ For example: ::
 Sample Code
 -----------
 
-Here is a simple python example against the `/users` endpoint: ::
+Here are some simple python examples and their results produced against the `/users` endpoint: ::
 
     import requests
 
@@ -64,10 +64,50 @@ Here is a simple python example against the `/users` endpoint: ::
       print value
       print '------------------'
 
-This code will return all users defined in DefectDojo.
+This code will display the list of all the users defined in DefectDojo.
+The json object result of the above code is: ::
 
-Here is another example against the `/users` endpoint, this time we will filter the results to include only the users
-whose user name includes `jay`: ::
+    {
+      "meta": {
+        "limit": 20,
+        "next": null,
+        "offset": 0,
+        "previous": null,
+        "total_count": 3
+      },
+      "objects": [
+        {
+          "first_name": "Greg",
+          "id": 22,
+          "last_login": "2018-10-28T08:05:51.925743",
+          "last_name": "",
+          "resource_uri": "/api/v1/users/22/",
+          "username": "greg.dev"
+        },
+	
+	{
+          "first_name": "Andy",
+          "id": 29,
+          "last_login": "2019-05-28T08:05:51.925743",
+          "last_name": "",
+          "resource_uri": "/api/v1/users/29/",
+          "username": "andy586432"
+        },
+
+        {
+          "first_name": "Dev",
+          "id": 31,
+          "last_login": "2018-10-13T11:44:32.533035",
+          "last_name": "",
+          "resource_uri": "/api/v1/users/31/",
+          "username": "dev.paz"
+        }
+      ]
+    }
+
+
+Here is another example against the `/users` endpoint,we apply the condition(username__contains=jay) which will filter and display the list of the users
+whose username includes `jay`: ::
 
     import requests
 
@@ -81,7 +121,7 @@ whose user name includes `jay`: ::
       print value
       print '------------------'
 
-The json object result is: ::
+The json object result of the above code is: ::
 
     {
       "meta": {
@@ -95,7 +135,7 @@ The json object result is: ::
         {
           "first_name": "Jay",
           "id": 22,
-          "last_login": "2015-10-28T08:05:51.925743",
+          "last_login": "2019-04-22T08:05:51.925743",
           "last_name": "Paz",
           "resource_uri": "/api/v1/users/22/",
           "username": "jay7958"
@@ -103,7 +143,7 @@ The json object result is: ::
         {
           "first_name": "",
           "id": 31,
-          "last_login": "2015-10-13T11:44:32.533035",
+          "last_login": "2019-04-04T11:44:32.533035",
           "last_name": "",
           "resource_uri": "/api/v1/users/31/",
           "username": "jay.paz"
@@ -111,6 +151,61 @@ The json object result is: ::
       ]
     }
 
+Here is a simple python POST example for creating a new product_type: ::
+
+  import requests
+
+    url = 'http://127.0.0.1:8000/api/v1/product_types/'
+    data = {
+        'name':'Spartans Dev Team',
+        "critical_product": "true",
+        "key_product": "true"
+        }
+    headers = {'content-type': 'application/json',
+              'Authorization': 'ApiKey jay7958:c8572a5adf107a693aa6c72584da31f4d1f1dcff'}
+    r = requests.get(url, json = data, headers=headers, verify=True) # set verify to False if ssl cert is self-signed
+
+    print("The response status code :%s"%r.status_code)
+    print("The response text is :%s"%r.text)
+
 See `Tastypie's documentation on interacting with an API`_ for additional examples and tips.
 
 .. _Tastypie's documentation on interacting with an API: https://django-tastypie.readthedocs.org/en/latest/interacting.html
+
+
+See `defectdojo_api project`_, a Python API wrapper for DefectDojo (a utility to call the API using python)
+
+.. _defectdojo_api project: https://github.com/DefectDojo/defectdojo_api
+
+
+Manually calling the API
+------------------------
+
+Tools like Postman can be used for testing the API.
+
+Example for importing a scan result: 
+
+* Verb: POST
+* URI: http://localhost:8080/api/v1/importscan/
+* Headers tab: add the authentication header
+    * Key: Authorization
+    * Value: ApiKey jay7958:c8572a5adf107a693aa6c72584da31f4d1f1dcff
+* Body tab
+    * select "form-data", click "bulk edit". Example for a ZAP scan:
+
+::
+
+ verified:true
+ active:true
+ lead:/api/v1/users/1/
+ tags:test
+ scan_date:2019-04-30
+ scan_type:ZAP Scan
+ minimum_severity:Info
+ engagement:/api/v1/engagements/1/
+
+* Body tab
+    * Click "Key-value" edit
+    * Add a "file" parameter of type "file". This will trigger multi-part form data for sending the file content
+    * Browse for the file to upload
+* Click send

@@ -52,17 +52,17 @@ Authorized Users
 Products are listed on the ``/product`` page and can be filtered by their attributes as well as sorted by their name and
 product type.
 
-.. image:: /_static/product_3.png
+.. image:: _static/product_3.png
     :alt: Product Listing Page
 
 Visual representation of a product:
 
-.. image:: /_static/product_1.png
+.. image:: _static/product_1.png
     :alt: View Product Page
 
 Product with metrics:
 
-.. image:: /_static/product_2.png
+.. image:: _static/product_2.png
     :alt: View Product Page With Metrics Displayed
 
 Engagements
@@ -101,12 +101,12 @@ Status
 Engagements are listed in the ``/engagement`` page and can be filtered by their attributes as well as sorted by the
 product or product type.
 
-.. image:: /_static/eng_2.png
+.. image:: _static/eng_2.png
     :alt: Engagement Listing Page
 
 Visual representation of an engagement:
 
-.. image:: /_static/eng_1.png
+.. image:: _static/eng_1.png
     :alt: View Engagement Page
 
 Endpoints
@@ -141,17 +141,17 @@ Product
 Endpoints are listed in the ``/endpoints`` page and can be filtered by their attributes as well as sorted by the
 product or host.
 
-.. image:: /_static/end_1.png
+.. image:: _static/end_1.png
     :alt: Endpoint Listing Page
 
 Visual representation of an endpoint:
 
-.. image:: /_static/end_2.png
+.. image:: _static/end_2.png
     :alt: View Endpoint Page
 
 Visual representation of an endpoint with metrics displayed:
 
-.. image:: /_static/end_3.png
+.. image:: _static/end_3.png
     :alt: View Endpoint Page with metrics
 
 
@@ -286,30 +286,30 @@ New installations will already have finding images configured.
 Findings are listed on the ``/finding/open``, ``/finding/closed``, ``/finding/accepted`` and ``/finding/all`` pages. They can be filtered
 by their attributes as well as sorted by their Name, Date, Reviewed Date, Severity and Product.
 
-.. image:: /_static/find_1.png
+.. image:: _static/find_1.png
     :alt: Finding Listing Page
 
 |
 
-.. image:: /_static/find_2.png
+.. image:: _static/find_2.png
     :alt: Finding Listing Page
 
 |
 
-.. image:: /_static/find_3.png
+.. image:: _static/find_3.png
     :alt: Finding Listing Page
 
 |
 
 Visual representation of a Finding:
 
-.. image:: /_static/find_4.png
+.. image:: _static/find_4.png
     :alt: Finding View
 
-.. image:: /_static/find_5.png
+.. image:: _static/find_5.png
     :alt: Finding View
 
-.. image:: /_static/find_6.png
+.. image:: _static/find_6.png
     :alt: Finding View
 
 Automatically Flag Duplicate Findings
@@ -333,7 +333,7 @@ Product Type Metrics
     reported findings, Opened Findings, Accepted Findings, Closed Findings, Trending Open Bug Count, Trending Accepted
     Bug Count, and Age of Issues.
 
-    .. image:: /_static/met_1.png
+    .. image:: _static/met_1.png
         :alt: Product Type Metrics
 
 Product Type Counts
@@ -341,27 +341,27 @@ Product Type Counts
     Security Bugs Closed In Period, Trending Total Bug Count By Month, Top 10 By Bug Severity, and Open Findings.  This
     view works great for communication with stakeholders as it is a snapshot in time of the product.
 
-    .. image:: /_static/met_2.png
+    .. image:: _static/met_2.png
         :alt: Product Type Counts
 
 Simple Metrics
     Provides tabular data for all Product Types.  The data displayed in this view is the total number of S0, S1, S2, S3,
     S4, Opened This Month, and Closed This Month.
 
-    .. image:: /_static/met_3.png
+    .. image:: _static/met_3.png
         :alt: Simple Metrics
 
 Engineer Metrics
     Provides graphs displaying information about a testers activity.
 
-    .. image:: /_static/met_4.png
+    .. image:: _static/met_4.png
         :alt: Simple Metrics
 
 Metrics Dashboard
     Provides a full screen, auto scroll view with many metrics in graph format.  This view is great for large displays
     or "Dashboards."
 
-    .. image:: /_static/met_5.png
+    .. image:: _static/met_5.png
         :alt: Metrics Dashboard
 
 Users
@@ -396,7 +396,7 @@ Port Scans
 DefectDojo has the ability to run a port scan using nmap.  Scan can be configured for TCP or UDP ports as well as for
 a Weekly, Monthly or Quarterly frequency.
 
-.. image:: /_static/scan_1.png
+.. image:: _static/scan_1.png
     :alt: Port Scan Form
 
 In order for the scans to kick off the `dojo.management.commands.run_scan.py` must run.  It is easy to set up a cron
@@ -406,20 +406,20 @@ job in order to kick these off at the appropriate frequency.  Below is an exampl
     0 0 1 * * /root/.virtualenvs/dojo/bin/python /root/defect-dojo/manage.py run_scan Monthly
     0 0 1 3,6,9,12 * /root/.virtualenvs/dojo/bin/python /root/defect-dojo/manage.py run_scan Quarterly
 
-.. image:: /_static/scan_2.png
+.. image:: _static/scan_2.png
     :alt: Port Scan Form
 
 The scan process will email the configured recipients with the results.
 
 These scans call also be kicked off on demand by selecting the Launch Scan Now option in the view scan screen.
 
-.. image:: /_static/scan_3.png
+.. image:: _static/scan_3.png
     :alt: Port Scan Form
 
 Notifications
 -------------
 
-.. image:: /_static/notifications_1.png
+.. image:: _static/notifications_1.png
     :alt: Notification settings
 
 DefectDojo can inform you of different events in a variety of ways. You can be notified about things like
@@ -442,19 +442,19 @@ on how to run Celery beat are available in the `Reports`_ section.
 Benchmarks
 ----------
 
-.. image:: /_static/owasp_asvs.png
+.. image:: _static/owasp_asvs.png
     :alt: OWASP ASVS Benchmarks
 
 DefectDojo utilizes the OWASP ASVS Benchmarks to benchmark a product to ensure the product meets your application technical security controls. Benchmarks can be defined per the organizations policy for secure development and multiple benchmarks can be applied to a product.
 
 Benchmarks are available from the Product view. To view the configured benchmarks select the dropdown menu from the right hand drop down menu. You will find the selection near the bottom of the menu entitled: 'OWASP ASVS v.3.1'.
 
-.. image:: /_static/owasp_asvs_menu.png
+.. image:: _static/owasp_asvs_menu.png
     :alt: OWASP ASVS Benchmarks Menu
 
 In the Benchmarks view for each product, the default level is ASVS Level 1. On the top right hand side the drop down can be changed to the desired ASVS level (Level 1, Level 2 or Level 3). The publish checkbox will display the ASVS score on the product page and in the future this will be applied to reporting.
 
-.. image:: /_static/owasp_asvs_score.png
+.. image:: _static/owasp_asvs_score.png
     :alt: OWASP ASVS Score
 
 On the left hand side the ASVS score is displayed with the desired score, the % of benchmarks passed to achieve the score and the total enabled benchmarks for that AVSV level.
@@ -464,7 +464,7 @@ Additional benchmarks can be added/updated in the Django admin site. In a future
 Reports
 -------
 
-.. image:: /_static/report_1.png
+.. image:: _static/report_1.png
     :alt: Report Listing
 
 DefectDojo's reports can be generated in AsciiDoc and PDF.  AsciiDoc is recommended for reports with a large number of
@@ -555,7 +555,7 @@ Reports can be generated for:
 4.  Product Types
 5.  Custom Reports
 
-.. image:: /_static/report_2.png
+.. image:: _static/report_2.png
     :alt: Report Generation
 
 Filtering is available on all Report Generation views to aid in focusing the report for the appropriate need.
@@ -580,7 +580,7 @@ DefectDojo's JIRA integration is bidirectional. You may push findings to JIRA an
 Preparing Jira, Enabling the Webhook
  1. Visit https://<**YOUR JIRA URL**>/plugins/servlet/webhooks
  2. Click 'Create a Webhook'
- 3. For the field labeled 'URL' enter: https://<**YOUR DOJO DOMAIN**>/webhook
+ 3. For the field labeled 'URL' enter: https://<**YOUR DOJO DOMAIN**>/webhook/
  4. Under 'Comments' enable 'Created'. Under Issue enable 'Updated'.
 
 Configurations in Dojo
@@ -626,3 +626,43 @@ False Positive Removal
 ----------------------
 
 DefectDojo allows users to tune out false positives by enabling False Positive History. This will track what engineers have labeled as false positive for a specific product and for a specific scanner. While enabled, when a tool reports the same issue that has been flagged as a false positive previously, it will automatically mark the finding as a false positive, helping to tune overly verbose security tools.
+
+Deduplication
+-------------
+Deduplication is a process that allows DefectDojo to find out that a finding has already been imported
+
+Configuration
+`````````````
+Global configuration
+''''''''''''''''''''
+The deduplication can be activated in "System Settings" by ticking "Deduplicate findings".
+
+An option to delete duplicates can be found in the same menu, and the maximum number of duplicates to keep for the same finding can be configured.
+
+Engagement configuration
+''''''''''''''''''''''''
+When creating an engagement or later by editing the engagement the "Deduplication on engagement" checkbox can be ticked.
+
+* If activated: Findings are only deduplicated within the same engagement. Findings present in different engagements cannot be duplicates
+
+* Else: Findings are deduplicated across the whole product
+
+How it works - APIv1 and manual import
+``````````````````````````````````````
+When importing a report using the APIv1 /api/v1/importscan/ or manually through the GUI: 
+
+* Duplicates are detected based on cwe, title, line, file_path, date, dynamic/static finding, hash_code
+
+* When a duplicate is found:
+    * The newly imported finding takes status: inactive, duplicate
+    * An "Original" link is displayed after the finding status, leading to the original finding
+
+How it works - APIv2
+````````````````````
+When importing a report using the APIv2 api/v2/import-scan/:
+
+* Duplicates are detected based on hash_code only
+* Parameters of interest are
+    * skip_duplicates : if true, duplicates are not inserted at all
+    * close_old_findings : if true, findings  that are not duplicates and that were in the previous scan of the same type (example ZAP) for the same product (or engagement in case of  "Deduplication on engagement") and that are not present in the new scan are closed (Inactive, Verified, Mitigated)
+    * if skip_duplicates and close_old_findings are both false, not deduplication is done

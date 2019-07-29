@@ -4,3 +4,4 @@ docs/_build/
 # Junk files
 .DS_Store
 *~
+.vscode/
