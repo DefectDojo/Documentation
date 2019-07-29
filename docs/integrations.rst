@@ -87,6 +87,10 @@ Generic Findings Import
 -----------------------
 Import Generic findings in CSV format.
 
+JFrog XRay
+----------
+Import the JSON format for the "Security Export" file.
+
 Gosec Scanner
 --------------
 Import Gosec Scanner findings in JSON format.
