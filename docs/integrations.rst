@@ -79,6 +79,10 @@ Dependency Check
 ----------------
 OWASP Dependency Check output can be imported in Xml format.
 
+Hadolint
+----------------
+Hadolint Dockerfile scan in json format.
+
 Fortify
 --------
 Import Findings from XML file format.
