@@ -195,6 +195,8 @@ SonarQube
 ----------
 SonarQube output file can be imported in HTML format.
 
+To generate the report, see https://github.com/soprasteria/sonar-report
+
 SpotBugs
 ---------
 XML report of textui cli.
