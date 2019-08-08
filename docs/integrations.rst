@@ -91,7 +91,7 @@ Generic Findings Import
 -----------------------
 Import Generic findings in CSV format.
 
-JFrog XRay
+JFrogXRay
 ----------
 Import the JSON format for the "Security Export" file.
 
@@ -212,6 +212,14 @@ JSON Output of ssllabs-scan cli.
 Sslscan
 --------
 Import XML output of sslscan report.
+
+Sslyze Scan
+------------
+XML Report of Sslyze-scan
+
+Testssl Scan
+----------------
+Import CSV output of testssl scan report.
 
 Trufflehog
 ----------
