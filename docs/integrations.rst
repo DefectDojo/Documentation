@@ -33,7 +33,7 @@ JSON report format
 
 Blackduck Hub
 -------------
-Import the security.csv file.
+Import the zip file created by Blackduck. The zip file must contain the security.csv and files.csv.
 
 Brakeman Scan
 --------------
