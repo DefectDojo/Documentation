@@ -1,0 +1,48 @@
+<html>
+
+<head>
+<meta charset="utf-8"> 
+<title>{{ title }}</title>
+</head>
+
+<body>
+<h1>{{ title }}</h1>
+
+{% for product in products %}
+    <h2>{{ product.name }}</h2>
+
+    {% for eng in product.engagements %}
+
+        {% for test in eng.tests %}
+            <h3>Test: {{ test.title|default:test.test_type }}</h3>
+
+            {% regroup test.findings by severity as findings %}
+
+            {% for finding_group in findings %}
+                <h4>Findings of severity <strong>{{ finding_group.grouper }}</strong></h4>
+
+                {% for find in finding_group.list %}
+                    <h5>{{ find.title }}</h5>
+
+                    {% if find.description %}
+                        <h6>Description</h6>
+                        {{ find.description|markdown_render }}
+                    {% endif %}
+
+                    {% if find.mitigation %}
+                        <h6>Mitigation</h6>
+                        {{ find.mitigation|markdown_render }}
+                    {% endif %}
+
+                {% endfor %}
+
+            {% endfor %}
+
+        {% endfor %}
+
+    {% endfor %}
+
+{% endfor %}
+</body>
+
+</html>

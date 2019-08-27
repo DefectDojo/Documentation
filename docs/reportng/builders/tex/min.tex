@@ -1,0 +1,43 @@
+\documentclass{report}
+\begin{document}
+
+\title{ {{ title|tex }} }
+\maketitle
+
+{% for product in products %}
+    \chapter{ {{ product.name|tex }} }
+
+    {% for eng in product.engagements %}
+
+        {% for test in eng.tests %}
+            \section{Test: {{ test.title|default:test.test_type|tex }} }
+
+            {% regroup test.findings by severity as findings %}
+
+            {% for finding_group in findings %}
+                \subsection{Findings of severity \emph{ {{ finding_group.grouper|tex }} }}
+
+                {% for find in finding_group.list %}
+                    \subsubsection{ {{ find.title|tex }} }
+
+                    {% if find.description %}
+                        \paragraph{Description}
+                        {{ find.description|to_latex }}
+                    {% endif %}
+
+                    {% if find.mitigation %}
+                        \paragraph{Mitigation}
+                        {{ find.mitigation|to_latex }}
+                    {% endif %}
+
+                {% endfor %}
+
+            {% endfor %}
+
+        {% endfor %}
+
+    {% endfor %}
+
+{% endfor %}
+
+\end{document}

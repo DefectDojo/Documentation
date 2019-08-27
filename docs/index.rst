@@ -74,6 +74,7 @@ Feature Documentation
 
    features
    social-authentication
+   reportng/index
 
 .. _api-docs:
 

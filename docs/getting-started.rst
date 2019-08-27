@@ -304,3 +304,8 @@ DD_CELERY_BEAT_SCHEDULE_FILENAME
 DD_CELERY_TASK_SERIALIZER
     Options: 'pickle', 'json', 'msgpack' or 'yaml'
     Default: pickle
+
+DD_REPORTNG_BUILDERS
+    This is a list of ReportNG builder implementations to activate in JSON. See
+    :ref:`here <reportng/config>` for an explanation of the format.
+    Default: ``["dojo.reportng.builders.html.HTMLReportBuilder", "dojo.reportng.builders.tex.TeXReportBuilder"]``
