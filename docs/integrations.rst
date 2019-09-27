@@ -83,6 +83,12 @@ Dependency Check
 ----------------
 OWASP Dependency Check output can be imported in Xml format.
 
+Dependency Track
+----------------
+The Finding Packaging Format (FPF) from OWASP Dependency Track can be imported in JSON format.
+
+See here for more info on this JSON format: https://docs.dependencytrack.org/integrations/file-formats/
+
 Hadolint
 ----------------
 Hadolint Dockerfile scan in json format.
