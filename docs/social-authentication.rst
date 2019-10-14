@@ -72,6 +72,38 @@ In the **Authentication** section of settings.py, set **DD_OKTA_OAUTH_ENABLED** 
 .. _OKTA Account Creation: https://www.okta.com/developer/signup/
 
 
+Azure Active Directory Tenant Configuration
+-------------------------------------------
+You can now use your corporate Azure Active Directory to authenticate users to Defect Dojo.
+Users will be using your corporate Azure AD account (A.K.A. Office 365 identity) to authenticate via OAuth, and all the conditional access rules and benefits from Azure Active Directory will also apply to the Defect Dojo Authentication.
+Once the user signs in, it will try to match the UPN of the user to an existing e-mail from a user in Defect Dojo, and if no match is found, a new user will be created in Defect Dojo, associated with the unique id/value of the user provided by your Azure AD tenant. Then, you can assign roles to this user, such as ‘staff‘ or ‘superuser‘
+
+1. Navigate to the following address and follow instructions to create a new app registration
+
+  * https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app
+
+2. Once you register an app, take note of the following information:
+
+  * **Application (client) ID**
+  * **Directory (tenant) ID** 
+  * Under Certificates & Secrets, create a new **Client Secret** 
+  
+3. Under Authentication > Redirect URIs, add a *WEB* type of uri where the redirect points to
+
+  * http://localhost:8080/complete/azuread-tenant-oauth2/  
+  * **OR**   
+  * http://the_hostname_you_have_dojo_deployed:your_server_port/complete/azuread-tenant-oauth2/
+
+4. Now, edit the dojo/settings.py file and edit/replace the following information:
+
+  * DD_SOCIAL_AUTH_AZUREAD_TENANT_OAUTH2_KEY=(str, '**YOUR_APPLICATION_ID_FROM_STEP_ABOVE**'),
+  * DD_SOCIAL_AUTH_AZUREAD_TENANT_OAUTH2_SECRET=(str, '**YOUR_CLIENT_SECRET_FROM_STEP_ABOVE**''),
+  * DD_SOCIAL_AUTH_AZUREAD_TENANT_OAUTH2_TENANT_ID=(str, '**YOUR_DIRECTORY_ID_FROM_STEP_ABOVE**''),
+  * AZUREAD_TENANT_OAUTH2_ENABLED = **True** 
+  
+5. Restart your Dojo, and you should now see a **Login with Azure AD** button on the login page which should *magically* work
+
+
 User Permissions
 ----------------
 
