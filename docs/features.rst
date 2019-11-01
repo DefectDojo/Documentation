@@ -330,9 +330,9 @@ Similar Findings Visualization:
 Similar Findings
     While viewing a finding, similar findings within the same product are
     listed along with buttons to mark one finding a duplicate of the other.
-    Clicking the 'Use as original' button on a similar finding will mark that
+    Clicking the "Use as original" button on a similar finding will mark that
     finding as the original while marking the viewed finding as a duplicate.
-    Clicking the 'Mark as duplicate' button on a similar finding will mark that
+    Clicking the "Mark as duplicate" button on a similar finding will mark that
     finding as a duplicate of the viewed finding. If a similar finding is
     already marked as a duplicate, then a 'Reset duplicate status' button is
     shown instead which will remove the duplicate status on that finding along
