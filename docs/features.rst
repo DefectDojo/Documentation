@@ -334,7 +334,7 @@ Similar Findings
     finding as the original while marking the viewed finding as a duplicate.
     Clicking the "Mark as duplicate" button on a similar finding will mark that
     finding as a duplicate of the viewed finding. If a similar finding is
-    already marked as a duplicate, then a 'Reset duplicate status' button is
+    already marked as a duplicate, then a "Reset duplicate status" button is
     shown instead which will remove the duplicate status on that finding along
     with marking it active again.
 
