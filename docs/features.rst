@@ -228,7 +228,7 @@ Last Reviewed By
 
 Notes
     Stores information pertinent to the flaw or the mitigation.
-    Initially there isn't a way to categorize notes added for Findings. Admin can introduce a new attribute to notes as 'note-type' which can categorize notes.
+    Initially there isn't a way to categorize notes added for Findings. Admin can introduce a new attribute to notes as         'note-type' which can categorize notes.
     To enable note-types go to System Settings, select Note Types and add new note-types to Dojo.
 
     Note-type
@@ -239,7 +239,8 @@ Notes
         - is_active - This has to be true to assign the note-type to a note.
         - is_single - If true, only one note of that note-type can exist for a Finding.
         - is_mandatory - If true, a Finding has to have at least one note from the note-type in order to close it.
-    If note-types are enabled, User has to first select the note-type from the "Note Type" drop down and then add the contents of the note.
+        
+    If note-types are enabled, User has to first select the note-type from the "Note Type" drop down and then add the           contents of the note.
 
 .. _finding_pics:
 
