@@ -661,10 +661,24 @@ DefectDojo allows users to tune out false positives by enabling False Positive H
 
 Deduplication
 -------------
-Deduplication is a process that allows DefectDojo to find out that a finding has already been imported
+Deduplication is a process that allows DefectDojo to find out that a finding has already been imported.
 
-Configuration
-`````````````
+Upon saving a finding, defectDojo will look at the other findings in the product or the engagement (depending on the configuration) to find duplicates
+
+When a duplicate is found:
+
+* The newly imported finding takes status: inactive, duplicate
+* An "Original" link is displayed after the finding status, leading to the original finding
+
+There are two ways to use the deduplication: 
+
+* Deduplicate vulnerabilities in the same build/release. The vulnerabilities may be found by the same scanner (same scanner deduplication) or by different scanners (cross-scanner deduplication).
+    * this helps analysis and assessment of the technical debt, especially if using many different scanners; although detecting duplicates across scanners is not trivial as it requires a certain standardization.
+* Track unique vulnerabilities across builds/releases so that defectDojo knows when it finds a vulnerabilities whether it has seen it before.
+    * this allows you keep information attached to a given finding in a unique place: all further duplicate findings will point to the original one.
+
+Deduplication Configuration
+```````````````````````````
 Global configuration
 ''''''''''''''''''''
 The deduplication can be activated in "System Settings" by ticking "Deduplicate findings".
@@ -673,31 +687,76 @@ An option to delete duplicates can be found in the same menu, and the maximum nu
 
 Engagement configuration
 ''''''''''''''''''''''''
-When creating an engagement or later by editing the engagement the "Deduplication on engagement" checkbox can be ticked.
+When creating an engagement or later by editing the engagement, the "Deduplication on engagement" checkbox can be ticked.
 
 * If activated: Findings are only deduplicated within the same engagement. Findings present in different engagements cannot be duplicates
 
 * Else: Findings are deduplicated across the whole product
 
-How it works - APIv1 and manual import
+Note that deduplication can never occur accross different products.
+
+Deduplication algorithms
 ``````````````````````````````````````
-When importing a report using the APIv1 /api/v1/importscan/ or manually through the GUI: 
+The behavior of the deduplication can be configured for each parser in settings.dist.py (or settings.py after install) by configuring the `DEDUPLICATION_ALGORITHM_PER_PARSER` variable.
 
-* Duplicates are detected based on cwe, title, line, file_path, date, dynamic/static finding, hash_code
 
-* When a duplicate is found:
-    * The newly imported finding takes status: inactive, duplicate
-    * An "Original" link is displayed after the finding status, leading to the original finding
+The available algorithms are:
 
-How it works - APIv2
-````````````````````
-When importing a report using the APIv2 api/v2/import-scan/:
+* `DEDUPE_ALGO_UNIQUE_ID_FROM_TOOL`
+    * the deduplication occurs based on finding.unique_id_from_tool which is a unique technical id existing in the source tool. Few scanners populate this field currently. If you want to use this algorithm, you may need to update the scanner code beforehand
+    * The tools that populate the unique_id_from_tool field are: 
+        * `Checkmarx Scan detailed`
+        * `SonarQube Scan detailed`
+    * Advantages:
+        * If your source tool has a reliable means of tracking a unique vulnerability across scans, this configuration will allow defectDojo to use this ability
+    * Drawbacks:
+        * Using this algorithm will not allow cross-scanner deduplication as other tools will have a different technical id.
+        * When the tool evolve, it may change the way the unique id is generated. In that case you won't be able to recognise that findings found in previous scans are actually the same as the new findings.
+* `DEDUPE_ALGO_HASH_CODE`
+    * the deduplication occurs based on finding.hash_code. The hash_code itself is configurable for each scanner in parameter `HASHCODE_FIELDS_PER_SCANNER`
+* `DEDUPE_ALGO_UNIQUE_ID_FROM_TOOL_OR_HASH_CODE`
+    * a finding is a duplicate with another if they have the same unique_id_from_tool OR the same hash_code
+    * Allows to use both 
+        * a technical deduplication (based on unique_id_from_tool) for a reliable same-parser deduplication
+        * and a functional one (based on hash_code configured on CWE+severity+file_path for example) for cross-parser deduplication
+* `DEDUPE_ALGO_LEGACY`
+    * This is algorithm that was in place before the configuration per parser was made possible, and also the default one for backward compatibility reasons.
+    * Legacy algorithm basically deduplicates based on: 
+        * For static scanner:  ['title', 'cwe', 'line', 'file_path', 'description']
+        * For dynamic scanner: ['title', 'cwe', 'line', 'file_path', 'description', 'endpoints']
+    * Note that there are some subtilities that may give unexpected results. Switch `dojo.specific-loggers.deduplication` to debug in settings.py to get more info in case of trouble.
 
-* Duplicates are detected based on hash_code only
-* Parameters of interest are
-    * skip_duplicates : if true, duplicates are not inserted at all
-    * close_old_findings : if true, findings  that are not duplicates and that were in the previous scan of the same type (example ZAP) for the same product (or engagement in case of  "Deduplication on engagement") and that are not present in the new scan are closed (Inactive, Verified, Mitigated)
-    * if skip_duplicates and close_old_findings are both false, not deduplication is done
+
+Hash_code computation configuration
+``````````````````````````````````````
+The hash_code computation can be configured for each parser using the parameter `HASHCODE_FIELDS_PER_SCANNER` in settings.dist.py. 
+
+The parameter `HASHCODE_ALLOWED_FIELDS` list the fields from finding table that were tested and are known to be working when used as a hash_code. Don't hesitate to enrich this list when required (the code is generic and allows adding new fields by configuration only)
+
+Note that `endpoints` isn't a field from finding table but rather a meta value that will trigger a computation based on all the endpoints.
+
+Whe populating `HASHCODE_FIELDS_PER_SCANNER`, please respect the order of declaration of the fields: use the same order as in `HASHCODE_ALLOWED_FIELDS` : that will allow cross-scanner deduplication to function because the hash_code is computed as a sha-256 of concatenated values of the configured fields.
+
+Tips: 
+
+* It's advised to use fields that are standardized for a reliable deduplication, especially if aiming at cross-scanner deduplication. For example `title` and `description` tend to change when the tools evolve and don't allow cross-scanner deduplication
+* Good candidates are 
+    * cwe or cve
+    * Adding the severity will make sure the deduplication won't be to aggressive (there are several families of XSS and sql injection for example, with various severities but the same cwe).
+    * Adding the file_path or endpoints is advised too.
+* The parameter `HASHCODE_ALLOWS_NULL_CWE` will allow switching to legacy algorithm when a null cwe is found for a given finding: this is to avoid getting many duplicates when the tool fails to give a cwe while we are expecting it.
+
+
+Debugging deduplication
+``````````````````````````````````````
+There is a specific logger that can be activated in order to have details about the deduplication process : switch `dojo.specific-loggers.deduplication` to debug in settings.py.
+
+Deduplication - APIv2 parameters
+````````````````````````````````
+* `skip_duplicates` : if true, duplicates are not inserted at all
+* `close_old_findings` : if true, findings  that are not duplicates and that were in the previous scan of the same type (example ZAP) for the same product (or engagement in case of  "Deduplication on engagement") and that are not present in the new scan are closed (Inactive, Verified, Mitigated)
+
+If both `skip_duplicates` and `close_old_findings` are false, no deduplication is done.
 
 Google Sheets Sync
 ------------------
