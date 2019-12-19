@@ -233,6 +233,10 @@ Testssl Scan
 ----------------
 Import CSV output of testssl scan report.
 
+Trivy
+-----
+JSON report of `trivy scanner <https://github.com/aquasecurity/trivy>`_.
+
 Trufflehog
 ----------
 JSON Output of Trufflehog.
