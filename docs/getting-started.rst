@@ -17,7 +17,7 @@ You can also log in as a product owner or non-staff user:
 * product_manager / defectdojo@demo#product
 
 Setup.bash Install (default)
-**********************
+****************************
 * Go to https://github.com/DefectDojo/django-DefectDojo
 * Select the appropriate branch you're working on
 * Under "Installation Options" click "Setup.bash"
