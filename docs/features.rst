@@ -719,8 +719,7 @@ The available algorithms are:
     * Allows to use both 
         * a technical deduplication (based on unique_id_from_tool) for a reliable same-parser deduplication
         * and a functional one (based on hash_code configured on CWE+severity+file_path for example) for cross-parser deduplication
-- `DEDUPE_ALGO_LEGACY`
-
+* `DEDUPE_ALGO_LEGACY`
     * This is algorithm that was in place before the configuration per parser was made possible, and also the default one for backward compatibility reasons.
     * Legacy algorithm basically deduplicates based on: 
         * For static scanner:  ['title', 'cwe', 'line', 'file_path', 'description']
