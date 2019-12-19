@@ -1,3 +1,6 @@
+Integrations
+============
+
 DefectDojo has the ability to import reports from other security tools.
 
 Acunetix Scanner
