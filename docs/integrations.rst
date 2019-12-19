@@ -274,6 +274,10 @@ Wpscan Scanner
 ---------------
 Import JSON report.
 
+Xanitizer
+---------
+Import XML findings list report, preferably with parameter 'generateDetailsInFindingsListReport=true'.
+
 Zed Attack Proxy
 ----------------
 ZAP XML report format.
