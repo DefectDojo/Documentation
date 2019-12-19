@@ -678,7 +678,7 @@ There are two ways to use the deduplication:
     * this allows you keep information attached to a given finding in a unique place: all further duplicate findings will point to the original one.
 
 Deduplication Configuration
-`````````````
+```````````````````````````
 Global configuration
 ''''''''''''''''''''
 The deduplication can be activated in "System Settings" by ticking "Deduplicate findings".
