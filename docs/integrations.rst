@@ -155,6 +155,10 @@ Nmap
 ----
 XML output (use -oX)
 
+Node JS Scan
+----------------------
+Node JS Scan output file can be imported in JSON format.
+
 Node Security Platform
 ----------------------
 Node Security Platform (NSP) output file can be imported in JSON format.
