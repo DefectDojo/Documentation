@@ -29,7 +29,7 @@ Assumes running as root or using sudo command for the below.
 
 .. code-block:: console
 
-  cd django-DefectDojo
+  cd django-DefectDojo/setup
 
   ./setup.bash
 
