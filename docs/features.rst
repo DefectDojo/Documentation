@@ -756,7 +756,6 @@ Deduplication - APIv2 parameters
 * `skip_duplicates` : if true, duplicates are not inserted at all
 * `close_old_findings` : if true, findings  that are not duplicates and that were in the previous scan of the same type (example ZAP) for the same product (or engagement in case of  "Deduplication on engagement") and that are not present in the new scan are closed (Inactive, Verified, Mitigated)
 
-If both `skip_duplicates` and `close_old_findings` are false, no deduplication is done.
 
 Google Sheets Sync
 ------------------
