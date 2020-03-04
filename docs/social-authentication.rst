@@ -104,6 +104,32 @@ Once the user signs in, it will try to match the UPN of the user to an existing 
 5. Restart your Dojo, and you should now see a **Login with Azure AD** button on the login page which should *magically* work
 
 
+Gitlab OAuth2 Configuration
+-------------------------------------------
+In a similar fashion to that of Google and OKTA, using Gitlab as a OAuth2 provider carries the same attributes and a similar procedure. Follow along below.
+
+1. Navigate to your Gitlab settings page and got to the Applications section
+
+  * https://gitlab.com/profile/applications
+  * **OR**
+  * https://the_hostname_you_have_gitlab_deployed:your_gitlab_port/profile/applications
+
+2. Choose a name for your application
+
+3. For the Redirect URI, enter the DefectDojo URL with the following format
+
+  * http://the_hostname_you_have_dojo_deployed:your_server_port/complete/gitlab/
+
+4. Now, edit the dojo/settings.py file and edit/replace the following information:
+
+  * DD_SOCIAL_AUTH_GITLAB_KEY=(str, '**YOUR_APPLICATION_ID_FROM_STEP_ABOVE**'),
+  * DD_SOCIAL_AUTH_GITLAB_SECRET=(str, '**YOUR_SECRET_FROM_STEP_ABOVE**'),
+  * DD_SOCIAL_AUTH_GITLAB_API_URL=(str, '**https://gitlab.com**'),
+  * DD_SOCIAL_AUTH_GITLAB_OAUTH2_ENABLED = **True**
+
+5. Restart your Dojo, and you should now see a **Login with Gitlab** button on the login page which should *magically* work
+
+
 User Permissions
 ----------------
 
