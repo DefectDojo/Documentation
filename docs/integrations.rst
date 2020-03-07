@@ -71,7 +71,8 @@ CSV Report
 
 Crashtest Security
 ------------------
-XML Report
+Import JSON Report
+Import XML Report in JUnit Format
 
 Contrast Scanner
 ----------------
