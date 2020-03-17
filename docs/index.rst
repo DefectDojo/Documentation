@@ -90,7 +90,7 @@ API Documentation
 .. _plugin-docs:
 
 Plugins
---------
+-------
 
 .. toctree::
    :maxdepth: 2

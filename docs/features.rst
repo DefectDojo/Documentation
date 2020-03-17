@@ -696,7 +696,7 @@ When creating an engagement or later by editing the engagement, the "Deduplicati
 Note that deduplication can never occur accross different products.
 
 Deduplication algorithms
-``````````````````````````````````````
+````````````````````````
 The behavior of the deduplication can be configured for each parser in settings.dist.py (or settings.py after install) by configuring the `DEDUPLICATION_ALGORITHM_PER_PARSER` variable.
 
 
@@ -728,7 +728,7 @@ The available algorithms are:
 
 
 Hash_code computation configuration
-``````````````````````````````````````
+```````````````````````````````````
 The hash_code computation can be configured for each parser using the parameter `HASHCODE_FIELDS_PER_SCANNER` in settings.dist.py. 
 
 The parameter `HASHCODE_ALLOWED_FIELDS` list the fields from finding table that were tested and are known to be working when used as a hash_code. Don't hesitate to enrich this list when required (the code is generic and allows adding new fields by configuration only)
@@ -748,7 +748,7 @@ Tips:
 
 
 Debugging deduplication
-``````````````````````````````````````
+```````````````````````
 There is a specific logger that can be activated in order to have details about the deduplication process : switch `dojo.specific-loggers.deduplication` to debug in settings.py.
 
 Deduplication - APIv2 parameters

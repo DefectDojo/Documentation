@@ -29,7 +29,7 @@ This is the name of any project, program, or product that you are currently test
 
 
 Environments
-------------------------
+------------
 
 These describe the environment that was tested in a particular Test.
 

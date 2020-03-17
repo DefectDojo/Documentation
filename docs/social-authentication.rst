@@ -105,7 +105,7 @@ Once the user signs in, it will try to match the UPN of the user to an existing 
 
 
 Gitlab OAuth2 Configuration
--------------------------------------------
+---------------------------
 In a similar fashion to that of Google and OKTA, using Gitlab as a OAuth2 provider carries the same attributes and a similar procedure. Follow along below.
 
 1. Navigate to your Gitlab settings page and got to the Applications section
