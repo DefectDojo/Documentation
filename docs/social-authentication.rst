@@ -2,6 +2,34 @@ Setting up Social Authentication via OAuth2 Providers
 =====================================================
 
 
+Auth0 OAuth2 Configuration
+--------------------------
+
+In the same way as with other Identiy-Providers, it's now possible to leverage Auth0 to authenticate users on DefectDojo.
+
+1. Inside your Auth0 dashboard create a new application (Applications / Create Application / Single Page Web Application).
+
+2. On the new application set the following fields:
+
+   * Name: "Defectdojo"
+   * Allowed Callback URLs: "https://the_hostname_you_have_dojo_deployed:your_server_port/complete/auth0/"
+
+3. Copy the following info from the application:
+
+   * Domain
+   * Client ID
+   * Client Secret
+
+3. Now, edit the dojo/settings.py file and edit/replace the following information:
+
+  * DD_SOCIAL_AUTH_AUTH0_OAUTH2_ENABLED=True
+  * DD_SOCIAL_AUTH_AUTH0_KEY=(str, '**YOUR_CLIENT_ID_FROM_STEP_ABOVE**'),
+  * DD_SOCIAL_AUTH_AUTH0_SECRET=(str, '**YOUR_CLIENT_SECRET_FROM_STEP_ABOVE**'),
+  * DD_SOCIAL_AUTH_AUTH0_DOMAIN=(str, '**YOUR_AUTH0_DOMAIN_FROM_STEP_ABOVE**'),
+
+5. Restart DefectDojo, and you should now see a **Login with Auth0** button on the login page.
+
+
 Google
 ------
 
@@ -92,7 +120,7 @@ Once the user signs in, it will try to match the UPN of the user to an existing 
 
   * http://localhost:8080/complete/azuread-tenant-oauth2/  
   * **OR**   
-  * http://the_hostname_you_have_dojo_deployed:your_server_port/complete/azuread-tenant-oauth2/
+  * https://the_hostname_you_have_dojo_deployed:your_server_port/complete/azuread-tenant-oauth2/
 
 4. Now, edit the dojo/settings.py file and edit/replace the following information:
 
@@ -118,7 +146,7 @@ In a similar fashion to that of Google and OKTA, using Gitlab as a OAuth2 provid
 
 3. For the Redirect URI, enter the DefectDojo URL with the following format
 
-  * http://the_hostname_you_have_dojo_deployed:your_server_port/complete/gitlab/
+  * https://the_hostname_you_have_dojo_deployed:your_server_port/complete/gitlab/
 
 4. Now, edit the dojo/settings.py file and edit/replace the following information:
 
@@ -127,7 +155,7 @@ In a similar fashion to that of Google and OKTA, using Gitlab as a OAuth2 provid
   * DD_SOCIAL_AUTH_GITLAB_API_URL=(str, '**https://gitlab.com**'),
   * DD_SOCIAL_AUTH_GITLAB_OAUTH2_ENABLED = **True**
 
-5. Restart your Dojo, and you should now see a **Login with Gitlab** button on the login page which should *magically* work
+5. Restart DefectDojo, and you should now see a **Login with Gitlab** button on the login page.
 
 
 User Permissions
