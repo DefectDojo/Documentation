@@ -46,7 +46,7 @@ These can be any sort of distinguishing characteristic about the type of testing
 	* API test
 
 Environments
-************************
+************
 These describe the environment that was tested during a particular Engagement.
 
 *Examples*
