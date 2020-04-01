@@ -101,7 +101,7 @@ Hadolint
 Hadolint Dockerfile scan in json format.
 
 Harbor Vulnerability
---------
+--------------------
 Import findings from Harbor registry container scan: https://github.com/goharbor/harbor
 
 Fortify
