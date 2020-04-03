@@ -622,9 +622,10 @@ Configurations in Dojo
 Adding JIRA to Dojo
  1. Click 'JIRA' from the left hand menu.
  2. Select 'Add Configuration' from the drop-down.
- 3. To obtain the 'open status key' and 'closed status key' visit https://<**YOUR JIRA URL**>/rest/api/latest/issue/<**ANY VALID ISSUE KEY**>/transitions?expand=transitions.fields
- 4. The 'id' for 'Todo' should be filled in as the 'open status key'
- 5. The 'id' for 'Done' should be filled in as the 'closed status key'
+ 3. For the password, you need to generate an `API token for Jira <https://id.atlassian.com/manage/api-tokens>`_ to use as password
+ 4. To obtain the 'open status key' and 'closed status key' visit https://<**YOUR JIRA URL**>/rest/api/latest/issue/<**ANY VALID ISSUE KEY**>/transitions?expand=transitions.fields
+ 5. The 'id' for 'Todo' should be filled in as the 'open status key'
+ 6. The 'id' for 'Done' should be filled in as the 'closed status key'
 
  To obtain 'epic name id':
  If you have admin access to JIRA:
