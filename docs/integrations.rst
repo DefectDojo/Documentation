@@ -116,6 +116,10 @@ Gosec Scanner
 -------------
 Import Gosec Scanner findings in JSON format.
 
+Gitleaks
+--------
+Import Gitleaks findings in JSON format.
+
 IBM AppScan DAST
 ----------------
 XML file from IBM App Scanner.
