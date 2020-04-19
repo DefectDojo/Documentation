@@ -55,6 +55,38 @@ Using the text-editor of your choice, change ``DEBUG`` in django-DefectDojo/dojo
 
   `DEBUG = False` 
 
+**Configure external database**
+
+If you host your DefectDojo into AWS and you decide to use their managed database service (AWS RDS), you will have to do the following configuration updates:
+
+1) `Download the root certificate <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html>`_ to encrypt traffic between DefectDojo and the database
+2) Update your Dockerfile to add the SSL certificate to the container
+
+.. code-block:: console
+   :caption: Dockerfile.django
+
+   COPY rds-ca-2019-root.pem /etc/ssl/certs/rds-ca-2019-root.pem
+
+3) Update Django settings to use encrypted connection to the database (Changes highlighted below)
+
+.. code-block:: python
+   :caption: dojo/settings/settings.dist.py
+   :emphasize-lines: 4-6
+
+       DATABASES = {
+           'default': env.db('DD_DATABASE_URL')
+       }
+       DATABASES['default']['OPTIONS'] = {
+       'ssl': {'ca': '/etc/ssl/certs/rds-ca-2019-root.pem'}
+       }
+   else:
+       DATABASES = {
+           'default': {
+
+4) Update the environment variables for the database connection: *DD_DATABASE_URL* or *DD_DATABASE_HOST*, *DD_DATABASE_PORT*, *DD_DATABASE_NAME*, *DD_DATABASE_USER* and *DD_DATABASE_PASSWORD*.
+
+Note: This configuration can be adapted to other cloud providers.
+
 **Start Celery and Beats**
 
 From inside the django-DefectDojo/ directory execute:
