@@ -100,6 +100,10 @@ In the **Authentication** section of settings.py, set **DD_OKTA_OAUTH_ENABLED** 
 .. _OKTA Account Creation: https://www.okta.com/developer/signup/
 
 
+If during the login process you get the following error: *The 'redirect_uri' parameter must be an absolute URI that is whitelisted in the client app settings.* and the `redirect_uri` HTTP GET parameter starts with `http://` instead of `https://` you need to add **SOCIAL_AUTH_REDIRECT_IS_HTTPS = True** in the **Authentication** section of settings.py.
+
+
+
 Azure Active Directory Tenant Configuration
 -------------------------------------------
 You can now use your corporate Azure Active Directory to authenticate users to Defect Dojo.
