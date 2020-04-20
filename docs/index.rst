@@ -24,9 +24,9 @@ While traceability and metrics are the ultimate end goal, DefectDojo is a bug tr
 DefectDojo is based on a model that allows the ultimate flexibility in your test tracking needs.
 
 * Working in DefectDojo starts with a ``Product Type``.
-* Each Product Type can have one of more ``Products``.
+* Each Product Type can have one or more ``Products``.
 * Each Product can have one or more ``Engagements``.
-* Each Engagement can have one more ``Tests``.
+* Each Engagement can have one or more ``Tests``.
 * Each Test can have one or more ``Findings``.
 
 .. image:: /_static/DD-Hierarchy.png
