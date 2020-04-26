@@ -59,6 +59,11 @@ In the **Authentication** section of settings.py, set **DD_GOOGLE_OAUTH_ENABLED*
 
 .. image:: /_static/google_5.png
 
+To authorize users you will need to set the following:
+  * SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_DOMAINS = ['example.com', 'example.org']
+or
+  * SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_EMAILS = ['email@example.com']
+
 .. _Google Developers Console: https://console.developers.google.com
 
 
