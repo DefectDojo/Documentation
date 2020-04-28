@@ -82,6 +82,11 @@ Checkmarx
 ---------
 Detailed XML Report
 
+Choctaw Hog parser
+------------------
+From: https://github.com/newrelic/rusty-hog
+Import the JSON output.
+
 DawnScanner
 -----------
 Import report in JSON generated with -j option
