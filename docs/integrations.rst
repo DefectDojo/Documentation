@@ -203,7 +203,8 @@ Import results from the PHP Symfony Security Checker.
 
 Qualys Scan
 -----------
-Qualys output files can be imported in XML format.
+Qualys output files can be imported in API XML format.
+Qualys output files can be imported in WebGUI XML format.
 
 Qualys Webapp Scan
 ------------------
