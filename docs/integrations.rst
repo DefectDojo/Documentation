@@ -129,6 +129,10 @@ Gitleaks
 --------
 Import Gitleaks findings in JSON format.
 
+GitLab SAST Report
+------------------
+Import SAST Report vulnerabilities in JSON format.
+
 IBM AppScan DAST
 ----------------
 XML file from IBM App Scanner.
