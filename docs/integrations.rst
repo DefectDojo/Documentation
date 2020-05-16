@@ -45,6 +45,10 @@ Brakeman Scan
 -------------
 Import Brakeman Scanner findings in JSON format.
 
+BugCrowd Scan
+-------------
+Import BugCrowd scanner reports in CSV format.
+
 Bundler-Audit
 -------------
 Import the text output generated with bundle-audit check
