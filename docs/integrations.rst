@@ -138,7 +138,7 @@ GitLab SAST Report
 Import SAST Report vulnerabilities in JSON format.
 
 Github Vulnerability
-------------------
+--------------------
 Import findings from Github vulnerability scan: https://help.github.com/en/github/managing-security-vulnerabilities
 
 IBM AppScan DAST
