@@ -167,10 +167,6 @@ In a similar fashion to that of Google and OKTA, using Gitlab as a OAuth2 provid
   * DD_SOCIAL_AUTH_GITLAB_API_URL=(str, '**https://gitlab.com**'),
   * DD_SOCIAL_AUTH_GITLAB_OAUTH2_ENABLED = **True**
 
-  Additionally, if you want to import your Gitlab projects as DefectDojo products, add the following line, still in dojo/settings.py:
-  
-  * DD_SOCIAL_AUTH_GITLAB_PROJECT_AUTO_IMPORT = **True**
-
 5. Restart DefectDojo, and you should now see a **Login with Gitlab** button on the login page.
 
 
@@ -180,7 +176,6 @@ User Permissions
 When a new user is created via the social-auth, the default permissions are only active. This means that the newly created user does not have access to add, edit, nor delete anything within DefectDojo. To circumvent that, a custom pipeline was added (dojo/pipline.py/modify_permissions) to elevate new users to staff. This can be disabled by setting ‘is_staff’ equal to False. Similarly, for an admin account, simply add the following to the modify_permissions pipeline:
 	is_superuser  = True
 
-Exception for Gitlab OAuth2: with DD_SOCIAL_AUTH_GITLAB_PROJECT_AUTO_IMPORT set to True in dojo/settings.py, where a new user is created via the Gitlab social-auth, he has one permission: add_engagement. It allows him to create further engagements on his products via API v1.
 
 Other Providers
 ---------------
