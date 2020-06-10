@@ -26,6 +26,7 @@ Assumes running as root or using sudo command for the below.
   source ./bin/activate
 
 **Install Dojo**
+
 .. warning::
    The setup.bash installation method will be EOL on 2020-12-31
 
