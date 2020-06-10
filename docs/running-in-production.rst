@@ -27,6 +27,9 @@ Assumes running as root or using sudo command for the below.
 
 **Install Dojo**
 
+.. warning::
+   The setup.bash installation method will be EOL on 2020-12-31
+
 .. code-block:: console
 
   cd django-DefectDojo/setup
