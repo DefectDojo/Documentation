@@ -603,6 +603,23 @@ Custom reports allow you to select specific components to be added to the report
 
 The custom report workflow takes advantage of the same asynchronous process described above.
 
+Slack integration
+-----------------
+
+Scopes
+------
+The following scopes have to be granted.
+
+.. image:: _static/slack_scopes.png
+   :alt: Slack OAuth scopes
+
+Token
+-----
+The bot token has to be chosen and put in your System Settings
+
+.. image:: _static/slack_tokens.png
+   :alt: Slack token
+
 JIRA Integration
 ----------------
 
