@@ -170,6 +170,32 @@ In a similar fashion to that of Google and OKTA, using Gitlab as a OAuth2 provid
 5. Restart DefectDojo, and you should now see a **Login with Gitlab** button on the login page.
 
 
+SAML 2.0
+--------
+In a similar direction OAuth, this SAML addition provides a more secure perogative to SSO. 
+For definitions of terms used and more information, see the plugin `plugin homepage`_
+
+.. _plugin homepage: https://github.com/fangli/django-saml2-auth
+
+1. Edit the dojo/settings.py file: 
+  
+  * DD_SAML2_ENABLED=(bool, **True**),
+  * Find the SAML2_AUTH dictionary in the Authentication section
+
+2. Navigate to your SAML IdP and find your metadata
+  
+  * If the metadata can be accessed from a url, try the METADATA_AUTO_CONF_URL
+  * Otherwise, downlaod a copy of the metadata into an xml file, and list the path in METADATA_LOCAL_FILE_PATH
+
+3. Choose a name for your application and specify it with your SAML IdP
+
+4. Fill in the ASSERTION_URL and IDENTITY_ID and make sure the same URLs are specified with your SAML IdP
+
+  * **Note:** The specific field name these values will be different with varying providers.
+
+5. Restart DefectDojo, and you should now see a **Login with SAML** button on the login page.
+
+
 User Permissions
 ----------------
 
