@@ -238,11 +238,30 @@ Snyk
 ----
 Snyk output file (snyk test --json > snyk.json) can be imported in JSON format.
 
-SonarQube
+SonarQube Scan (Aggregates findings per cwe, title, description, file_path.)
 ---------
 SonarQube output file can be imported in HTML format.
 
 To generate the report, see https://github.com/soprasteria/sonar-report
+
+Version: >= 1.1.0
+
+SonarQube Scan Detailed (mport all findings from sonarqube html report.)
+---------
+SonarQube output file can be imported in HTML format.
+
+To generate the report, see https://github.com/soprasteria/sonar-report
+
+Version: >= 1.1.0
+
+SonarQube API Import
+---------
+SonarQube API will be accessed to gather the report. No report file required.
+
+Follow below steps to setup API Import:
+1)Configure the Sonarqube Authentication details by navigating to Configuration->Tool Configuration. Note the url should be in the formation of http://<sonarqube_hostname>/api. Select the tool type to SonarQube. 
+2)In the Product settings fill the details for the SonarQube Project Key (Key name can be found by navigating to a specific project and selecting the value from the url http://<sonarqube_host>/dashboard?id=<key_name>
+3) Once all of the above setting are made , the API Import should be able to auto import all vulnerability information from the sonarqube instance.
 
 SpotBugs
 --------
