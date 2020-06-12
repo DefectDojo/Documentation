@@ -239,7 +239,7 @@ Snyk
 Snyk output file (snyk test --json > snyk.json) can be imported in JSON format.
 
 SonarQube Scan (Aggregates findings per cwe, title, description, file_path.)
----------
+----------------------------------------------------------------------------
 SonarQube output file can be imported in HTML format.
 
 To generate the report, see https://github.com/soprasteria/sonar-report
@@ -247,7 +247,7 @@ To generate the report, see https://github.com/soprasteria/sonar-report
 Version: >= 1.1.0
 
 SonarQube Scan Detailed (mport all findings from sonarqube html report.)
----------
+------------------------------------------------------------------------
 SonarQube output file can be imported in HTML format.
 
 To generate the report, see https://github.com/soprasteria/sonar-report
@@ -255,7 +255,7 @@ To generate the report, see https://github.com/soprasteria/sonar-report
 Version: >= 1.1.0
 
 SonarQube API Import
----------
+--------------------
 SonarQube API will be accessed to gather the report. No report file required.
 
 Follow below steps to setup API Import:
