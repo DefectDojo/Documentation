@@ -213,6 +213,16 @@ PHP Symfony Security Checker
 ----------------------------
 Import results from the PHP Symfony Security Checker.
 
+Probely
+-------
+Synchronize Probely Plus findings with DefectDojo.
+
+To setup this integration set the DefectDojo URL and API key on the Integrations page on Probely. Then,  select which Product, Engagement, and, optionally, the Test you want to synchronize to.
+
+Probely also supports non-public DefectDojo instances; please reach us out at https://probely.com/ for help.
+
+For detailed instructions on how to configure Probely and DefectDojo, see https://help.probely.com/en/articles/3811515-how-to-integrate-probely-with-defectdojo
+
 Qualys Scan
 -----------
 Qualys output files can be imported in API XML format.
