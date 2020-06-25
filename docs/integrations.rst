@@ -141,6 +141,10 @@ Github Vulnerability
 --------------------
 Import findings from Github vulnerability scan: https://help.github.com/en/github/managing-security-vulnerabilities
 
+HuskyCI Report
+--------------
+Import JSON reports from [HuskyCI](https://github.com/globocom/huskyCI)
+
 IBM AppScan DAST
 ----------------
 XML file from IBM App Scanner.
