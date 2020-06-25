@@ -341,6 +341,10 @@ Zed Attack Proxy
 ----------------
 ZAP XML report format.
 
+ESLint
+------
+ESLint Json report format (-f json)
+
 The importers analyze each report and create new Findings for each item reported.  DefectDojo collapses duplicate
 Findings by capturing the individual hosts vulnerable.
 
