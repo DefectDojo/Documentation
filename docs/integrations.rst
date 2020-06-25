@@ -62,7 +62,7 @@ Burp Enterprise Scan
 Import HTML reports from Burp Enterprise Edition
 
 CCVS Report
-----------
+-----------
 Import JSON reports from [CCVS API](https://github.com/William-Hill-Online/CCVS-API)
 
 Clair Scan
