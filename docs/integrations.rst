@@ -109,13 +109,9 @@ The Finding Packaging Format (FPF) from OWASP Dependency Track can be imported i
 
 See here for more info on this JSON format: https://docs.dependencytrack.org/integrations/file-formats/
 
-Hadolint
---------
-Hadolint Dockerfile scan in json format.
-
-Harbor Vulnerability
---------------------
-Import findings from Harbor registry container scan: https://github.com/goharbor/harbor
+ESLint
+------
+ESLint Json report format (-f json)
 
 Fortify
 --------
@@ -124,6 +120,14 @@ Import Findings from XML file format.
 Generic Findings Import
 -----------------------
 Import Generic findings in CSV format.
+
+Hadolint
+--------
+Hadolint Dockerfile scan in json format.
+
+Harbor Vulnerability
+--------------------
+Import findings from Harbor registry container scan: https://github.com/goharbor/harbor
 
 JFrogXRay
 ----------
@@ -345,9 +349,6 @@ Zed Attack Proxy
 ----------------
 ZAP XML report format.
 
-ESLint
-------
-ESLint Json report format (-f json)
 
 The importers analyze each report and create new Findings for each item reported.  DefectDojo collapses duplicate
 Findings by capturing the individual hosts vulnerable.
