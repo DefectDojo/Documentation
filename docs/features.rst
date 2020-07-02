@@ -331,6 +331,9 @@ Automatically Flag Duplicate Findings
     Dojo deduplicates findings by comparing endpoints, CWE fields, and titles. If a two findings share a URL
     and have the same CWE or title, Dojo marks the less recent finding as a duplicate. When deduplication is enabled, a
     list of deduplicated findings is added to the engagement view.
+    The following image illustrates the option deduplication on engagement and deduplication on product level:
+    .. image:: /_static/deduplication.png
+        :alt: Deduplication on product and engagement level
 
 Similar Findings Visualization:
 
