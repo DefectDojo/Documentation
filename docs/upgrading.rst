@@ -53,13 +53,9 @@ This requires a (one-time) rebuild of the Django-Watson search index. Execute th
 
 `./manage.py buildwatson dojo.Finding`
 
-If you're using docker, you can open a shell to the running uwsgi container:
+If you're using docker:
 
-`docker-compose exec uwsgi bash`
-
-You will land in the `/app` directory and can now execute the same command to rebuild the watson index:
-
-`./manage.py buildwatson dojo.Finding`
+`docker-compose exec uwsgi ./manage.py buildwatson dojo.Finding`
 
 Upgrading to DefectDojo Version 1.5.0
 -------------------------------------
