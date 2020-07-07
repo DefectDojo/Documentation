@@ -33,8 +33,6 @@ DefectDojo is based on a model that allows the ultimate flexibility in your test
 
 The code is open source, and `available on github`_.
 
-A demo installation can be `found over at PythonAnywhere`_.
-
 .. _available on github: https://github.com/rackerlabs/django-DefectDojo
 .. _found over at PythonAnywhere: https://defectdojo.pythonanywhere.com
 
