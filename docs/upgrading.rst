@@ -41,6 +41,22 @@ Upgrade Celery to the latest version:
 
     ``pip install --upgrade celery``
 
+Upgrading to DefectDojo Version 1.7.0 
+-------------------------------------
+
+**What's New:**
+
+ * Updated search, you can now search for CVE-XXXX-YYYY
+ * Updated search index, fields added to index: 'id', 'title', 'cve', 'url', 'severity', 'description', 'mitigation', 'impact', 'steps_to_reproduce', 'severity_justification', 'references', 'sourcefilepath', 'sourcefile', 'hash_code', 'file_path', 'component_name', 'component_version', 'unique_id_from_tool'
+
+This requires a (one-time) rebuild of the Django-Watson search index. Execute the django command from the defect dojo installation directory:
+
+`./manage.py buildwatson dojo.Finding`
+
+If you're using docker:
+
+`docker-compose exec uwsgi ./manage.py buildwatson dojo.Finding`
+
 Upgrading to DefectDojo Version 1.5.0
 -------------------------------------
 
