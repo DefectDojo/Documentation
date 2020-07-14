@@ -320,6 +320,7 @@ JSON output of the ``twistcli`` tool. Example:
 
    ./twistcli images scan <REGISTRY/REPO:TAG> --address https://<SECURE_URL_OF_TWISTLOCK_CONSOLE> --user <USER> --details --output-file=<PATH_TO_SAVE_JSON_FILE>
 
+The CSV output from the UI is now also accepted.
 
 Visual Code Grepper (VCG)
 -------------------------
