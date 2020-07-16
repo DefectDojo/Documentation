@@ -888,9 +888,8 @@ The Product level JIRA notification configuration takes precendence over the glo
 When is the SLA notification job run?
 `````````````````````````````````````
 The default setup will trigger the SLA notification code at 7:30am on a daily basis, as defined in the ``settings.py`` file.
-
 ::
-       'compute-sla-age-and-notify': {
+    'compute-sla-age-and-notify': {
         'task': 'dojo.tasks.async_sla_compute_and_notify',
         'schedule': crontab(hour=7, minute=30),
     }
