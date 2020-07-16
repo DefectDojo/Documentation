@@ -901,3 +901,4 @@ You can of course change this default by modifying that stanza.
 You can also invoke the SLA notification function from the CLI. As an example, if run from docker-compose:
 ::
     $ docker-compose exec uwsgi /bin/bash -c 'python manage.py sla_notifications'
+
