@@ -847,9 +847,9 @@ After creating a Google Spreadsheet, users can review and edit Finding details u
 Service Level Agreement (SLA)
 -----------------------------
 
-DefectDojo allows you maintain your security SLA and automatically remind teams whenever a SLA is about to get breached, or breaches.
+DefectDojo allows you to maintain your security SLA and automatically remind teams whenever a SLA is about to get breached, or breaches.
 
-Simply indicate, for each severity, how many days teams have to remediate a finding.
+Simply indicate in the ``System Settings`` for each severity, how many days teams have to remediate a finding.
 
 .. image:: _static/sla_global_settings.png
    :alt: SLA configuration screen
@@ -857,7 +857,7 @@ Simply indicate, for each severity, how many days teams have to remediate a find
 SLA notification configuration
 ``````````````````````````````
 There are 4 variables in the settings.py file that you can configure, to act on the global behavior.
-By default, any findings across the instance that are in "Active, Verified" state will be considered for notifications.
+By default, any findings across the instance that are in ``Active, Verified`` state will be considered for notifications.
 
 .. code-block:: bash
 
@@ -868,9 +868,9 @@ By default, any findings across the instance that are in "Active, Verified" stat
 
 Setting both ``SLA_NOTIFY_ACTIVE`` and ``SLA_NOTIFY_ACTIVE_VERIFIED_ONLY`` to ``False`` will effectively disable SLA notifications.
 
-You can choose to only consider findings that have a JIRA issue linked to it. If so, please set ``SLA_NOTIFY_WITH_JIRA_ONLY`` to ``True``.
+You can choose to only consider findings that have a JIRA issue linked to them. If so, please set ``SLA_NOTIFY_WITH_JIRA_ONLY`` to ``True``.
 
-The ``SLA_NOTIFY_PRE_BREACH`` is expressed in days. Whenever a finding's "SLA countdown" (time to remediate) drops to this number, a notification would be sent everyday, as scheduled by the crontab in ``settings.py``.
+The ``SLA_NOTIFY_PRE_BREACH`` is expressed in days. Whenever a finding's "SLA countdown" (time to remediate) drops to this number, a notification would be sent everyday, as scheduled by the crontab in ``settings.py``, until the day it breaches.
 
 What notification channels for SLA notifications?
 `````````````````````````````````````````````````
@@ -881,7 +881,7 @@ The same as usual. You will notice that an extra `SLA breach` option is now pres
 
 SLA notification with JIRA
 ``````````````````````````
-You can choose to also send SLA notification as JIRA comments. You can enable it at the JIRA configuration level, or at the Product level.
+You can choose to also send SLA notification as JIRA comments, if your product is configured with JIRA. You can enable it at the JIRA configuration level or at the Product level.
 
 The Product level JIRA notification configuration takes precendence over the global JIRA notification configuration.
 
@@ -896,11 +896,13 @@ The default setup will trigger the SLA notification code at 7:30am on a daily ba
         'schedule': crontab(hour=7, minute=30),
     }
 
-.. note:: The celery containers are the ones most concerned with this configuration, so if you suspect things are not working as expected, make sure they have the latest version of your settings.py file.
+.. note:: The celery containers are the ones concerned with this configuration. If you suspect things are not working as expected, make sure they have the latest version of your settings.py file.
 
 You can of course change this default by modifying that stanza.
 
-You can also invoke the SLA notification function from the CLI. As an example, if run from docker-compose:
+Launching from the CLI
+``````````````````````
+You can also invoke the SLA notification function from the CLI. For example, if run from docker-compose:
 
 .. code-block:: bash
 
