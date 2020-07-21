@@ -856,7 +856,7 @@ Simply indicate in the ``System Settings`` for each severity, how many days team
 
 SLA notification configuration
 ``````````````````````````````
-There are 4 variables in the settings.py file that you can configure, to act on the global behavior.
+There are 5 variables in the settings.py file that you can configure, to act on the global behavior.
 By default, any findings across the instance that are in ``Active, Verified`` state will be considered for notifications.
 
 .. code-block:: bash
@@ -875,6 +875,9 @@ The ``SLA_NOTIFY_PRE_BREACH`` is expressed in days. Whenever a finding's "SLA co
 
 The ``SLA_NOTIFY_POST_BREACH`` lets you define in days how long you want to be kept notified about findings that have breached the SLA. Passed that number, notifications will cease.
 
+.. warning::
+   Be mindful of performance if you choose to have SLA notifications on non-verified findings, especially if you import a lot of findings through CI in 'active' state.
+
 What notification channels for SLA notifications?
 `````````````````````````````````````````````````
 The same as usual. You will notice that an extra `SLA breach` option is now present on the ``Notification`` page and also in the ``Product`` view.
@@ -890,7 +893,7 @@ The Product level JIRA notification configuration takes precendence over the glo
 
 When is the SLA notification job run?
 `````````````````````````````````````
-The default setup will trigger the SLA notification code at 7:30am on a daily basis, as defined in the ``settings.py`` file.
+The default setup will trigger the SLA notification code at 7:30am on a daily basis, as defined in the ``settings.py`` file. You can of course modify this schedule to your context.
 
 .. code-block:: python
 
