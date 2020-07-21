@@ -865,12 +865,15 @@ By default, any findings across the instance that are in ``Active, Verified`` st
     SLA_NOTIFY_ACTIVE_VERIFIED_ONLY = True
     SLA_NOTIFY_WITH_JIRA_ONLY = False
     SLA_NOTIFY_PRE_BREACH = 3
+    SLA_NOTIFY_POST_BREACH = 7
 
 Setting both ``SLA_NOTIFY_ACTIVE`` and ``SLA_NOTIFY_ACTIVE_VERIFIED_ONLY`` to ``False`` will effectively disable SLA notifications.
 
 You can choose to only consider findings that have a JIRA issue linked to them. If so, please set ``SLA_NOTIFY_WITH_JIRA_ONLY`` to ``True``.
 
 The ``SLA_NOTIFY_PRE_BREACH`` is expressed in days. Whenever a finding's "SLA countdown" (time to remediate) drops to this number, a notification would be sent everyday, as scheduled by the crontab in ``settings.py``, until the day it breaches.
+
+The ``SLA_NOTIFY_POST_BREACH`` lets you define in days how long you want to be kept notified about findings that have breached the SLA. Passed that number, notifications will cease.
 
 What notification channels for SLA notifications?
 `````````````````````````````````````````````````
