@@ -217,7 +217,7 @@ Probely
 -------
 Synchronize Probely Plus findings with DefectDojo.
 
-To setup this integration set the DefectDojo URL and API key on the Integrations page on Probely. Then,  select which Product, Engagement, and, optionally, the Test you want to synchronize to.
+To setup this integration set the DefectDojo URL and API key on the Integrations page on Probely. Then, select which Product, Engagement, and, optionally, the Test you want to synchronize to. The API key needs to belong to a staff user.
 
 Probely also supports non-public DefectDojo instances; please reach out to us at https://probely.com/ for help.
 
