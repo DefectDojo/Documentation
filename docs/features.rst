@@ -665,6 +665,9 @@ Adding JIRA to Dojo
 
  **In the above example 122 is the number needed**
 
+Troubleshooting JIRA integration
+JIRA actions are typically performed in the celery background process. Errors are logged as alerts/notifications to be seen on the top right of the Defect Dojo UI.
+
 Issue Consolidation
 -------------------
 
