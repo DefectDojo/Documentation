@@ -846,3 +846,74 @@ If a Google Spreadsheet is already created for the Test:
   :alt: Sync Google Sheet Button
 
 After creating a Google Spreadsheet, users can review and edit Finding details using the Google Sheet. If any change is done in the Google Sheet users can click the **Sync Google Sheet** button to get those changes into DefectDojo.
+
+Service Level Agreement (SLA)
+-----------------------------
+
+DefectDojo allows you to maintain your security SLA and automatically remind teams whenever a SLA is about to get breached, or breaches.
+
+Simply indicate in the ``System Settings`` for each severity, how many days teams have to remediate a finding.
+
+.. image:: _static/sla_global_settings.png
+   :alt: SLA configuration screen
+
+SLA notification configuration
+``````````````````````````````
+There are 5 variables in the settings.py file that you can configure, to act on the global behavior.
+By default, any findings across the instance that are in ``Active, Verified`` state will be considered for notifications.
+
+.. code-block:: bash
+
+    SLA_NOTIFY_ACTIVE = False
+    SLA_NOTIFY_ACTIVE_VERIFIED_ONLY = True
+    SLA_NOTIFY_WITH_JIRA_ONLY = False
+    SLA_NOTIFY_PRE_BREACH = 3
+    SLA_NOTIFY_POST_BREACH = 7
+
+Setting both ``SLA_NOTIFY_ACTIVE`` and ``SLA_NOTIFY_ACTIVE_VERIFIED_ONLY`` to ``False`` will effectively disable SLA notifications.
+
+You can choose to only consider findings that have a JIRA issue linked to them. If so, please set ``SLA_NOTIFY_WITH_JIRA_ONLY`` to ``True``.
+
+The ``SLA_NOTIFY_PRE_BREACH`` is expressed in days. Whenever a finding's "SLA countdown" (time to remediate) drops to this number, a notification would be sent everyday, as scheduled by the crontab in ``settings.py``, until the day it breaches.
+
+The ``SLA_NOTIFY_POST_BREACH`` lets you define in days how long you want to be kept notified about findings that have breached the SLA. Passed that number, notifications will cease.
+
+.. warning::
+   Be mindful of performance if you choose to have SLA notifications on non-verified findings, especially if you import a lot of findings through CI in 'active' state.
+
+What notification channels for SLA notifications?
+`````````````````````````````````````````````````
+The same as usual. You will notice that an extra `SLA breach` option is now present on the ``Notification`` page and also in the ``Product`` view.
+
+.. image:: _static/sla_notification_product_checkboxes.png
+   :alt: SLA notification checkbox
+
+SLA notification with JIRA
+``````````````````````````
+You can choose to also send SLA notification as JIRA comments, if your product is configured with JIRA. You can enable it at the JIRA configuration level or at the Product level.
+
+The Product level JIRA notification configuration takes precendence over the global JIRA notification configuration.
+
+When is the SLA notification job run?
+`````````````````````````````````````
+The default setup will trigger the SLA notification code at 7:30am on a daily basis, as defined in the ``settings.py`` file. You can of course modify this schedule to your context.
+
+.. code-block:: python
+
+    'compute-sla-age-and-notify': {
+        'task': 'dojo.tasks.async_sla_compute_and_notify',
+        'schedule': crontab(hour=7, minute=30),
+    }
+
+.. note:: The celery containers are the ones concerned with this configuration. If you suspect things are not working as expected, make sure they have the latest version of your settings.py file.
+
+You can of course change this default by modifying that stanza.
+
+Launching from the CLI
+``````````````````````
+You can also invoke the SLA notification function from the CLI. For example, if run from docker-compose:
+
+.. code-block:: bash
+
+    $ docker-compose exec uwsgi /bin/bash -c 'python manage.py sla_notifications'
+
