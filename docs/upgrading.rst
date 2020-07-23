@@ -41,21 +41,34 @@ Upgrade Celery to the latest version:
 
     ``pip install --upgrade celery``
 
-Upgrading to DefectDojo Version 1.7.0 
--------------------------------------
+Upgrading to DefectDojo Version 1.7.0_
+--------------------------------------
+
+.. _1.7.0: https://github.com/DefectDojo/django-DefectDojo/releases/tag/1.7.0
 
 **What's New:**
 
  * Updated search, you can now search for CVE-XXXX-YYYY
  * Updated search index, fields added to index: 'id', 'title', 'cve', 'url', 'severity', 'description', 'mitigation', 'impact', 'steps_to_reproduce', 'severity_justification', 'references', 'sourcefilepath', 'sourcefile', 'hash_code', 'file_path', 'component_name', 'component_version', 'unique_id_from_tool'
+ * Finding Endpoints now have individual statuses for easier tracking and mitigation
 
-This requires a (one-time) rebuild of the Django-Watson search index. Execute the django command from the defect dojo installation directory:
+A few scripts need to be ran one time to make these new additions work with existing installs.
 
-`./manage.py buildwatson dojo.Finding`
+1. Rebuild of the Django-Watson search index. Execute the django command from the defect dojo installation directory:
 
-If you're using docker:
+    `./manage.py buildwatson dojo.Finding`
 
-`docker-compose exec uwsgi ./manage.py buildwatson dojo.Finding`
+    If you're using docker with running containers:
+
+    `docker-compose exec uwsgi ./manage.py buildwatson dojo.Finding`
+
+2. Creation of Endpoint Status objects to be attached to Finding/Endpoint pairs
+
+    `./manage.py create_endpoint_status`
+
+    If you're using docker with running containers:
+
+    `docker-compose exec uwsgi create_endpoint_status`
 
 Upgrading to DefectDojo Version 1.5.0
 -------------------------------------
