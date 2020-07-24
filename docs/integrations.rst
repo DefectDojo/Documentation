@@ -23,6 +23,10 @@ AppSpider (Rapid7)
 ------------------
 Use the VulnerabilitiesSummary.xml file found in the zipped report download.
 
+AWS Security Hub
+----------------
+The JSON output from AWS Security Hub exported with the [`aws securityhub get-findings`](https://docs.aws.amazon.com/cli/latest/reference/securityhub/get-findings.html) command.
+
 AWS Scout2 Scanner
 -------------------
 JS file in scout2-report/inc-awsconfig/aws_config.js.
