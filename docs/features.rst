@@ -705,7 +705,7 @@ An option to delete duplicates can be found in the same menu, and the maximum nu
 
 Engagement configuration
 ''''''''''''''''''''''''
-When creating an engagement or later by editing the engagement, the "Deduplication on engagement" checkbox can be ticked.
+When creating an engagement or later by editing the engagement, the "Deduplication inside engagement" checkbox can be ticked.
 
 * If activated: Findings are only deduplicated within the same engagement. Findings present in different engagements cannot be duplicates
 
