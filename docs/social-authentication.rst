@@ -181,21 +181,23 @@ For definitions of terms used and more information, see the plugin `plugin homep
 
 .. _plugin homepage: https://github.com/fangli/django-saml2-auth
 
-1. Edit the dojo/settings.py file: 
+1. Navigate to your SAML IdP and find your metadata
+  
+2. Edit the dojo/settings.py file: 
   
   * DD_SAML2_ENABLED=(bool, **True**),
-  * Find the SAML2_AUTH dictionary in the Authentication section
+  * If the metadata can be accessed from a url, try the DD_SAML2_METADATA_AUTO_CONF_URL
+  * DD_SAML2_METADATA_AUTO_CONF_URL=(str, 'https://your_IdP.com/metadata.xml'),
+  * Otherwise, downlaod a copy of the metadata into an xml file, and list the path in DD_SAML2_METADATA_LOCAL_FILE_PATH
+  * DD_SAML2_METADATA_LOCAL_FILE_PATH=(str, '/path/to/your/metadata.xml'),
+  * Fill in DD_SAML2_ASSERTION_URL and DD_SAML2_ENTITY_ID to match the specs of you IdP.
+  * Configure the remaining optional fields to your desire.
 
-2. Navigate to your SAML IdP and find your metadata
+4. In the "Authentication" section of the settings.py, do the following
   
-  * If the metadata can be accessed from a url, try the METADATA_AUTO_CONF_URL
-  * Otherwise, downlaod a copy of the metadata into an xml file, and list the path in METADATA_LOCAL_FILE_PATH
-
-3. Choose a name for your application and specify it with your SAML IdP
-
-4. Fill in the ASSERTION_URL and IDENTITY_ID and make sure the same URLs are specified with your SAML IdP
-
-  * **Note:** The specific field name these values will be different with varying providers.
+  * Find the "SAML_2_AUTH" dictionary
+  * Comment out the metadata collection method that was not used.
+  * For example, if METADATA_AUTO_CONF_URL was used, comment the METADATA_LOCAL_FILE_PATH line. 
 
 5. Restart DefectDojo, and you should now see a **Login with SAML** button on the login page.
 
