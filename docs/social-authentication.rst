@@ -35,7 +35,7 @@ Google
 
 New to DefectDojo, a Google account can now be used for Authentication, Authorization, and a DefectDojo user. Upon login with a Google account, a new user will be created if one does not already exist. The criteria for determining whether a user exists is based on the users username. In the event a new user is created, the username is that of the Google address without the domain. Once created, the user creation process will not happen again as the user is recalled by its username, and logged in. In order to make the magic happen, a Google authentication server needs to be created. Closely follow the steps below to guarantee success.
 
-1. Navigate to the following address and either create a new account, or login with an existing one: `Google Developers Console`_ 
+1. Navigate to the following address and either create a new account, or login with an existing one: `Google Developers Console`_
 2. Once logged in, find the key shaped button labeled **Credentials** on the left side of the screen. Click **Create Credentials**, and choose **OAuth Client ID**:
 
 .. image:: /_static/google_1.png
@@ -89,7 +89,7 @@ In a similar fashion to that of Google, using OKTA as a OAuth2 provider carries 
 .. image:: /_static/okta_3.png
 
 5. Once all URLs are added, finish by clicking **Done**.
-6. Return to the **Dashboard** to find the **Org-URL**. Note this value as it will be important in the settings file. 
+6. Return to the **Dashboard** to find the **Org-URL**. Note this value as it will be important in the settings file.
 
 .. image:: /_static/okta_4.png
 
@@ -125,13 +125,13 @@ Once the user signs in, it will try to match the UPN of the user to an existing 
 2. Once you register an app, take note of the following information:
 
   * **Application (client) ID**
-  * **Directory (tenant) ID** 
-  * Under Certificates & Secrets, create a new **Client Secret** 
-  
+  * **Directory (tenant) ID**
+  * Under Certificates & Secrets, create a new **Client Secret**
+
 3. Under Authentication > Redirect URIs, add a *WEB* type of uri where the redirect points to
 
-  * http://localhost:8080/complete/azuread-tenant-oauth2/  
-  * **OR**   
+  * http://localhost:8080/complete/azuread-tenant-oauth2/
+  * **OR**
   * https://the_hostname_you_have_dojo_deployed:your_server_port/complete/azuread-tenant-oauth2/
 
 4. Now, edit the dojo/settings.py file and edit/replace the following information:
@@ -139,8 +139,8 @@ Once the user signs in, it will try to match the UPN of the user to an existing 
   * DD_SOCIAL_AUTH_AZUREAD_TENANT_OAUTH2_KEY=(str, '**YOUR_APPLICATION_ID_FROM_STEP_ABOVE**'),
   * DD_SOCIAL_AUTH_AZUREAD_TENANT_OAUTH2_SECRET=(str, '**YOUR_CLIENT_SECRET_FROM_STEP_ABOVE**''),
   * DD_SOCIAL_AUTH_AZUREAD_TENANT_OAUTH2_TENANT_ID=(str, '**YOUR_DIRECTORY_ID_FROM_STEP_ABOVE**''),
-  * AZUREAD_TENANT_OAUTH2_ENABLED = **True** 
-  
+  * AZUREAD_TENANT_OAUTH2_ENABLED = **True**
+
 5. Restart your Dojo, and you should now see a **Login with Azure AD** button on the login page which should *magically* work
 
 
@@ -168,7 +168,7 @@ In a similar fashion to that of Google and OKTA, using Gitlab as a OAuth2 provid
   * DD_SOCIAL_AUTH_GITLAB_OAUTH2_ENABLED = **True**
 
   Additionally, if you want to import your Gitlab projects as DefectDojo products, add the following line, still in dojo/settings.py:
-  
+
   * DD_SOCIAL_AUTH_GITLAB_PROJECT_AUTO_IMPORT = **True**
 
 5. Restart DefectDojo, and you should now see a **Login with Gitlab** button on the login page.
@@ -176,15 +176,15 @@ In a similar fashion to that of Google and OKTA, using Gitlab as a OAuth2 provid
 
 SAML 2.0
 --------
-In a similar direction OAuth, this SAML addition provides a more secure perogative to SSO. 
+In a similar direction OAuth, this SAML addition provides a more secure perogative to SSO.
 For definitions of terms used and more information, see the plugin `plugin homepage`_
 
 .. _plugin homepage: https://github.com/fangli/django-saml2-auth
 
 1. Navigate to your SAML IdP and find your metadata
-  
-2. Edit the dojo/settings.py file: 
-  
+
+2. Edit the dojo/settings.py file:
+
   * DD_SAML2_ENABLED=(bool, **True**),
   * If the metadata can be accessed from a url, try the DD_SAML2_METADATA_AUTO_CONF_URL
   * DD_SAML2_METADATA_AUTO_CONF_URL=(str, 'https://your_IdP.com/metadata.xml'),
@@ -194,13 +194,14 @@ For definitions of terms used and more information, see the plugin `plugin homep
   * Configure the remaining optional fields to your desire.
 
 4. In the "Authentication" section of the settings.py, do the following
-  
+
   * Find the "SAML_2_AUTH" dictionary
   * Comment out the metadata collection method that was not used.
-  * For example, if METADATA_AUTO_CONF_URL was used, comment the METADATA_LOCAL_FILE_PATH line. 
+  * For example, if METADATA_AUTO_CONF_URL was used, comment the METADATA_LOCAL_FILE_PATH line.
 
 5. Restart DefectDojo, and you should now see a **Login with SAML** button on the login page.
 
+NOTE: In a case if IDP is configured to use self signed certificates, than CA that signs certificates need to be specified by define environments variable REQUESTS_CA_BUNDLE  that points to the path of public CA certificate. 
 
 User Permissions
 ----------------
@@ -213,7 +214,6 @@ Exception for Gitlab OAuth2: with DD_SOCIAL_AUTH_GITLAB_PROJECT_AUTO_IMPORT set 
 Other Providers
 ---------------
 
-In an effort to accommodate as much generality as possible, it was decided to implement OAuth2 with the `social-auth`_ ecosystem as it has a library of compatible providers with documentation of implementation. Conveniently, each provider has an identical procedure of managing the authenticated responses and authorizing access within a given application. The only difficulty is creating a new authentication client with a given OAuth2 provider. 
+In an effort to accommodate as much generality as possible, it was decided to implement OAuth2 with the `social-auth`_ ecosystem as it has a library of compatible providers with documentation of implementation. Conveniently, each provider has an identical procedure of managing the authenticated responses and authorizing access within a given application. The only difficulty is creating a new authentication client with a given OAuth2 provider.
 
 .. _social-auth: https://github.com/python-social-auth/social-core/tree/master/social_core/backends
-
