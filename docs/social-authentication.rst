@@ -201,7 +201,7 @@ For definitions of terms used and more information, see the plugin `plugin homep
 
 5. Restart DefectDojo, and you should now see a **Login with SAML** button on the login page.
 
-NOTE: In a case if IDP is configured to use self signed certificates, than CA that signs certificates need to be specified by define environments variable REQUESTS_CA_BUNDLE  that points to the path of public CA certificate. 
+NOTE: In the case when IDP is configured to use self signed certificate, than CA needs to be specified by define environments variable REQUESTS_CA_BUNDLE  that points to the path of public CA certificate. 
 
 User Permissions
 ----------------
