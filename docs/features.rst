@@ -21,7 +21,7 @@ Product Manager
     can hold up to 200 characters.
 
 Technical Contact
-    Provides the ability to store who should be contacted in case of technical questions and/or difficulties.models.
+    Provides the ability to store who should be contacted in case of technical questions and/or difficulties.
     This field can hold up to 200 characters.
 
 Manager
@@ -31,7 +31,7 @@ Manager
 Date Created
     Stores when the Product was fist added to DefectDojo.
 
-Date Update
+Date Updated
     Stores when the Product was updated.
 
 Business Criticality
@@ -191,16 +191,16 @@ References
     The external documentation available for this flaw.
 
 Test
-    The test that is associated with this flaw.  The flaw belong to the test.
+    The test that is associated with this flaw.  The flaw belongs to the test.
 
 Is Template
-    Denotes of this finding is a template and can be reused.
+    Denotes if this finding is a template and can be reused.
 
 Active
     Denotes if this flaw is active or not.
 
 Verified
-    Denotes if this flaw has been manually verified by tester.
+    Denotes if this flaw has been manually verified by the tester.
 
 False Positive
     Denotes if this flaw has been deemed a false positive by the tester.
@@ -328,7 +328,7 @@ Visual representation of a Finding:
 Automatically Flag Duplicate Findings
     'De-duplication' is a feature that when enabled will compare findings to automatically identify duplicates.
     To enable de-duplication go to System Settings and check Deduplicate findings.
-    Dojo deduplicates findings by comparing endpoints, CWE fields, and titles. If a two findings share a URL
+    Dojo deduplicates findings by comparing endpoints, CWE fields, and titles. If two findings share a URL
     and have the same CWE or title, Dojo marks the less recent finding as a duplicate. When deduplication is enabled, a
     list of deduplicated findings is added to the engagement view.
     The following image illustrates the option deduplication on engagement and deduplication on product level:
@@ -388,7 +388,7 @@ Simple Metrics
         :alt: Simple Metrics
 
 Engineer Metrics
-    Provides graphs displaying information about a testers activity.
+    Provides graphs displaying information about a tester's activity.
 
     .. image:: _static/met_4.png
         :alt: Simple Metrics
@@ -531,8 +531,8 @@ Fedora/Centos: ::
     sudo yum install wkhtmltopdf
 
 .. Warning::
-    Version in debian/ubuntu repos have reduced functionality (because it compiled without the wkhtmltopdf QT
-    patches), such as adding outlines, headers, footers, TOC etc. To use this options you should install static binary
+    Version in debian/ubuntu repos has reduced functionality (because it's compiled without the wkhtmltopdf QT
+    patches), such as adding outlines, headers, footers, TOC etc. To use these options you should install a static binary
     from `wkhtmltopdf`_ site.
 
 Additionally, DefectDojo takes advantage of `python-PDFKit`_ to interact with the `wkhtmltopdf` commandline interface.
@@ -699,7 +699,7 @@ There are two ways to use the deduplication:
 
 * Deduplicate vulnerabilities in the same build/release. The vulnerabilities may be found by the same scanner (same scanner deduplication) or by different scanners (cross-scanner deduplication).
     * this helps analysis and assessment of the technical debt, especially if using many different scanners; although detecting duplicates across scanners is not trivial as it requires a certain standardization.
-* Track unique vulnerabilities across builds/releases so that defectDojo knows when it finds a vulnerabilities whether it has seen it before.
+* Track unique vulnerabilities across builds/releases so that defectDojo knows when it finds a vulnerability whether it has seen it before.
     * this allows you keep information attached to a given finding in a unique place: all further duplicate findings will point to the original one.
 
 Deduplication Configuration
@@ -736,7 +736,7 @@ The available algorithms are:
         * If your source tool has a reliable means of tracking a unique vulnerability across scans, this configuration will allow defectDojo to use this ability
     * Drawbacks:
         * Using this algorithm will not allow cross-scanner deduplication as other tools will have a different technical id.
-        * When the tool evolve, it may change the way the unique id is generated. In that case you won't be able to recognise that findings found in previous scans are actually the same as the new findings.
+        * When the tool evolves, it may change the way the unique id is generated. In that case you won't be able to recognise that findings found in previous scans are actually the same as the new findings.
 * `DEDUPE_ALGO_HASH_CODE`
     * the deduplication occurs based on finding.hash_code. The hash_code itself is configurable for each scanner in parameter `HASHCODE_FIELDS_PER_SCANNER`
 * `DEDUPE_ALGO_UNIQUE_ID_FROM_TOOL_OR_HASH_CODE`
@@ -749,7 +749,7 @@ The available algorithms are:
     * Legacy algorithm basically deduplicates based on: 
         * For static scanner:  ['title', 'cwe', 'line', 'file_path', 'description']
         * For dynamic scanner: ['title', 'cwe', 'line', 'file_path', 'description', 'endpoints']
-    * Note that there are some subtilities that may give unexpected results. Switch `dojo.specific-loggers.deduplication` to debug in settings.py to get more info in case of trouble.
+    * Note that there are some subtleties that may give unexpected results. Switch `dojo.specific-loggers.deduplication` to debug in settings.py to get more info in case of trouble.
 
 
 Hash_code computation configuration
