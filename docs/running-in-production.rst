@@ -1,6 +1,48 @@
 Running in Production
 =====================
 
+Improving your docker-compose performance
+-----------------------------------------
+
+Database
+^^^^^^^^
+Run your database elsewhere. Tweak your docker-compose configuration to that effect.
+
+Key processes
+^^^^^^^^^^^^^
+Per https://github.com/DefectDojo/django-DefectDojo/pull/2813, it is now easy to improve the uWSGI and celery worker performance.
+
+uWSGI
+"""""
+By default (except in ptvsd mode for debug purposes), uWSGI will handle 4 concurrent connections.
+
+Based on your resource settings, you can tweak:
+- `DD_UWSGI_NUM_OF_PROCESSES` for the number of spawned processes. (default 2)
+- `DD_UWSGI_NUM_OF_THREADS` for the number of threads in these processes. (default 2)
+
+For example, you may have 4 processes with 6 threads each, yielding 24 concurrent connections.
+
+Celery worker
+"""""""""""""
+By default, a single mono-process celery worker is spawned. This is fine until you start having many findings, and when async operations like deduplication start to kick in.
+
+The following variables will help a lot, while keeping a single celery worker container.
+- `DD_CELERY_WORKER_POOL_TYPE` will let you switch to `prefork`. (default `solo`)
+
+As you've enabled `prefork`, the following variables have to be used. The default are working fairly well, see the Dockerfile.django for in-file references.
+- `DD_CELERY_WORKER_AUTOSCALE_MIN` defaults to 2.
+- `DD_CELERY_WORKER_AUTOSCALE_MAX` defaults to 8.
+- `DD_CELERY_WORKER_CONCURRENCY` defaults to 8.
+- `DD_CELERY_WORKER_PREFETCH_MULTIPLIER` defaults to 128.
+
+You can execute the following command to see the configuration:
+
+`docker-compose exec celerybeat bash -c "celery -A dojo inspect stats"` in effect.
+
+
+.. warning::
+   From this point down, this page is slated to get a revamp
+
 This guide will walk you through how to setup DefectDojo for running in production using Ubuntu 16.04, nginx, and uwsgi.
 
 **Install, Setup, and Activate Virtualenv**
