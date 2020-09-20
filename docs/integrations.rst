@@ -69,6 +69,10 @@ CCVS Report
 -----------
 Import JSON reports from [CCVS API](https://github.com/William-Hill-Online/CCVS-API)
 
+Checkov Report
+--------------
+Import JSON reports of Infrastructure as Code vulnerabilities.
+
 Clair Scan
 ----------
 Import JSON reports of Docker image vulnerabilities.
