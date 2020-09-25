@@ -173,6 +173,10 @@ Kiuwan Scanner
 --------------
 Import Kiuwan Scan in CSV format. Export as CSV Results on Kiuwan.
 
+kube-bench Scanner
+------------------
+Import JSON reports of Kubernetes CIS benchmark scans.
+
 Microfocus Webinspect Scanner
 -----------------------------
 Import XML report
