@@ -169,8 +169,17 @@ Description
 Date
     The date the flaw was discovered.
 
+CVE
+    The Common Vulnerabilities and Exposures (CVE) associated with this flaw.
+
+CVSSV3
+    Common Vulnerability Scoring System version 3 (CVSSv3) score associated with this flaw.
+
 CWE
     The CWE number associated with this flaw.
+
+URL
+    External reference that provides more information about this flaw.
 
 Severity
     The severity level of this flaw (Critical, High, Medium, Low, Informational)
@@ -184,14 +193,23 @@ Mitigation
 Impact
     Text describing the impact this flaw has on systems, products, enterprise, etc.
 
+Steps to Reproduce
+    Text describing the steps that must be followed in order to reproduce the flaw / bug.
+
+Severity Justification
+    Text describing why a certain severity was associated with this flaw.
+
 Endpoints
     The hosts within the product that are susceptible to this flaw.
+
+Endpoint Status
+    The status of the endpoint associated with this flaw (Vulnerable, Mitigated, ...).
 
 References
     The external documentation available for this flaw.
 
 Test
-    The test that is associated with this flaw.  The flaw belongs to the test.
+    The test that is associated with this flaw.
 
 Is Template
     Denotes if this finding is a template and can be reused.
@@ -211,6 +229,9 @@ Duplicate
 Out Of Scope
     Denotes if this flaw falls outside the scope of the test and/or engagement.
 
+Under Review
+    Denotes is this flaw is currently being reviewed.
+
 Mitigated
     Denotes if this flaw has been fixed, by storing the date it was fixed.
 
@@ -220,11 +241,38 @@ Mitigated By
 Reporter
     Documents who reported the flaw.
 
+Reviewers
+    Document who reviewed the flaw.
+
 Last Reviewed
     Provides the date the flaw was last "touched" by a tester.
 
 Last Reviewed By
     Provides the person who last reviewed the flaw.
+
+Component Name
+    Name of the affected component (library name, part of a system, ...).
+
+Component Version
+    Version of the affected component.
+
+Found By
+    The name of the scanner that identified the flaw.
+
+Sonarqube Issue
+    The Sonarqube issue associated with this flaw.
+
+Defect Review Requested By
+    Document who requested a defect review for this flaw.
+
+Review Requested By
+    Document who requested a review for this finding.
+
+Jira Creation
+    The date a Jira issue was created from this finding.
+
+Jira Change
+    The date a Jira issue was last modified.
 
 Notes
     Stores information pertinent to the flaw or the mitigation.
