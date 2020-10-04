@@ -1,6 +1,12 @@
 DefectDojo API Documentation
 ============================
 
+ .. warning::
+    API v1 is deprecated and EOS is on 31-12-2020.
+    EOL is on 06-30-2021.
+    Please move to API v2 and raise issues for any unsupported operations.
+
+
 DefectDojo's API is created using `Tastypie`_.  The documentation of each endpoint is available within each DefectDojo
 installation at `/api/v1/doc/` and can be accessed by choosing the API Docs link on the user drop down menu in the
 header.
