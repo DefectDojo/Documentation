@@ -75,8 +75,8 @@ Feature Documentation
 
 .. _api-docs:
 
-API Documentation
------------------
+API and settings Documentation
+------------------------------
 
 .. toctree::
    :maxdepth: 2
@@ -84,6 +84,7 @@ API Documentation
 
    api-docs
    api-v2-docs
+   settings-docs
    
 .. _plugin-docs:
 
