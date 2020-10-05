@@ -1,6 +1,9 @@
 DefectDojo settings.py variables
 ================================
 
+.. note::
+   To complete
+
 * ``DD_AUTHORIZED_USERS_ALLOW_CHANGE``: Allows ``Active`` users (e.g regular users) to perform changes for the ``Products`` they are authorized. 
 * ``DD_AUTHORIZED_USERS_ALLOW_DELETE``: Allows ``Active`` users (e.g regular users) delete powers for the ``Products`` they are authorized. 
 * ``DD_SITE_URL``:
@@ -102,9 +105,9 @@ DefectDojo settings.py variables
 * ``DD_AUTHORIZED_USERS_ALLOW_CHANGE``:
 * ``DD_AUTHORIZED_USERS_ALLOW_DELETE``:
 * ``DD_AUTHORIZED_USERS_ALLOW_STAFF``:
-* ``DD_SLA_NOTIFY_ACTIVE``:
-* ``DD_SLA_NOTIFY_ACTIVE_VERIFIED_ONLY``:
-* ``DD_SLA_NOTIFY_WITH_JIRA_ONLY``:
-* ``DD_SLA_NOTIFY_PRE_BREACH``:
-* ``DD_SLA_NOTIFY_POST_BREACH``:
+* ``DD_SLA_NOTIFY_ACTIVE``: Consider "Active" findings for SLA notifications.
+* ``DD_SLA_NOTIFY_ACTIVE_VERIFIED_ONLY``: Consider "Active" and "Verified" findings only for SLA notifications.
+* ``DD_SLA_NOTIFY_WITH_JIRA_ONLY``: Considers findings that have a JIRA issue linked.
+* ``DD_SLA_NOTIFY_PRE_BREACH``: Number of days to notify before breaching the SLA.
+* ``DD_SLA_NOTIFY_POST_BREACH``: Number of days to keep notifying after the SLA has been breached.
 * ``DD_EMAIL_URL, default``:
