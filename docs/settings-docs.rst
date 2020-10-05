@@ -4,8 +4,8 @@ DefectDojo settings.py variables
 .. note::
    To complete
 
-* ``DD_AUTHORIZED_USERS_ALLOW_CHANGE``: Allows ``Active`` users (e.g regular users) to perform changes for the ``Products`` they are authorized. 
-* ``DD_AUTHORIZED_USERS_ALLOW_DELETE``: Allows ``Active`` users (e.g regular users) delete powers for the ``Products`` they are authorized. 
+* ``DD_AUTHORIZED_USERS_ALLOW_CHANGE``: Grants ``Active`` users (e.g regular users) the ability to perform changes for the ``Products`` they are authorized. 
+* ``DD_AUTHORIZED_USERS_ALLOW_DELETE``: Grants ``Active`` users (e.g regular users) delete powers for the ``Products`` they are authorized. 
 * ``DD_SITE_URL``:
 * ``DD_DEBUG``:
 * ``DD_DJANGO_METRICS_ENABLED``:
