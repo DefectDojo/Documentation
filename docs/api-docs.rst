@@ -2,7 +2,7 @@ DefectDojo API Documentation
 ============================
 
  .. warning::
-    API v1 is deprecated and EOS is on 31-12-2020.
+    API v1 is deprecated and EOS is on 12-31-2020.
     EOL is on 06-30-2021.
     Please move to API v2 and raise issues for any unsupported operations.
 
