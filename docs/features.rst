@@ -742,14 +742,16 @@ Slack integration
 -----------------
 
 Scopes
-------
+......
+
 The following scopes have to be granted.
 
 .. image:: _static/slack_scopes.png
    :alt: Slack OAuth scopes
 
 Token
------
+.....
+
 The bot token has to be chosen and put in your System Settings
 
 .. image:: _static/slack_tokens.png
@@ -817,6 +819,7 @@ DefectDojo allows users to tune out false positives by enabling False Positive H
 
 Deduplication
 -------------
+
 Deduplication is a process that allows DefectDojo to find out that a finding has already been imported.
 
 Upon saving a finding, defectDojo will look at the other findings in the product or the engagement (depending on the configuration) to find duplicates
@@ -834,15 +837,18 @@ There are two ways to use the deduplication:
     * this allows you keep information attached to a given finding in a unique place: all further duplicate findings will point to the original one.
 
 Deduplication Configuration
-```````````````````````````
+...........................
+
 Global configuration
 ''''''''''''''''''''
+
 The deduplication can be activated in "System Settings" by ticking "Deduplicate findings".
 
 An option to delete duplicates can be found in the same menu, and the maximum number of duplicates to keep for the same finding can be configured.
 
 Engagement configuration
 ''''''''''''''''''''''''
+
 When creating an engagement or later by editing the engagement, the "Deduplication within engagement only" checkbox can be ticked.
 
 * If activated: Findings are only deduplicated within the same engagement. Findings present in different engagements cannot be duplicates
@@ -852,7 +858,8 @@ When creating an engagement or later by editing the engagement, the "Deduplicati
 Note that deduplication can never occur accross different products.
 
 Deduplication algorithms
-````````````````````````
+........................
+
 The behavior of the deduplication can be configured for each parser in settings.dist.py (or settings.py after install) by configuring the `DEDUPLICATION_ALGORITHM_PER_PARSER` variable.
 
 
@@ -884,7 +891,8 @@ The available algorithms are:
 
 
 Hash_code computation configuration
-```````````````````````````````````
+...................................
+
 The hash_code computation can be configured for each parser using the parameter `HASHCODE_FIELDS_PER_SCANNER` in settings.dist.py. 
 
 The parameter `HASHCODE_ALLOWED_FIELDS` list the fields from finding table that were tested and are known to be working when used as a hash_code. Don't hesitate to enrich this list when required (the code is generic and allows adding new fields by configuration only)
@@ -904,21 +912,25 @@ Tips:
 
 
 Debugging deduplication
-```````````````````````
+.......................
+
 There is a specific logger that can be activated in order to have details about the deduplication process : switch `dojo.specific-loggers.deduplication` to debug in settings.py.
 
 Deduplication - APIv2 parameters
-````````````````````````````````
+................................
+
 * `skip_duplicates` : if true, duplicates are not inserted at all
 * `close_old_findings` : if true, findings  that are not duplicates and that were in the previous scan of the same type (example ZAP) for the same product (or engagement in case of  "Deduplication on engagement") and that are not present in the new scan are closed (Inactive, Verified, Mitigated)
 
 
 Google Sheets Sync
 ------------------
+
 With the Google Sheets sync feature, DefectDojo allow the users to export all the finding details of each test into a separate Google Spreadsheet. Users can review and edit finding details via Google Spreadsheets. Also, they can add new notes to findings and edit existing notes using the Google Spreadsheet. After reviewing and updating the finding details in the Google Spreadsheet, the user can import (sync) all the changes done via the Google Spreadsheet into DefectDojo database.
 
 Configuration
-`````````````
+.............
+
 Creating a project and a Service Account
  1. Go to the `Service Accounts page <https://console.developers.google.com/iam-admin/serviceaccounts/>`_.
  2. Create a new project for DefectDojo and select it.
@@ -963,7 +975,8 @@ Configurations in DefectDojo
 Admin has the privilege to revoke the access given to DefectDojo to access Google Sheets and Google Drive data by simply clicking the **Revoke Access** button.
 
 Using Google Sheets Sync Feature
-````````````````````````````````
+................................
+
 Before a user can export a test to a Google Spreadsheet, admin must Configure Google Sheets Sync and **Enable** sync feature.Depending on whether a Google Spreadsheet exists for the test or not, the User interface displayed will be different.
 
 If a Google Spreadsheet does not exist for the Test:
@@ -989,7 +1002,8 @@ Simply indicate in the ``System Settings`` for each severity, how many days team
    :alt: SLA configuration screen
 
 SLA notification configuration
-``````````````````````````````
+..............................
+
 There are 5 variables in the settings.py file that you can configure, to act on the global behavior.
 By default, any findings across the instance that are in ``Active, Verified`` state will be considered for notifications.
 
@@ -1013,20 +1027,23 @@ The ``SLA_NOTIFY_POST_BREACH`` lets you define in days how long you want to be k
    Be mindful of performance if you choose to have SLA notifications on non-verified findings, especially if you import a lot of findings through CI in 'active' state.
 
 What notification channels for SLA notifications?
-`````````````````````````````````````````````````
+.................................................
+
 The same as usual. You will notice that an extra `SLA breach` option is now present on the ``Notification`` page and also in the ``Product`` view.
 
 .. image:: _static/sla_notification_product_checkboxes.png
    :alt: SLA notification checkbox
 
 SLA notification with JIRA
-``````````````````````````
+..........................
+
 You can choose to also send SLA notification as JIRA comments, if your product is configured with JIRA. You can enable it at the JIRA configuration level or at the Product level.
 
 The Product level JIRA notification configuration takes precendence over the global JIRA notification configuration.
 
 When is the SLA notification job run?
-`````````````````````````````````````
+.....................................
+
 The default setup will trigger the SLA notification code at 7:30am on a daily basis, as defined in the ``settings.py`` file. You can of course modify this schedule to your context.
 
 .. code-block:: python
@@ -1041,10 +1058,10 @@ The default setup will trigger the SLA notification code at 7:30am on a daily ba
 You can of course change this default by modifying that stanza.
 
 Launching from the CLI
-``````````````````````
+......................
+
 You can also invoke the SLA notification function from the CLI. For example, if run from docker-compose:
 
 .. code-block:: bash
 
     $ docker-compose exec uwsgi /bin/bash -c 'python manage.py sla_notifications'
-
