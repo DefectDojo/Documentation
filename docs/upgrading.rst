@@ -41,6 +41,24 @@ Upgrade Celery to the latest version:
 
     ``pip install --upgrade celery``
 
+Upgrading to DefectDojo Version 1.9.0
+-------------------------------------
+**What's New:**
+- See release notes: https://github.com/DefectDojo/django-DefectDojo/releases
+- Search index tweaking index rebuild after upgrade:
+
+This requires a (one-time) rebuild of the Django-Watson search index. Execute the django command from the defect dojo installation directory:
+
+`./manage.py buildwatson`
+
+If you're using docker:
+
+`docker-compose exec uwsgi ./manage.py buildwatson`
+
+This can take a while depending on your hardware and the number of findings in your instance.
+
+
+
 Upgrading to DefectDojo Version 1.8.0
 -------------------------------------
 **What's New:**
