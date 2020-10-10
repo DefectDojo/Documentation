@@ -213,6 +213,12 @@ Endpoint Status
 References
     The external documentation available for this flaw.
 
+Thread ID
+    Thread ID
+
+Hash Code
+    A hash over a configurable set of fields that is used for findings deduplication.
+
 Test
     The test that is associated with this flaw.
 
@@ -309,6 +315,12 @@ Tags
 Created
     The date the finding was created inside DefectDojo.
 
+Param
+    Parameter used to trigger the issue (DAST).
+
+Payload
+    Payload used to attack the service / application and trigger the bug / problem.
+
 Age
     The number of days since the finding was created.
 
@@ -340,6 +352,8 @@ Notes
         
     If note-types are enabled, User has to first select the note-type from the "Note Type" drop down and then add the contents of the note.
 
+Images
+    Image(s) / Screenshot(s) related to the flaw.
 
 SAST specific
 .............
@@ -347,13 +361,13 @@ SAST specific
 For SAST, when source (start of the attack vector) and sink (end of the attack vector) information are available.
 
 Line
-    Line number.
+    Source line number of the attack vector.
 
 Line Number
     Deprecated will be removed, use line.
 
 File Path
-    File name with path.
+    Identified file(s) containing the flaw.
 
 SAST Source Object
     Source object (variable, function...) of the attack vector.
