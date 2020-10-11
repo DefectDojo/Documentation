@@ -609,7 +609,7 @@ an upcoming engagement, when someone mentions you in a comment, a scheduled repo
 The following notification methods currently exist:
 - Email
 - Slack
-- HipChat
+- Microsoft Teams
 - Alerts within DefectDojo
 
 You can set these notifications on a global scope (if you have administrator rights) or on a personal scope. For instance,
