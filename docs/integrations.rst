@@ -366,7 +366,11 @@ Import XML output of sslscan report.
 
 Sslyze Scan
 -----------
-XML Report of Sslyze-scan
+XML report of SSLyze version 2 scan
+
+SSLyze 3 Scan (JSON)
+--------------------
+JSON report of SSLyze version 3 scan
 
 Testssl Scan
 ----------------
