@@ -12,15 +12,15 @@ Assumes running as root or using sudo command for the below.
   pip install virtualenv
 
   cd /opt
-  
+
   virtualenv dojo
-  
+
   cd /opt/dojo
-  
+
   git clone https://github.com/DefectDojo/django-DefectDojo.git
-  
+
   useradd -m dojo
-  
+
   chown -R dojo /opt/dojo
 
   source ./bin/activate
@@ -56,7 +56,7 @@ Using the text-editor of your choice, change ``DEBUG`` in django-DefectDojo/dojo
 
 .. code-block:: console
 
-  `DEBUG = False` 
+  `DEBUG = False`
 
 **Configure external database**
 
@@ -136,28 +136,28 @@ Below we configure service files for systemd.  The commands follow, the config f
   $ cd /etc/systemd/system/
   $ sudo vi dojo.service
   [contents below]
-  
+
   $ sudo systemctl enable dojo
   $ sudo systemctl start dojo
   $ sudo systemctl status dojo
   [ensure it launched OK]
-  
+
   $ sudo vi celery-worker.service
   [contents below]
-  
+
   $ sudo systemctl enable celery-worker
   $ sudo systemctl start celery-worker
   $ sudo systemctl status celery-worker
   [ensure it launched OK]
-  
+
   $ sudo vi celery-beat.service
   [contents below]
-  
+
   $ sudo systemctl enable celery-beat
   $ sudo systemctl start celery-beat
   $ sudo systemctl status celery-beat
   [ensure it launched OK]
-  
+
 
 *NGINX Configuration*
 
@@ -166,9 +166,9 @@ Everyone feels a little differently about nginx settings, so here are the barebo
 .. code-block:: nginx
 
   upstream django {
-    server 127.0.0.1:8001; 
+    server 127.0.0.1:8001;
   }
-  
+
   server {
     listen 80;
     return 301 https://$host$request_uri;
@@ -177,16 +177,16 @@ Everyone feels a little differently about nginx settings, so here are the barebo
   server {
     listen 443;
     server_name <YOUR_SERVER_NAME>;
-    
+
     client_max_body_size 500m; # To accommodate large scan files
-    
+
     ssl_certificate           <PATH_TO_CRT>;
     ssl_certificate_key       <PATH_TO_KEY>;
-    
+
     ssl on;
-    
+
     <YOUR_SSL_SETTINGS> # ciphers, options, logging, etc
-    
+
     location /static/ {
         alias   <PATH_TO_DOJO>/django-DefectDojo/static/;
     }
@@ -212,15 +212,15 @@ dojo.service
   Requires=nginx.service mysql.service
   Before=nginx.service
   After=mysql.service
-  
+
   [Service]
   ExecStart=/bin/bash -c 'su - dojo -c "cd /opt/dojo/django-DefectDojo && source ../bin/activate && uwsgi --socket :8001 --wsgi-file wsgi.py --workers 7"'
   Restart=always
   RestartSec=3
-  #StandardOutput=syslog 
-  #StandardError=syslog  
+  #StandardOutput=syslog
+  #StandardError=syslog
   SyslogIdentifier=dojo
-  
+
   [Install]
   WantedBy=multi-user.target
 
@@ -232,15 +232,15 @@ celery-worker.service
   Description=celery workers for DefectDojo
   Requires=dojo.service
   After=dojo.service
-  
+
   [Service]
   ExecStart=/bin/bash -c 'su - dojo -c "cd /opt/dojo/django-DefectDojo && source ../bin/activate && celery -A dojo worker -l info --concurrency 3"'
   Restart=always
   RestartSec=3
-  #StandardOutput=syslog 
-  #StandardError=syslog  
+  #StandardOutput=syslog
+  #StandardError=syslog
   SyslogIdentifier=celeryworker
-  
+
   [Install]
   WantedBy=multi-user.target
 
@@ -252,17 +252,29 @@ celery-beat.service
   Description=celery beat for DefectDojo
   Requires=dojo.service
   After=dojo.service
-  
+
   [Service]
   ExecStart=/bin/bash -c 'su - dojo -c "cd /opt/dojo/django-DefectDojo && source ../bin/activate && celery beat -A dojo -l info"'
   Restart=always
   RestartSec=3
-  #StandardOutput=syslog 
-  #StandardError=syslog  
+  #StandardOutput=syslog
+  #StandardError=syslog
   SyslogIdentifier=celerybeat
-  
+
   [Install]
   WantedBy=multi-user.target
 
 
 *That's it!*
+
+*Monitoring*
+
+To expose Django statistics for Prometheus, using the text-editor of your choice, change ``DJANGO_METRICS_ENABLED`` to True in django-DefectDojo/dojo/settings/settings.py to:
+
+.. code-block:: console
+
+  `DJANGO_METRICS_ENABLED = True`
+
+Or export ``DD_DJANGO_METRICS_ENABLED`` with the same value.
+
+Prometheus endpoint than is available under the path: ``http://dd_server/django_metrics/metrics``
