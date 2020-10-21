@@ -117,6 +117,10 @@ The Finding Packaging Format (FPF) from OWASP Dependency Track can be imported i
 
 See here for more info on this JSON format: https://docs.dependencytrack.org/integrations/file-formats/
 
+DrHeader
+--------
+Import of JSON report from  https://github.com/Santandersecurityresearch/DrHeader
+
 ESLint
 ------
 ESLint Json report format (-f json)
