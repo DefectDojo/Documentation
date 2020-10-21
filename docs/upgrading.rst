@@ -44,6 +44,7 @@ Upgrade Celery to the latest version:
 Upgrading to DefectDojo Version 1.9.0
 -------------------------------------
 **What's New:**
+
 - See release notes: https://github.com/DefectDojo/django-DefectDojo/releases
 - Search index tweaking index rebuild after upgrade:
 
@@ -57,11 +58,24 @@ If you're using docker:
 
 This can take a while depending on your hardware and the number of findings in your instance.
 
+- **NOTE:**
+
+As a result of a breaking bug in 1.8.0 revolving around Endpoint_status objects, a corrective script may need to be ran
+
+`./manage.py create_endpoint_status`
+
+If you're using docker:
+
+`docker-compose exec uwsgi ./manage.py create_endpoint_status`
+
+This can take a while depending on your hardware and the number of findings in your instance.
+
 
 
 Upgrading to DefectDojo Version 1.8.0
 -------------------------------------
 **What's New:**
+
 - See release notes: https://github.com/DefectDojo/django-DefectDojo/releases
 - Improved search, which requires an index rebuild (https://github.com/DefectDojo/django-DefectDojo/pull/2861)
 
@@ -80,8 +94,8 @@ Upgrading to DefectDojo Version 1.7.0
 
 **What's New:**
 
- * Updated search, you can now search for CVE-XXXX-YYYY
- * Updated search index, fields added to index: 'id', 'title', 'cve', 'url', 'severity', 'description', 'mitigation', 'impact', 'steps_to_reproduce', 'severity_justification', 'references', 'sourcefilepath', 'sourcefile', 'hash_code', 'file_path', 'component_name', 'component_version', 'unique_id_from_tool'
+- Updated search, you can now search for CVE-XXXX-YYYY
+- Updated search index, fields added to index: 'id', 'title', 'cve', 'url', 'severity', 'description', 'mitigation', 'impact', 'steps_to_reproduce', 'severity_justification', 'references', 'sourcefilepath', 'sourcefile', 'hash_code', 'file_path', 'component_name', 'component_version', 'unique_id_from_tool'
 
 This requires a (one-time) rebuild of the Django-Watson search index. Execute the django command from the defect dojo installation directory:
 
@@ -96,26 +110,26 @@ Upgrading to DefectDojo Version 1.5.0
 
 **What's New:**
 
- * Updated UI with a new DefectDojo logo, default colors and CSS.
- * Updated Product views with tabs for Product Overview, Metrics, Engagements, Endpoints, Benchmarks (ASVS), and Settings to make it easier to navigate and manage your products.
- * New Product Information fields: Regulations, Criticality, Platform, Lifecycle, Origin, User Records, Revenue, External Audience, Internet Accessible
- * Languages pie chart on product overview, only supported through the API and Django admin, integrates with cloc analyzer
- * New Engagement type of CI/CD to support continual testing
- * Engagement shortcuts and ability to import findings and auto-create an engagement
- * Engagement labels for overdue, no tests and findings
- * New Contextual menus throughout DefectDojo and shortcuts to new findings and critical findings
- * Ability to merge a finding into a parent finding and either inactivate or delete the merged findings.
- * Report improvements and styling adjustment with the default option of HTML reports
- * SLA for remediation of severities based on finding criticality, for example critical findings remediated within 7 days. Configurable in System Settings.
- * Engagement Auto-Close Days in System Settings. Automatically close an engagement if open past the end date.
- * Ability to apply remediation advice based on CWE. For example XSS can be configured as a template so that it's consistent across all findings. Enabled in system settings.
- * Finding confidence field supported from scanners. First implementation in the Burp importer.
- * Goast importer for static analysis of Golang products
- * Celery status check on System Settings
- * Beta rules framework release for modifying findings on the fly
- * DefectDojo 2.0 API with Swagger support
- * Created and Modified fields on all major tables
- * Various bug fixes reported on Github
+- Updated UI with a new DefectDojo logo, default colors and CSS.
+- Updated Product views with tabs for Product Overview, Metrics, Engagements, Endpoints, Benchmarks (ASVS), and Settings to make it easier to navigate and manage your products.
+- New Product Information fields: Regulations, Criticality, Platform, Lifecycle, Origin, User Records, Revenue, External Audience, Internet Accessible
+- Languages pie chart on product overview, only supported through the API and Django admin, integrates with cloc analyzer
+- New Engagement type of CI/CD to support continual testing
+- Engagement shortcuts and ability to import findings and auto-create an engagement
+- Engagement labels for overdue, no tests and findings
+- New Contextual menus throughout DefectDojo and shortcuts to new findings and critical findings
+- Ability to merge a finding into a parent finding and either inactivate or delete the merged findings.
+- Report improvements and styling adjustment with the default option of HTML reports
+- SLA for remediation of severities based on finding criticality, for example critical findings remediated within 7 days. Configurable in System Settings.
+- Engagement Auto-Close Days in System Settings. Automatically close an engagement if open past the end date.
+- Ability to apply remediation advice based on CWE. For example XSS can be configured as a template so that it's consistent across all findings. Enabled in system settings.
+- Finding confidence field supported from scanners. First implementation in the Burp importer.
+- Goast importer for static analysis of Golang products
+- Celery status check on System Settings
+- Beta rules framework release for modifying findings on the fly
+- DefectDojo 2.0 API with Swagger support
+- Created and Modified fields on all major tables
+- Various bug fixes reported on Github
 
 **Upgrading to 1.5.0 requirements:**
 
@@ -177,11 +191,11 @@ Upgrading to DefectDojo Version 1.3.1
 
 **What's New:**
 
- * New importers for Contrast, Nikto and TruffleHog (finding secrets in git repos).
- * Improved merging of findings for dynamic and static importers
- * Markdown support for findings
- * HTML report improvements including support of Markdown.
- * System settings Celery status page to assist in debugging if Celery is functional.
+- New importers for Contrast, Nikto and TruffleHog (finding secrets in git repos).
+- Improved merging of findings for dynamic and static importers
+- Markdown support for findings
+- HTML report improvements including support of Markdown.
+- System settings Celery status page to assist in debugging if Celery is functional.
 
 **Upgrading to 1.3.1 requires:**
 
