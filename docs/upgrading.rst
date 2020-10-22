@@ -89,6 +89,25 @@ If you're using docker:
 
 This can take a while depending on your hardware and the number of findings in your instance.
 
+- **NOTE:**
+
+As a result of a breaking bug revolving around Endpoint_status objects, a corrective script will need to be ran after
+every dynamic scan imported through either API version.
+
+The script can be found  `here`_
+
+
+
+.. _here: https://github.com/DefectDojo/django-DefectDojo/blob/dev/dojo/management/commands/create_endpoint_status.py
+
+`./manage.py create_endpoint_status`
+
+If you're using docker:
+
+`docker-compose exec uwsgi ./manage.py create_endpoint_status`
+
+This can take a while depending on your hardware and the number of findings in your instance.
+
 Upgrading to DefectDojo Version 1.7.0 
 -------------------------------------
 
