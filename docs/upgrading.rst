@@ -45,10 +45,8 @@ Upgrading to DefectDojo Version 1.10.0
 --------------------------------------
 **What's New:**
 
-- See release notes: https://github.com/DefectDojo/django-DefectDojo/releases
-- JIRA Webhook now requires a secret in the URL for incoming requests, please configure a secret in 'System Settings'
-- In Defect Dojo: Go to System Settings and entere a JIRA Webhook secret, or click on the icon next to it to generate a random secret
-- In JIRA: Change webhook url from 'https://dojo.com/webhook' to 'https://dojo.com/jira/webhook/<secret>' where <secret> is the secret chosen in Defect Dojo.
+- See `release notes <https://github.com/DefectDojo/django-DefectDojo/releases>`
+- JIRA Webhook now can be configured to require a secret for incoming requests, please configure a secret in 'System Settings' (`PR 3082 <https://github.com/DefectDojo/django-DefectDojo/pull/3082>`)
 
 Upgrading to DefectDojo Version 1.9.0
 -------------------------------------
