@@ -111,3 +111,4 @@ DefectDojo settings.py variables
 * ``DD_SLA_NOTIFY_PRE_BREACH``: Number of days to notify before breaching the SLA.
 * ``DD_SLA_NOTIFY_POST_BREACH``: Number of days to keep notifying after the SLA has been breached.
 * ``DD_EMAIL_URL, default``:
+* ``DD_LOGGING_FORMAT``: If set to `json`, uwsgi and celery will log in json format. If not set, everything is as usual.

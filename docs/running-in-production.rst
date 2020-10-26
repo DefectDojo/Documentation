@@ -4,6 +4,12 @@ Running in Production
 Improving your docker-compose performance
 -----------------------------------------
 
+Uwsgi and celery logs
+^^^^^^^^^^^^^^^^^^^^^
+You may want to login your celery output and uwsgi as json to ease log processing as you ship logs to your central logging platform.
+
+Setting the ``DD_LOGGING_FORMAT`` environment variable to ``json`` will have celery (beat and worker) as well as uwsgi log in JSON format.
+
 Database
 ^^^^^^^^
 Run your database elsewhere. Tweak your docker-compose configuration to that effect.
