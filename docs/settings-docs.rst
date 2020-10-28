@@ -57,6 +57,7 @@ DefectDojo settings.py variables
 * ``DD_CELERY_BEAT_SCHEDULE_FILENAME``:
 * ``DD_CELERY_TASK_SERIALIZER``:
 * ``DD_FORCE_LOWERCASE_TAGS``:
+* ``DD_FOOTER_VERSION``: Optionally pass a custom version string displayed in the footer of all pages (base.html template). Defaults to the version configured in `django-DefectDojo/setup.py <https://github.com/DefectDojo/django-DefectDojo/blob/6258a8b73ecbe4c45fdd9929d5165ebed11f9021/setup.py#L7>`_
 * ``DD_MAX_TAG_LENGTH``:
 * ``DD_DATABASE_ENGINE``:
 * ``DD_DATABASE_HOST``:
