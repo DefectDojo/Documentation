@@ -25,5 +25,4 @@ Setup.bash Install (no longer maintained)
 
 Customizing settings
 ********************
-* You can add / change settings by adding a `local_settings.py` file to the `dojo/docker/extra_settings/` folder (release mode)
-* For more info on custom settings and use of custom settings during development, please see: [settings.py documentation](https://github.com/DefectDojo/django-DefectDojo/blob/master/dojo/settings/settings.py) and [extra settings](https://github.com/DefectDojo/django-DefectDojo/blob/master/docker/extra_settings/README.md)
+See [Settings](settings-docs.rst)
