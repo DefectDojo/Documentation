@@ -16,7 +16,7 @@ Kubernetes
 Setup.bash Install (no longer maintained)
 *****************************************
 .. warning::
-   This installation method will be EOL on 2020-12-31
+   This installation method will is EOL and will be removed on 2020-12-31
 
 * Go to https://github.com/DefectDojo/django-DefectDojo
 * Select the appropriate branch you're working on
