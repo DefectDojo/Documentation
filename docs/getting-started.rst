@@ -5,15 +5,15 @@ Docker Compose Install (recommended)
 ************************************
 * Go to https://github.com/DefectDojo/django-DefectDojo
 * Select the appropriate branch you're working on
-* Instructions in the `DOCKER.md` file at the root of the repository.
+* Instructions in the [`DOCKER.md`](https://github.com/DefectDojo/django-DefectDojo/blob/master/DOCKER.md) file at the root of the repository.
 
 Kubernetes
 **********
 * Go to https://github.com/DefectDojo/django-DefectDojo
 * Select the appropriate branch you're working on
-* Instructions in the `KUBERNETES.md` file at the root of the repository.
+* Instructions in the [`KUBERNETES.md`](https://github.com/DefectDojo/django-DefectDojo/blob/master/KUBERNETES.md) file at the root of the repository.
 
-Setup.bash Install 
+Setup.bash Install (no longer maintained)
 ******************
 .. warning::
    This installation method will be EOL on 2020-12-31
