@@ -41,6 +41,27 @@ Upgrade Celery to the latest version:
 
     ``pip install --upgrade celery``
 
+
+Upgrading to DefectDojo Version 1.9.1
+-------------------------------------
+**What's New:**
+
+- See release notes: https://github.com/DefectDojo/django-DefectDojo/releases
+
+- **NOTE:**
+
+As a result of a breaking bug in 1.8.0/1.9.0 revolving around Endpoint_status objects, a corrective script may need to be ran
+
+`./manage.py create_endpoint_status`
+
+If you're using docker:
+
+`docker-compose exec uwsgi ./manage.py create_endpoint_status`
+
+This can take a while depending on your hardware and the number of findings in your instance.
+
+
+
 Upgrading to DefectDojo Version 1.9.0
 -------------------------------------
 **What's New:**
