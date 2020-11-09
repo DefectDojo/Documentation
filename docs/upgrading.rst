@@ -42,7 +42,7 @@ Upgrade Celery to the latest version:
     ``pip install --upgrade celery``
 
 
-Upgrading to DefectDojo Version 1.10.0
+Upgrading to DefectDojo Version 1.9.2
 --------------------------------------
 **What's New:**
 
