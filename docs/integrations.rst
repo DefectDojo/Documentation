@@ -233,6 +233,10 @@ OpenVAS CSV
 -----------
 Import OpenVAS Scan in CSV format. Export as CSV Results on OpenVAS.
 
+Oss Review Toolkit
+-----------
+Import ORT Evaluated model reporter in JSON Format. (Example)[https://github.com/DefectDojo/sample-scan-files/blob/master/ort/evaluated-model-reporter-output.json]
+
 PHP Security Audit v2
 ---------------------
 Import PHP Security Audit v2 Scan in JSON format.
