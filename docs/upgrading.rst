@@ -56,7 +56,7 @@ Upgrading to DefectDojo Version 1.9.x
 
 - See release notes: https://github.com/DefectDojo/django-DefectDojo/releases
 
-- **NOTE:**
+**NOTE:**
 
 When upgrading from before 1.9.2, a corrective script may need to be ran
 
