@@ -31,3 +31,4 @@ jobs:
       - uses: ammaraskar/sphinx-action@master
         with:
           docs-folder: "docs/"
+          build-command:  "sphinx-build -nWT -b dummy . _build/html"
