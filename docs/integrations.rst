@@ -161,9 +161,9 @@ Github Vulnerability
 --------------------
 Import findings from Github vulnerability scan: https://help.github.com/en/github/managing-security-vulnerabilities
 
-Github v4 graphql query to fetch data:
+Github v4 graphql query to fetch data::
 
-``    query getVulnerabilitiesByOwner($owner: String!) {
+      query getVulnerabilitiesByOwner($owner: String!) {
       search(query: $owner, type: REPOSITORY, first: 100) {
         nodes {
           ... on Repository {
@@ -194,7 +194,7 @@ Github v4 graphql query to fetch data:
         }
       }
     }
-``
+
 
 HuskyCI Report
 --------------
