@@ -50,15 +50,15 @@ Upgrading to DefectDojo Version 1.10.0
 - JIRA Webhook now can be configured to require a secret for incoming requests, please configure a secret in 'System Settings' (`PR 3082 <https://github.com/DefectDojo/django-DefectDojo/pull/3082>`_)
 
 
-Upgrading to DefectDojo Version 1.9.1
+Upgrading to DefectDojo Version 1.9.x
 -------------------------------------
 **What's New:**
 
 - See release notes: https://github.com/DefectDojo/django-DefectDojo/releases
 
-- **NOTE:**
+**NOTE:**
 
-As a result of a breaking bug in 1.8.0/1.9.0 revolving around Endpoint_status objects, a corrective script may need to be ran
+When upgrading from before 1.9.2, a corrective script may need to be ran
 
 `./manage.py create_endpoint_status`
 
@@ -68,12 +68,6 @@ If you're using docker:
 
 This can take a while depending on your hardware and the number of findings in your instance.
 
-
-Upgrading to DefectDojo Version 1.9.0
--------------------------------------
-**What's New:**
-
-- See release notes: https://github.com/DefectDojo/django-DefectDojo/releases
 - Search index tweaking index rebuild after upgrade:
 
 This requires a (one-time) rebuild of the Django-Watson search index. Execute the django command from the defect dojo installation directory:
@@ -85,19 +79,6 @@ If you're using docker:
 `docker-compose exec uwsgi ./manage.py buildwatson`
 
 This can take a while depending on your hardware and the number of findings in your instance.
-
-- **NOTE:**
-
-As a result of a breaking bug in 1.8.0 revolving around Endpoint_status objects, a corrective script may need to be ran
-
-`./manage.py create_endpoint_status`
-
-If you're using docker:
-
-`docker-compose exec uwsgi ./manage.py create_endpoint_status`
-
-This can take a while depending on your hardware and the number of findings in your instance.
-
 
 
 Upgrading to DefectDojo Version 1.8.0
