@@ -151,6 +151,7 @@ Import findings from Github vulnerability scan: https://help.github.com/en/githu
 
 Github v4 graphql query to fetch data:
 
+.. code-block::
 query getVulnerabilitiesByOwner($owner: String!) {
   search(query: $owner, type: REPOSITORY, first: 100) {
     nodes {
@@ -182,6 +183,7 @@ query getVulnerabilitiesByOwner($owner: String!) {
     }
   }
 }
+.. code-block::
 
 HuskyCI Report
 --------------
