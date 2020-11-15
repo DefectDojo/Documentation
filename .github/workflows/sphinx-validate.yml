@@ -25,6 +25,6 @@ jobs:
         if: github.event_name != 'pull_request' && github.event_name != 'pull_request_target'
         uses: actions/checkout@v2
 
-    - uses: ammaraskar/sphinx-action@master
-      with:
-        docs-folder: "docs/"
+      - uses: ammaraskar/sphinx-action@master
+        with:
+          docs-folder: "docs/"
