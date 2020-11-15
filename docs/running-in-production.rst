@@ -8,7 +8,7 @@ Uwsgi and celery logs
 ^^^^^^^^^^^^^^^^^^^^^
 You may want to log messages produced by your celery beat and worker as well as uwsgi to json, to ease log processing as you ship logs to your central logging platform.
 
-Setting the ``DD_LOGGING_FORMAT`` environment variable to ``json_console`` for these containers will have them log in JSON format.
+Setting the ``DD_LOGGING_HANDLER`` environment variable to ``json_console`` for these containers will have them log in JSON format.
 
 Database
 ^^^^^^^^
