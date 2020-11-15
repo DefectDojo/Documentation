@@ -50,11 +50,29 @@ Upgrading to DefectDojo Version 1.10.0
 - A quickfix is to rename your own / customized `settings.py` or `settings.dist.py` to `local_settings.py`. 
 - Details of that PR: https://github.com/DefectDojo/django-DefectDojo/pull/3136
 
-Upgrading to DefectDojo Version 1.9.0
+Upgrading to DefectDojo Version 1.9.3
 -------------------------------------
+**This is a security release**
+  
+- See the `security advisory <https://github.com/DefectDojo/django-DefectDojo/security/advisories/GHSA-8q8j-7wc4-vjg5>`_
+- See `release notes <https://github.com/DefectDojo/django-DefectDojo/releases/tag/1.9.3>`_
+
 **What's New:**
 
 - See release notes: https://github.com/DefectDojo/django-DefectDojo/releases
+
+**NOTE:**
+
+When upgrading from before 1.9.2, a corrective script may need to be ran
+
+`./manage.py create_endpoint_status`
+
+If you're using docker:
+
+`docker-compose exec uwsgi ./manage.py create_endpoint_status`
+
+This can take a while depending on your hardware and the number of findings in your instance.
+
 - Search index tweaking index rebuild after upgrade:
 
 This requires a (one-time) rebuild of the Django-Watson search index. Execute the django command from the defect dojo installation directory:
@@ -66,19 +84,6 @@ If you're using docker:
 `docker-compose exec uwsgi ./manage.py buildwatson`
 
 This can take a while depending on your hardware and the number of findings in your instance.
-
-- **NOTE:**
-
-As a result of a breaking bug in 1.8.0 revolving around Endpoint_status objects, a corrective script may need to be ran
-
-`./manage.py create_endpoint_status`
-
-If you're using docker:
-
-`docker-compose exec uwsgi ./manage.py create_endpoint_status`
-
-This can take a while depending on your hardware and the number of findings in your instance.
-
 
 
 Upgrading to DefectDojo Version 1.8.0
