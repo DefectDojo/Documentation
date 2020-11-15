@@ -42,16 +42,14 @@ Upgrade Celery to the latest version:
     ``pip install --upgrade celery``
 
 
-Upgrading to DefectDojo Version 1.10.0
---------------------------------------
-**What's New:**
 
-- See `release notes <https://github.com/DefectDojo/django-DefectDojo/releases>`_
-- JIRA Webhook now can be configured to require a secret for incoming requests, please configure a secret in 'System Settings' (`PR 3082 <https://github.com/DefectDojo/django-DefectDojo/pull/3082>`_)
-
-
-Upgrading to DefectDojo Version 1.9.x
+Upgrading to DefectDojo Version 1.9.3
 -------------------------------------
+**This is a security release**
+  
+- See the `security advisory <https://github.com/DefectDojo/django-DefectDojo/security/advisories/GHSA-8q8j-7wc4-vjg5>`_
+- See `release notes <https://github.com/DefectDojo/django-DefectDojo/releases/tag/1.9.3>`_
+
 **What's New:**
 
 - See release notes: https://github.com/DefectDojo/django-DefectDojo/releases
