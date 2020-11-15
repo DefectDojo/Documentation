@@ -1,6 +1,9 @@
 name: "Pull Request Docs Check"
 on: 
-- pull_request_target
+  pull_request_target:
+  push:
+    branches:
+      - master
 
 jobs:
   docs:
