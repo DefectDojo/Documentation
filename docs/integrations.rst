@@ -161,6 +161,41 @@ Github Vulnerability
 --------------------
 Import findings from Github vulnerability scan: https://help.github.com/en/github/managing-security-vulnerabilities
 
+Github v4 graphql query to fetch data:
+
+``    query getVulnerabilitiesByOwner($owner: String!) {
+      search(query: $owner, type: REPOSITORY, first: 100) {
+        nodes {
+          ... on Repository {
+            name<br/>
+            vulnerabilityAlerts(last: 100) {
+              nodes {
+                id<br/>
+                securityVulnerability {
+                  severity<br/>
+                  package {
+                    name
+                  }
+                  advisory {
+                    description<br/>
+                    summary<br/>
+                    identifiers {
+                      type<br/>
+                      value
+                    }
+                    references {
+                      url
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+``
+
 HuskyCI Report
 --------------
 Import JSON reports from [HuskyCI](https://github.com/globocom/huskyCI)
