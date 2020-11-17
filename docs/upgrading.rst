@@ -50,6 +50,10 @@ Upgrading to DefectDojo Version 1.10.0
 - A quickfix is to rename your own / customized `settings.py` or `settings.dist.py` to `local_settings.py`. 
 - Details of that PR: https://github.com/DefectDojo/django-DefectDojo/pull/3136
 
+**Breaking changes**
+
+Kubernetes/Helm users: we have moved away from the "stable" repository to "bitnami" in this release. The bitnami postgresql chart required us to add a new key to the postgresql secret, which will give you the error ``postgresql-postgres-password is missing`` if you have ``createPostgresqlSecret: false``. Other cases should work fine.
+
 Upgrading to DefectDojo Version 1.9.3
 -------------------------------------
 **This is a security release**
