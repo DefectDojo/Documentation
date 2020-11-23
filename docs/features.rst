@@ -781,7 +781,7 @@ DefectDojo's JIRA integration is bidirectional. You may push findings to JIRA an
  - JIRA Configuration (select the JIRA configuration that you create in the steps below)
  - Component (can be left blank)
 
-Then elect (via tickbox) whether you want to 'Push all images', 'Enable engagement epic mapping' and/or 'Push notes'. Then click on 'Submit'.
+Then elect (via tickbox) whether you want to 'Push all issues', 'Enable engagement epic mapping' and/or 'Push notes'. Then click on 'Submit'.
 
 If creating a Finding, ensure to tick 'Push to jira' if desired.
 
