@@ -776,6 +776,13 @@ JIRA Integration
 
 DefectDojo's JIRA integration is bidirectional. You may push findings to JIRA and share comments. If an issue is closed in JIRA it will automatically be closed in Dojo.
 
+**NOTE:** These steps will configure the necessary webhook in JIRA and add JIRA integration into DefectDojo. This isn't sufficient by itelf, you will need to configure products and findings to push to JIRA. On a product's settings page you will need to define a:
+ - Project Key (and this project must exist in JIRA)
+ - JIRA Configuration (select the JIRA configuration that you create in the steps below)
+ - Component (can be left blank)
+And then elect (via tickbox) whether you want to 'Push all images', 'Enable engagement epic mapping' and/or 'Push notes'. Then click on 'Submit'.
+
+If creating a Finding, ensure to tick 'Push to jira' if desired.
 
 Preparing Jira, Enabling the Webhook
  1. Visit https://<**YOUR JIRA URL**>/plugins/servlet/webhooks
@@ -813,7 +820,7 @@ Adding JIRA to Dojo
  **In the above example 122 is the number needed**
 
 Troubleshooting JIRA integration
- JIRA actions are typically performed in the celery background process. Errors are logged as alerts/notifications to be seen on the top right of the Defect Dojo UI.
+JIRA actions are typically performed in the celery background process. Errors are logged as alerts/notifications to be seen on the top right of the Defect Dojo UI.
 
 Issue Consolidation
 -------------------
