@@ -1,6 +1,8 @@
 DefectDojo settings.py variables
 ================================
 
+For more info on custom settings and use of custom settings during development, please see: [settings.py documentation](https://github.com/DefectDojo/django-DefectDojo/blob/master/dojo/settings/settings.py) and [extra settings](https://github.com/DefectDojo/django-DefectDojo/blob/master/docker/extra_settings/README.md)
+
 .. note::
    To complete
 
