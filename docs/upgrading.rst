@@ -53,7 +53,7 @@ Upgrading to DefectDojo Version 1.10.x
 
 Kubernetes/Helm users: we have moved away from the "stable" repository to "bitnami" in this release. The bitnami postgresql chart required us to add a new key to the postgresql secret, which will give you the error ``postgresql-postgres-password is missing`` if you have ``createPostgresqlSecret: false``. In 1.10.1, a fix was also included to allow your existing ``postgresqlPassword`` to be reused properly.
 
-Including in 1.10.1 were a couple fixes related to a rabbitMQ upgrade. The path to access ``password``, ``erlangCookie`` and ``existingPasswordSecret`` changed from ``rabbitmq`` to ``auth``. Furthermore, as rabbitMQ is deployed as a StatefulSet, an in-place upgrade is not possible and an error will likely be thrown such as ``Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', and 'updateStrategy' are forbidden``. You may then want to delete your rabbitMQ StatefulSet to allow it to get re-created, or fully delete and recreate defectdojo.
+Including in 1.10.1 were a couple fixes related to a rabbitMQ upgrade. The path to access ``password``, ``erlangCookie`` and ``existingPasswordSecret`` changed from ``rabbitmq`` to ``auth``. Furthermore, as rabbitMQ is deployed as a StatefulSet, an in-place upgrade is not possible and an error will likely be thrown such as ``Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', and 'updateStrategy' are forbidden``. After ensuring your rabbitMQ celery queue is empty, you will then want to delete your rabbitMQ StatefulSet and PVC to allow them to get re-created, or fully delete and recreate defectdojo.
 
 
 Upgrading to DefectDojo Version 1.9.3
