@@ -1,5 +1,25 @@
 Upgrading
 =========
+Docker-compose
+--------------
+When you deploy a vanilla docker-compose, it will create a persistent volume for your MySQL database. As long as your volume is there, you should not lose any data.
+
+The generic upgrade method for docker-compose follows these steps:
+- Download the latest or tagged images from https://hub.docker.com/repository/docker/defectdojo/defectdojo-django and https://hub.docker.com/repository/docker/defectdojo/defectdojo-nginx
+- Go to the directory where your docker-compose.yml file lives
+- Stop DefectDojo: ``docker-compose stop``
+- Re-start DefectDojo, allowing for container recreation: ``docker-compose up -d``
+- Run the database migrations to bring your database schema up to speed with the latest code  
+- ``docker-compose exec uwsgi /bin/bash -c 'python manage.py migrate``
+
+If you build your images locally and do not use the ones from DockerHub, the instructions are much the same, except that you'd build your images first.
+Replace the first step above with this one:
+- ``docker-compose build``
+
+Setup.bash
+----------
+.. warning::
+    This installation method will is EOL and will be removed on 2020-12-31
 
 The easiest way to upgrade to a new version of DefectDojo is to pull from Github.  Assuming the source code lives in a
 directory named `defect-dojo` you can complete the following steps to upgrade to the latest DefectDojo release.::
