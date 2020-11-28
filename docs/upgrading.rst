@@ -10,7 +10,7 @@ The generic upgrade method for docker-compose follows these steps:
 - Stop DefectDojo: ``docker-compose stop``
 - Re-start DefectDojo, allowing for container recreation: ``docker-compose up -d``
 - Run the database migrations to bring your database schema up to speed with the latest code  
-- ``docker-compose exec uwsgi /bin/bash -c 'python manage.py migrate``
+- If you have the initializer disabled (or if you want to be on the safe side), run the migration command: ``docker-compose exec uwsgi /bin/bash -c 'python manage.py migrate``
 
 If you build your images locally and do not use the ones from DockerHub, the instructions are much the same, except that you'd build your images first.
 Replace the first step above with this one:
