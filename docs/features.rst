@@ -839,6 +839,23 @@ False Positive Removal
 
 DefectDojo allows users to tune out false positives by enabling False Positive History. This will track what engineers have labeled as false positive for a specific product and for a specific scanner. While enabled, when a tool reports the same issue that has been flagged as a false positive previously, it will automatically mark the finding as a false positive, helping to tune overly verbose security tools.
 
+Automatic deletion of CI/CD engagements
+---------------------------------------
+This feature is disabled by default.
+
+- When enabled, the task will run every day at 05:30.
+- You can choose to run the task as a management comment such as ``python manage.py auto_delete_engagements``
+
+In a world where CI pipelines are prominent, people may be importing lots of engagements which essentially only contain duplicate findings, several times a day. This would happen for example if you choose to not use the re-import function and create new engagement upon new imports (e.g. keeping tabs on your docker images build, and having the engagement tag matching your docker image tag).
+
+The conditions for an engagement to be considered for automatic deletion are the following:
+* Is a CI/CD engagement
+* Has been created before today - x days (configurable)
+* Must only contain duplicate findings
+* Must not contain any notes (such as a human could have put a note there)
+* Does not match the "lock tag" (configurable)
+
+
 Deduplication
 -------------
 
