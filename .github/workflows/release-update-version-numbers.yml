@@ -11,7 +11,7 @@ on:
         required: true
 
 jobs:
-  create_pr:
+  update_version_numbers:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout master
