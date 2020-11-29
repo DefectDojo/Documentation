@@ -48,6 +48,7 @@ Upgrading to DefectDojo Version 1.10.x
 - See release notes: https://github.com/DefectDojo/django-DefectDojo/releases
 - Defect Dojo now provides a `settings.py` file out-of-the-box. Custom settings need to go into `local_settings.py`. See https://github.com/DefectDojo/django-DefectDojo/blob/master/dojo/settings/settings.py and https://github.com/DefectDojo/django-DefectDojo/blob/master/docker/extra_settings/README.md
 - A quickfix is to rename your own / customized `settings.py` or `settings.dist.py` to `local_settings.py`. Details of that PR: https://github.com/DefectDojo/django-DefectDojo/pull/3136
+- Major JIRA integration refactoring, for which you should at least use 1.10.1 and not 1.10.0 for many bug fixes.
 
 **Breaking changes**
 
