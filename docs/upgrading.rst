@@ -41,18 +41,21 @@ Upgrade Celery to the latest version:
 
     ``pip install --upgrade celery``
 
-Upgrading to DefectDojo Version 1.10.0
+Upgrading to DefectDojo Version 1.10.x
 --------------------------------------
 **What's New:**
 
 - See release notes: https://github.com/DefectDojo/django-DefectDojo/releases
 - Defect Dojo now provides a `settings.py` file out-of-the-box. Custom settings need to go into `local_settings.py`. See https://github.com/DefectDojo/django-DefectDojo/blob/master/dojo/settings/settings.py and https://github.com/DefectDojo/django-DefectDojo/blob/master/docker/extra_settings/README.md
-- A quickfix is to rename your own / customized `settings.py` or `settings.dist.py` to `local_settings.py`. 
-- Details of that PR: https://github.com/DefectDojo/django-DefectDojo/pull/3136
+- A quickfix is to rename your own / customized `settings.py` or `settings.dist.py` to `local_settings.py`. Details of that PR: https://github.com/DefectDojo/django-DefectDojo/pull/3136
+- Major JIRA integration refactoring, for which you should at least use 1.10.1 and not 1.10.0 for many bug fixes.
 
 **Breaking changes**
 
-Kubernetes/Helm users: we have moved away from the "stable" repository to "bitnami" in this release. The bitnami postgresql chart required us to add a new key to the postgresql secret, which will give you the error ``postgresql-postgres-password is missing`` if you have ``createPostgresqlSecret: false``. Other cases should work fine.
+Kubernetes/Helm users: we have moved away from the "stable" repository to "bitnami" in this release. The bitnami postgresql chart required us to add a new key to the postgresql secret, which will give you the error ``postgresql-postgres-password is missing`` if you have ``createPostgresqlSecret: false``. In 1.10.1, a fix was also included to allow your existing ``postgresqlPassword`` to be reused properly.
+
+Including in 1.10.1 were a couple fixes related to a rabbitMQ upgrade. The path to access ``password``, ``erlangCookie`` and ``existingPasswordSecret`` changed from ``rabbitmq`` to ``auth``. Furthermore, as rabbitMQ is deployed as a StatefulSet, an in-place upgrade is not possible and an error will likely be thrown such as ``Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', and 'updateStrategy' are forbidden``. After ensuring your rabbitMQ celery queue is empty, you will then want to delete your rabbitMQ StatefulSet and PVC to allow them to get re-created, or fully delete and recreate defectdojo.
+
 
 Upgrading to DefectDojo Version 1.9.3
 -------------------------------------
