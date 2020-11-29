@@ -29,7 +29,8 @@ jobs:
           sed -ri "s/version = '(.*)(\.[0-9]*)'/version = '\1'/" docs/conf.py
       - name: Check numbers
         run: |
-          grep version docs/conf.py
+          grep "version = " docs/conf.py
+          grep "release = " docs/conf.py
       - name: Push version changes
         uses: stefanzweifel/git-auto-commit-action@v4.7.2
         with:
