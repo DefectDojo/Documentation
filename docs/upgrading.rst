@@ -4,17 +4,28 @@ Docker-compose
 --------------
 When you deploy a vanilla docker-compose, it will create a persistent volume for your MySQL database. As long as your volume is there, you should not lose any data.
 
+Using docker images provided in DockerHub
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note::
+   If you're using ``latest``, then you need to pre pull the ``latest`` from DockerHub to update.
+
 The generic upgrade method for docker-compose follows these steps:
-- Download the latest or tagged images from https://hub.docker.com/repository/docker/defectdojo/defectdojo-django and https://hub.docker.com/repository/docker/defectdojo/defectdojo-nginx
+- Pull the latest or tagged images from https://hub.docker.com/repository/docker/defectdojo/defectdojo-django and https://hub.docker.com/repository/docker/defectdojo/defectdojo-nginx
 - Go to the directory where your docker-compose.yml file lives
 - Stop DefectDojo: ``docker-compose stop``
 - Re-start DefectDojo, allowing for container recreation: ``docker-compose up -d``
 - Run the database migrations to bring your database schema up to speed with the latest code  
 - If you have the initializer disabled (or if you want to be on the safe side), run the migration command: ``docker-compose exec uwsgi /bin/bash -c 'python manage.py migrate``
 
-If you build your images locally and do not use the ones from DockerHub, the instructions are much the same, except that you'd build your images first.
+Building your local images
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you build your images locally and do not use the ones from DockerHub, the instructions are much the same, except that you'd build your images first. (Of course, if you're doing this, then you know you have to update the source code first)
+
 Replace the first step above with this one:
 - ``docker-compose build``
+
 
 Setup.bash
 ----------
