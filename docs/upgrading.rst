@@ -1,5 +1,50 @@
 Upgrading
 =========
+Docker-compose
+--------------
+When you deploy a vanilla docker-compose, it will create a persistent volume for your MySQL database. As long as your volume is there, you should not lose any data.
+
+Using docker images provided in DockerHub
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note::
+   If you're using ``latest``, then you need to pre pull the ``latest`` from DockerHub to update.
+
+The generic upgrade method for docker-compose follows these steps:
+
+* Pull the latest version
+
+  .. code-block:: bash
+
+     docker pull defectdojo/defectdojo-django:latest
+     docker pull defectdojo/defectdojo-nginx:latest
+
+* If you would like to use something older (so not the latest version), specify the version (tag) you want to upgrade to:
+
+  .. code-block:: bash
+
+     docker pull defectdojo/defectdojo-django:1.10.2
+     docker pull defectdojo/defectdojo-nginx:1.10.2
+
+* Go to the directory where your docker-compose.yml file lives
+* Stop DefectDojo: ``docker-compose stop``
+* Re-start DefectDojo, allowing for container recreation: ``docker-compose up -d``
+* Run the database migrations to bring your database schema up to speed with the latest code
+* If you have the initializer disabled (or if you want to be on the safe side), run the migration command: ``docker-compose exec uwsgi /bin/bash -c 'python manage.py migrate``
+
+Building your local images
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you build your images locally and do not use the ones from DockerHub, the instructions are much the same, except that you'd build your images first. (Of course, if you're doing this, then you know you have to update the source code first)
+
+Replace the first step above with this one:
+- ``docker-compose build``
+
+
+Setup.bash
+----------
+.. warning::
+    This installation method will is EOL and will be removed on 2020-12-31
 
 The easiest way to upgrade to a new version of DefectDojo is to pull from Github.  Assuming the source code lives in a
 directory named `defect-dojo` you can complete the following steps to upgrade to the latest DefectDojo release.::
@@ -66,7 +111,7 @@ Including in 1.10.1 were a couple fixes related to a rabbitMQ upgrade. The path 
 Upgrading to DefectDojo Version 1.9.3
 -------------------------------------
 **This is a security release**
-  
+
 - See the `security advisory <https://github.com/DefectDojo/django-DefectDojo/security/advisories/GHSA-8q8j-7wc4-vjg5>`_
 - See `release notes <https://github.com/DefectDojo/django-DefectDojo/releases/tag/1.9.3>`_
 
@@ -135,7 +180,7 @@ If you're using docker:
 
 This can take a while depending on your hardware and the number of findings in your instance.
 
-Upgrading to DefectDojo Version 1.7.0 
+Upgrading to DefectDojo Version 1.7.0
 -------------------------------------
 
 **What's New:**
