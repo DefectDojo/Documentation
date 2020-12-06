@@ -6,11 +6,23 @@ Improving your docker-compose performance
 
 Database
 ^^^^^^^^
-Run your database elsewhere. Tweak your docker-compose configuration to that effect.
+Run your database elsewhere. Tweak your docker-compose configuration to that effect. If you don't, you cannot pretend to be running in production.
+
+Instance size
+^^^^^^^^^^^^^
+
+.. note::
+  Please read the paragraphs below about key processes tweaks.
+
+Having taken the database to run elsewhere, the minimum recommendation is:
+
+* 2 vCPUs
+* 8 GB of RAM
+* 2 GB of disk space (remember, your database is not here -- so basically, what you have for your O/S should do). You could allocate a different disk than your OS's for potential performance improvements.
 
 Key processes
 ^^^^^^^^^^^^^
-Per https://github.com/DefectDojo/django-DefectDojo/pull/2813, it is now easy to improve the uWSGI and celery worker performance.
+Per https://github.com/DefectDojo/django-DefectDojo/pull/2813, it is now easy to somewhat improve the uWSGI and celery worker performance.
 
 uWSGI
 """""
