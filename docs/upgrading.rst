@@ -88,11 +88,11 @@ Upgrade Celery to the latest version:
 
 Upgrading to DefectDojo Version 1.10.x
 --------------------------------------
-**1.10.3 is a security release**
+**1.10.4 is a security release**
   
 - See the security advisory: https://github.com/DefectDojo/django-DefectDojo/security/advisories/GHSA-96vq-gqr9-vf2c
-- See release notes: https://github.com/DefectDojo/django-DefectDojo/releases/tag/1.10.3
-
+- See release notes: https://github.com/DefectDojo/django-DefectDojo/releases/tag/1.10.4
+- Version 1.10.4 replaces 1.10.3 as the latter contained an incomplete fix
 
 **What's New:**
 
