@@ -12,11 +12,11 @@ Using docker images provided in DockerHub
 
 The generic upgrade method for docker-compose follows these steps:
 - Pull the latest version:
-   - `docker pull defectdojo/defectdojo-django`
-   - `docker pull defectdojo/defectdojo-nginx`
+  - `docker pull defectdojo/defectdojo-django`
+  - `docker pull defectdojo/defectdojo-nginx`
 - If you would like to use something older (so not the latest version), specify the version (tag) you wnt to upgrade to:
-   - `docker pull defectdojo/defectdojo-django:1.10.2`
-   - `docker pull defectdojo/defectdojo-nginx:1.10.2`   
+  - `docker pull defectdojo/defectdojo-django:1.10.2`
+  - `docker pull defectdojo/defectdojo-nginx:1.10.2`   
 - Go to the directory where your docker-compose.yml file lives
 - Stop DefectDojo: ``docker-compose stop``
 - Re-start DefectDojo, allowing for container recreation: ``docker-compose up -d``
