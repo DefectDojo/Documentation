@@ -1,0 +1,44 @@
+name: "Release: 1. Update version numbers"
+
+env:
+  GIT_USERNAME: "DefectDojo release bot"
+  GIT_EMAIL: "dojo-release-bot@users.noreply.github.com"
+on:
+  workflow_dispatch:
+    inputs:
+      release_number:
+        description: "Release version (x.y.z format)"
+        required: true
+
+jobs:
+  update_version_numbers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@v2
+        with:
+          ref: master
+      - name: Configure git
+        run: |
+          git config --global user.name "${{ env.GIT_USERNAME }}"
+          git config --global user.email "${{ env.GIT_EMAIL }}"
+      - name: Update version numbers in key files
+        run: |
+          sed -ri "s/release = '.*'/release = '${{ github.event.inputs.release_number }}'/" docs/conf.py
+          sed -ri "s/version = '.*'/version = '${{ github.event.inputs.release_number }}'/" docs/conf.py
+          sed -ri "s/version = '(.*)(\.[0-9]*)'/version = '\1'/" docs/conf.py
+      - name: Check numbers
+        run: |
+          grep "version = " docs/conf.py
+          grep "release = " docs/conf.py
+      - name: Push version changes
+        uses: stefanzweifel/git-auto-commit-action@v4.7.2
+        with:
+          commit_user_name: "${{ env.GIT_USERNAME }}"
+          commit_user_email: "${{ env.GIT_EMAIL }}"
+          commit_author: "${{ env.GIT_USERNAME }} <${{ env.GIT_EMAIL }}>"
+          commit_message: "Update versions in application files"
+          branch: ${{ env.NEW_BRANCH }}
+      - name: Push master
+        if: "!startsWith('${{ github.event.inputs.from_branch }}', 'release/')"
+        run: git push origin master

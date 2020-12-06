@@ -139,7 +139,7 @@ Once the user signs in, it will try to match the UPN of the user to an existing 
   * DD_SOCIAL_AUTH_AZUREAD_TENANT_OAUTH2_KEY=(str, '**YOUR_APPLICATION_ID_FROM_STEP_ABOVE**'),
   * DD_SOCIAL_AUTH_AZUREAD_TENANT_OAUTH2_SECRET=(str, '**YOUR_CLIENT_SECRET_FROM_STEP_ABOVE**''),
   * DD_SOCIAL_AUTH_AZUREAD_TENANT_OAUTH2_TENANT_ID=(str, '**YOUR_DIRECTORY_ID_FROM_STEP_ABOVE**''),
-  * AZUREAD_TENANT_OAUTH2_ENABLED = **True**
+  * DD_SOCIAL_AUTH_AZUREAD_TENANT_OAUTH2_ENABLED = **True**
 
 5. Restart your Dojo, and you should now see a **Login with Azure AD** button on the login page which should *magically* work
 
