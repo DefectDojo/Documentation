@@ -45,8 +45,8 @@ Upgrading to DefectDojo Version 1.10.x
 --------------------------------------
 **1.10.3 is a security release**
   
-- See the `security advisory <https://github.com/DefectDojo/django-DefectDojo/security/advisories/GHSA-96vq-gqr9-vf2c>`_
-- See `release notes <https://github.com/DefectDojo/django-DefectDojo/releases/tag/1.10.3>`_
+- See the security advisory: https://github.com/DefectDojo/django-DefectDojo/security/advisories/GHSA-96vq-gqr9-vf2c
+- See release notes: https://github.com/DefectDojo/django-DefectDojo/releases/tag/1.10.3
 
 
 **What's New:**
