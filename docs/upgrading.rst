@@ -11,17 +11,26 @@ Using docker images provided in DockerHub
    If you're using ``latest``, then you need to pre pull the ``latest`` from DockerHub to update.
 
 The generic upgrade method for docker-compose follows these steps:
-- Pull the latest version:
-  - `docker pull defectdojo/defectdojo-django`
-  - `docker pull defectdojo/defectdojo-nginx`
-- If you would like to use something older (so not the latest version), specify the version (tag) you wnt to upgrade to:
-  - `docker pull defectdojo/defectdojo-django:1.10.2`
-  - `docker pull defectdojo/defectdojo-nginx:1.10.2`   
-- Go to the directory where your docker-compose.yml file lives
-- Stop DefectDojo: ``docker-compose stop``
-- Re-start DefectDojo, allowing for container recreation: ``docker-compose up -d``
-- Run the database migrations to bring your database schema up to speed with the latest code  
-- If you have the initializer disabled (or if you want to be on the safe side), run the migration command: ``docker-compose exec uwsgi /bin/bash -c 'python manage.py migrate``
+
+* Pull the latest version
+
+  .. code-block:: bash
+
+     docker pull defectdojo/defectdojo-django:latest
+     docker pull defectdojo/defectdojo-nginx:latest
+
+* If you would like to use something older (so not the latest version), specify the version (tag) you want to upgrade to:
+
+  .. code-block:: bash
+
+     docker pull defectdojo/defectdojo-django:1.10.2
+     docker pull defectdojo/defectdojo-nginx:1.10.2
+
+* Go to the directory where your docker-compose.yml file lives
+* Stop DefectDojo: ``docker-compose stop``
+* Re-start DefectDojo, allowing for container recreation: ``docker-compose up -d``
+* Run the database migrations to bring your database schema up to speed with the latest code
+* If you have the initializer disabled (or if you want to be on the safe side), run the migration command: ``docker-compose exec uwsgi /bin/bash -c 'python manage.py migrate``
 
 Building your local images
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -83,7 +92,7 @@ Upgrading to DefectDojo Version 1.10.0
 
 - See release notes: https://github.com/DefectDojo/django-DefectDojo/releases
 - Defect Dojo now provides a `settings.py` file out-of-the-box. Custom settings need to go into `local_settings.py`. See https://github.com/DefectDojo/django-DefectDojo/blob/master/dojo/settings/settings.py and https://github.com/DefectDojo/django-DefectDojo/blob/master/docker/extra_settings/README.md
-- A quickfix is to rename your own / customized `settings.py` or `settings.dist.py` to `local_settings.py`. 
+- A quickfix is to rename your own / customized `settings.py` or `settings.dist.py` to `local_settings.py`.
 - Details of that PR: https://github.com/DefectDojo/django-DefectDojo/pull/3136
 
 **Breaking changes**
@@ -93,7 +102,7 @@ Kubernetes/Helm users: we have moved away from the "stable" repository to "bitna
 Upgrading to DefectDojo Version 1.9.3
 -------------------------------------
 **This is a security release**
-  
+
 - See the `security advisory <https://github.com/DefectDojo/django-DefectDojo/security/advisories/GHSA-8q8j-7wc4-vjg5>`_
 - See `release notes <https://github.com/DefectDojo/django-DefectDojo/releases/tag/1.9.3>`_
 
@@ -162,7 +171,7 @@ If you're using docker:
 
 This can take a while depending on your hardware and the number of findings in your instance.
 
-Upgrading to DefectDojo Version 1.7.0 
+Upgrading to DefectDojo Version 1.7.0
 -------------------------------------
 
 **What's New:**
