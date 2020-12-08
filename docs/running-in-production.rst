@@ -55,7 +55,7 @@ You can execute the following command to see the configuration:
 ``docker-compose exec celerybeat bash -c "celery -A dojo inspect stats"`` and see what is in effect.
 
 Production with setup.bash
-==========================
+--------------------------
 
 .. warning::
    From this point down, this page is slated to get a revamp
