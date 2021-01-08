@@ -357,6 +357,12 @@ Safety Scan
 -----------
 Safety scan (--json) output file can be imported in JSON format.
 
+SARIF
+-----------
+OASIS Static Analysis Results Interchange Format (SARIF).
+SARIF is supported by many tools.
+More details about the format here: https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=sarif
+
 SKF Scan
 --------
 Output of SKF Sprint summary export.
