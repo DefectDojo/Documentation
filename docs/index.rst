@@ -98,7 +98,7 @@ Plugins
 
    burp-plugin
 
-.. _dev_docs:
+.. _dev-docs:
 
 Dev Documentation
 -----------------
