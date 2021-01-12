@@ -270,7 +270,7 @@ Import OpenVAS Scan in CSV format. Export as CSV Results on OpenVAS.
 
 OssIndex Devaudit
 -----------------
-OSSIndex Devaudit Scan output can be imported in JSON format.
+Import JSON formatted output from [OSSIndex Devaudit](https://github.com/sonatype-nexus-community/DevAudit).
 
 Oss Review Toolkit
 ------------------
