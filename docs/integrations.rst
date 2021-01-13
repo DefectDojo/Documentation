@@ -268,6 +268,10 @@ OpenVAS CSV
 -----------
 Import OpenVAS Scan in CSV format. Export as CSV Results on OpenVAS.
 
+OssIndex Devaudit
+-----------------
+Import JSON formatted output from [OSSIndex Devaudit](https://github.com/sonatype-nexus-community/DevAudit).
+
 Oss Review Toolkit
 ------------------
 Import ORT Evaluated model reporter in JSON Format. (Example)[https://github.com/DefectDojo/sample-scan-files/blob/master/ort/evaluated-model-reporter-output.json]
