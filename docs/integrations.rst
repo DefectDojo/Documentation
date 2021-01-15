@@ -367,6 +367,13 @@ OASIS Static Analysis Results Interchange Format (SARIF).
 SARIF is supported by many tools.
 More details about the format here: https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=sarif
 
+Scout Suite
+-----------
+Multi-Cloud security auditing tool. It uses APIs exposed by cloud providers.
+Scan results are located at `scan-reports/scoutsuite-results/scoutsuite_*.json` files.
+Multiple scans will create multiple files if they are runing agains different Cloud projects.
+
+
 SKF Scan
 --------
 Output of SKF Sprint summary export.
