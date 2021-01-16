@@ -820,8 +820,14 @@ Adding JIRA to Dojo
 
  **In the above example 122 is the number needed**
 
+Known Issues
+
+Defect dojo will try to keep the status in defect dojo in sync with the status in JIRA using the various status ids configured for each JIRA instance. This will only work if your workflow in JIRA allows arbitrary transitions between the statuses JIRA issues can be in.
+The Risk Acceptance feature in defect dojo will (for that reason) not (yet) try to sync statuses. A comment will be pushed to JIRA if a finding is risk acceprted or unaccepted. Contributions are welcome to enhance the integration.
+
 Troubleshooting JIRA integration
-JIRA actions are typically performed in the celery background process. Errors are logged as alerts/notifications to be seen on the top right of the Defect Dojo UI.
+
+JIRA actions are typically performed in the celery background process. Errors are logged as alerts/notifications to be seen on the top right of the Defect Dojo UI and in stdout of the celery workers.
 
 Issue Consolidation
 -------------------
