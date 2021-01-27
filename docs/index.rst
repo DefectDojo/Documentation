@@ -31,7 +31,7 @@ DefectDojo is based on a model that allows the ultimate flexibility in your test
 
 .. image:: /_static/DD-Hierarchy.png
 
-The code is open source, and `available on github`_ and a running example is available on `the demo server`_ using the credentials admin / defectdojo@demo#appsec.
+The code is open source, and `available on github`_ and a running example is available on `the demo server`_ using the credentials admin / defectdojo@demo#appsec. Note: The demo server is refreshed regularly and provisioned some sample data.
 
 .. _available on github: https://github.com/DefectDojo/django-DefectDojo
 .. _the demo server: https://demo.defectdojo.org
