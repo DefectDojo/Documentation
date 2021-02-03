@@ -155,7 +155,11 @@ Import Gitleaks findings in JSON format.
 
 GitLab SAST Report
 ------------------
-Import SAST Report vulnerabilities in JSON format.
+Import SAST Report vulnerabilities in JSON format: https://docs.gitlab.com/ee/user/application_security/sast/#reports-json-format
+
+GitLab Dependency Scanning Report
+------------------
+Import Dependency Scanning Report vulnerabilities in JSON format: https://docs.gitlab.com/ee/user/application_security/dependency_scanning/#reports-json-format
 
 Github Vulnerability
 --------------------
