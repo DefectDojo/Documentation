@@ -1,3 +1,5 @@
+:warning: **Docs are now integrated in the main repository**: [here](https://github.com/DefectDojo/django-DefectDojo/tree/master/docs)
+
 # DefectDojo
 ![](https://avatars0.githubusercontent.com/u/35606478?s=200&v=4)
 
