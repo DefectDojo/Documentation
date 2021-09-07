@@ -1,3 +1,6 @@
+.. meta::
+   :robots: noindex,nofollow
+
 DefectDojo's Documentation
 ==========================
 
