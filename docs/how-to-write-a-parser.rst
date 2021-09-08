@@ -1,4 +1,8 @@
-How to write a DefectDojo parser
-================================
+.. meta::
+   :robots: noindex,nofollow
 
-Please read https://github.com/DefectDojo/django-DefectDojo/tree/dev/doc/guide_to_parser_writing.md
+DefectDojo's Documentation
+==========================
+
+.. warning::
+   This documentation is EOL. The latest documentation is now located at https://defectdojo.github.io/django-DefectDojo/
